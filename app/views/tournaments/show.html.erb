@@ -6,4 +6,8 @@
     <h4>Invite tes amis</h4>
     <p><%= url_for(only_path: false) %></p>
   <% end %>
+
+  <% if @tournament.status == "created" %>
+    <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch %>
+  <% end %>
 </div>

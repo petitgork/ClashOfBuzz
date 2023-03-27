@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  before_action :set_params, only: %i[join show edit update launch]
 
   def join
     @tournament = Tournament.find(params[:id])
@@ -21,6 +22,7 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
+    @tournament.status = "created"
     if @tournament.save
       redirect_to tournament_path(@tournament)
     else
@@ -29,15 +31,12 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    @tournament = Tournament.find(params[:id])
   end
 
   def edit
-    @tournament = Tournament.find(params[:id])
   end
 
   def update
-    @tournament = Tournament.find(params[:id])
     if @tournament.update(tournament_params)
       redirect_to tournament_path(@tournament)
     else
@@ -45,9 +44,21 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def launch
+    @tournament.status = "launched"
+    @tournament.save!
+    flash[:notice] = "Le tournoi est lancé, vous pouvez désormais créer votre équipe"
+    redirect_to tournament_path(@tournament)
+  end
+
   private
 
   def tournament_params
     params.require(:tournament).permit(:name, :status, :final_result)
   end
+
+  def set_params
+    @tournament = Tournament.find(params[:id])
+  end
+
 end
