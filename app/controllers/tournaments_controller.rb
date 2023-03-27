@@ -21,7 +21,6 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
-    @tournament.user = current_user
     if @tournament.save
       redirect_to tournament_path(@tournament)
     else
