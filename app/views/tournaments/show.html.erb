@@ -5,19 +5,11 @@
   <% if @tournament.status == "created" %>
     <h4>Invite tes amis</h4>
     <p><%= url_for(only_path: false) %></p>
-  <% end %>
-
-  <% if @tournament.status == "created" %>
     <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch %>
   <% end %>
 </div>
 
 <%= link_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post %>
-<<<<<<< HEAD
-
-<h1><%= @tournament.name %></h1>
-<p><%= @tournament.status %></p>
-
 <% if @tournament.status == "launched" %>
   <p>Liste des équipes inscrites :</p>
   <ul>
@@ -32,10 +24,5 @@
       <li><%= user.nickname %></li>
     <% end %>
   </ul>
-    <h4>Invite tes amis</h4>
-    <p><%= url_for(only_path: false) %></p>
-  <%= button_to "Lancer le tournoi", launch_tournament_path(@tournament), method: :patch %>
 <% end %>
-=======
 <%= link_to "+ Nouvel equipe", new_tournament_team_path(@tournament.id), class: "button" %>
->>>>>>> ef4ddf76b769740da7e94982e1ee4572ad2f2c53
