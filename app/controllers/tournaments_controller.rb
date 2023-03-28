@@ -64,6 +64,7 @@ class TournamentsController < ApplicationController
         politic = politics.pop
         TeamPolitic.create!(team_id: team, politic_id: politic)
       end
+    end
 
     flash[:notice] = "Le tournoi est lancé, vous pouvez désormais créer votre équipe"
     redirect_to tournament_path(@tournament)
