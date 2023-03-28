@@ -2,7 +2,9 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @user = current_user
+    @tournament = Tournament.find(params[:tournament_id])
   end
+
   def create
     @team = Team.new(params[:team])
     @team.user_id = current_user.id
@@ -13,6 +15,4 @@ class TeamsController < ApplicationController
       render ender :new, status: :unprocessable_entity
     end
   end
-end
-
 end
