@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @user = current_user
+    @tournament = Tournament.find(params[:tournament_id])
   end
 
   def create
