@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :teams, only: %i[show new create]
     member do
       post :join
+      patch :launch
     end
   end
   resources :matches do
