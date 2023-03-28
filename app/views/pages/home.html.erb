@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="homecontainer">
+  <div class="picture">
+    <div class="logo">
+      <%= image_tag"logocob.jpg" %>
+    </div>
+    <div class="buttons">
+      <%= link_to "let's play", new_user_registration_path, class: "btn-btn" %>
+    </div>
+  </div>

@@ -3,7 +3,7 @@ class TournamentsController < ApplicationController
 
   def join
     @tournament = Tournament.find(params[:id])
-    if current_user.tournaments.include?(@tournament)
+    if current_user.user_tournaments.include?(@tournament)
       flash[:alert] = "Vous êtes déjà inscrit à ce tournoi"
     else
       @tournament.users << current_user
