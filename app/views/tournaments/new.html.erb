@@ -3,7 +3,6 @@
   <%= simple_form_for @tournament do |f| %>
     <%= f.input :name, label: "Nom du tournoi" %>
     <%= f.input :photo, label: "Image", as: :file %>
-    <%= f.input :status, label: "Statut", as: :select, collection: ["créé", "fini"] %>
     <%= f.button :submit, "Creer mon tournoi" %>
   <% end %>
 </div>

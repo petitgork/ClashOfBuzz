@@ -17,13 +17,15 @@ class TournamentsController < ApplicationController
 
   def new
     @tournament = Tournament.new
+    @user = current_user
   end
 
   def create
     @tournament = Tournament.new(tournament_params)
-    @tournament.user = current_user
+    user_tournament = UserTournament.new(user: current_user, tournament: @tournament)
     if @tournament.save
       redirect_to tournament_path(@tournament)
+      user_tournament.save
     else
       render :new, status: :unprocessable_entity
     end
