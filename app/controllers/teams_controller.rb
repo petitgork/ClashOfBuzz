@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
     # création de l'équipe
     team = Team.new(team_params)
     team.user = current_user
-    tournament = Tournament.find(params[:tournament.id])
+    tournament = Tournament.find(params[:tournament_id])
     team.tournament = tournament
     team.number_of_politics = (Politic.count / tournament.users.count)
 
