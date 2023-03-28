@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :tournaments do
     resources :teams, only: %i[show new create]
+    member do
+      post :join
+    end
   end
   resources :matches do
     resources :line_ups, only: %i[show new create]
