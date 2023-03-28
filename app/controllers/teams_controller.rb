@@ -11,7 +11,6 @@ class TeamsController < ApplicationController
     team.user = current_user
     tournament = Tournament.find(params[:tournament_id])
     team.tournament = tournament
-
     if team.save
       flash[:notice] = "Team created successfully."
       redirect_to user_path(current_user)
