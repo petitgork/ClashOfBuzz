@@ -7,3 +7,5 @@
     <p><%= url_for(only_path: false) %></p>
   <% end %>
 </div>
+
+<%= link_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post %>
