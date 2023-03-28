@@ -54,7 +54,7 @@ class TournamentsController < ApplicationController
     tournament.save!
 
     # on définit la taille des effectifs de chaque équipe
-    team_size = (Politic.count / @tournament.users.count)
+    team_size = (Politic.count / tournament.users.count)
 
     # on mélange tous les politics de la BDD dans un array aléatoire
     politics = Politic.all.shuffle
