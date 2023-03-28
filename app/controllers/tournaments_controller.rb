@@ -46,8 +46,25 @@ class TournamentsController < ApplicationController
   end
 
   def launch
+    # quand on lance le tournoi toutes les équipes ont déjà été créées, mais aucun effectif
+    # ne leur a encore été attribué
+
     @tournament.status = "launched"
     @tournament.save!
+
+    # on définit la taille des effectifs de chaque équipe
+    team_size = (Politic.count / @tournament.users.count)
+
+    # on place toutes les polics de la BDD dans un ordre aléatoire
+    politics = Politic.all.shuffle
+
+    # Tirage au sort des effectif de chaque équipe
+    @tournament.teams.each do |team|
+      team_size.times do
+        politic = politics.pop
+        TeamPolitic.create!(team_id: team, politic_id: politic)
+      end
+
     flash[:notice] = "Le tournoi est lancé, vous pouvez désormais créer votre équipe"
     redirect_to tournament_path(@tournament)
   end
