@@ -11,19 +11,9 @@ class TeamsController < ApplicationController
     team.user = current_user
     tournament = Tournament.find(params[:tournament_id])
     team.tournament = tournament
-    team.number_of_politics = (Politic.count / tournament.users.count)
 
-    if @team.save
+    if team.save
       flash[:notice] = "Team created successfully."
-
-      # Tirage au sort de l'équipe
-      available_politics = Politic.all - tournament.teams.politics
-      team.number_of_politics.times do
-        politic = available_politics.sample(1)
-        available_politics -= politic
-        Team_politic.create!(team, politic)
-      end
-
       redirect_to user_path(current_user)
     else
       render ender :new, status: :unprocessable_entity
