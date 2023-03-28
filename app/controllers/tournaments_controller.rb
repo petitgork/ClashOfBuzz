@@ -23,7 +23,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     @tournament.status = "created"
-    user_tournaments.create(@tournament, current_user)
+    UserTournament.create(tournament: @tournament, user: current_user)
     if @tournament.save
       redirect_to tournament_path(@tournament)
     else

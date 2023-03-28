@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
       team.number_of_politics.times do
         politic = available_politics.sample(1)
         available_politics -= politic
-        Team_politic.create!(team, politic)
+        TeamPolitic.create!(team, politic)
       end
 
       redirect_to user_path(current_user)
