@@ -4,3 +4,4 @@ class Team < ApplicationRecord
   has_many :team_politics
   has_many :politics, through: :team_politics
 end
+

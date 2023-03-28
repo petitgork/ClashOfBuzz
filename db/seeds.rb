@@ -7,8 +7,17 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-# USERS SEEDS
+UserMatch.destroy_all
+UserTournament.destroy_all
+LineUp.destroy_all
+Match.destroy_all
+TeamPolitic.destroy_all
+Team.destroy_all
+Politic.destroy_all
+Tournament.destroy_all
 User.destroy_all
+
+# USERS SEEDS
 
 password = "123456"
 User.create!(nickname: 'xalirius', email: 'becharafrancis@gmail.com', password: password)
@@ -17,7 +26,6 @@ User.create(nickname: 'petitgork', email: 'gaelcarayon@hotmail.com', password: p
 User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password)
 
 # TOURNOIS SEEDS
-Tournament.destroy_all
 
 5.times do
   tournament = Tournament.new(
@@ -29,7 +37,6 @@ Tournament.destroy_all
 end
 
 # TEAMS SEEDS
-Team.destroy_all
 
 5.times do
   team = Team.new(
@@ -43,7 +50,6 @@ Team.destroy_all
 end
 
 # MATCHES SEEDS
-Match.destroy_all
 
 5.times do
   match = Match.new(
@@ -54,7 +60,6 @@ Match.destroy_all
 end
 
 # POLITICS SEEDS
-Politic.destroy_all
 
 macron = Politic.create(
   first_name: "Manu",
@@ -113,9 +118,8 @@ wauquiez = Politic.create(
 )
 
 # LINE-UPS SEEDS
-LineUp.destroy_all
 
-5.times do
+20.times do
   lineup = LineUp.new(
     match_id: Match.all.sample.id,
     politic_id: Politic.all.sample.id
@@ -124,18 +128,16 @@ LineUp.destroy_all
 end
 
 # TEAMS_POLITICS SEEDS
-TeamPolitic.destroy_all
 
 5.times do
   teampolitic = TeamPolitic.new(
-      team_id: Team.all.sample.id,
-      politic_id: Politic.all.sample.id
-    )
+    team_id: Team.all.sample.id,
+    politic_id: Politic.all.sample.id
+  )
   teampolitic.save!
 end
 
-# USER_TOURNAMENTS
-UserTournament.destroy_all
+# USER_TOURNAMENTS SEEDS
 
 5.times do
   usertournament = UserTournament.new(
@@ -143,4 +145,14 @@ UserTournament.destroy_all
     tournament_id: Tournament.all.sample.id
   )
   usertournament.save!
+end
+
+# USER_MATCHES SEEDS
+
+5.times do
+  usermatches = UserMatch.new(
+    user_id: User.all.sample.id,
+    match_id: Match.all.sample.id
+  )
+  usermatches.save!
 end
