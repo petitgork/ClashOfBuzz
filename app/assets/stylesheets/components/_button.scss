@@ -1,0 +1,12 @@
+.button {
+  margin-top: 1rem;
+  padding: 3px auto;
+  background-color: $yellow;
+  border-radius: 15px;
+  width: 13rem;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: $red;
+}
