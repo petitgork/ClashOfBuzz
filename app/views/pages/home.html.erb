@@ -5,6 +5,7 @@
       <%= image_tag"logocob.jpg" %>
     </div>
     <div class="buttons">
-      <%= link_to "play start", new_user_session_path, class: "btn_start" %>
+      <%= link_to "play start", current_user ? user_path(current_user) : new_user_session_path,
+      class: "btn_start" %>
     </div>
   </div>
