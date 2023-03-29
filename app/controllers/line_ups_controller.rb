@@ -13,7 +13,7 @@ class LineUpsController < ApplicationController
     line_up.tournament = tournament
 
     # selection des joueurs
-    @line_up = LineUp.where[:politics].first
+    @line_up = LineUp.where[:user, :politics].first
     line_up.each do
       line = Politic.find(line_up.politic_id)
       line_up.politics << line
@@ -38,6 +38,6 @@ class LineUpsController < ApplicationController
   private
 
   def line_up_params
-    params.require(:line_up).permit(:name, :avatar)
+    params.require(:line_up).permit(:politic_id, :match_id)
   end
 end

@@ -29,6 +29,7 @@ class MatchesController < ApplicationController
     @team_adversary_user = Team.where(user: @adversary_user, tournament: @tournament).first
   end
 
+  
   private
 
   def match_params
