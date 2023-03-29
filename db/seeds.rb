@@ -11,6 +11,7 @@ UserMatch.destroy_all
 UserTournament.destroy_all
 LineUp.destroy_all
 Match.destroy_all
+TeamMatch.destroy_all
 TeamPolitic.destroy_all
 Team.destroy_all
 Politic.destroy_all
@@ -400,63 +401,63 @@ usertournament_t2_gael = UserTournament.create!(
 
 # TEAM_MATCHES
   # Tournoi 1 - 3 matchs - 2 equipes s'affrontent
-teammatches_t1_ma = TeamMatches.create!(
+teammatches_t1_ma = TeamMatch.create!(
   team_id: team_francis_t1.id,
   match_id: match_t1_a.id
 )
 
-teammatches_t1_ma = TeamMatches.create!(
+teammatches_t1_ma = TeamMatch.create!(
   team_id: team_herve_t1.id,
   match_id: match_t1_a.id
 )
 
-teammatches_t1_mb = TeamMatches.create!(
+teammatches_t1_mb = TeamMatch.create!(
   team_id: team_francis_t1.id,
   match_id: match_t1_b.id
 )
 
-teammatches_t1_mb = TeamMatches.create!(
+teammatches_t1_mb = TeamMatch.create!(
   team_id: team_herve_t1.id,
   match_id: match_t1_b.id
 )
 
-teammatches_t1_mc = TeamMatches.create!(
+teammatches_t1_mc = TeamMatch.create!(
   team_id: team_francis_t1.id,
   match_id: match_t1_c.id
 )
 
-teammatches_t1_mc = TeamMatches.create!(
+teammatches_t1_mc = TeamMatch.create!(
   team_id: team_herve_t1.id,
   match_id: match_t1_c.id
 )
 
   # Tournoi 2 - 3 matchs - 2 equipes s'affrontent
-teammatches_t2_ma = TeamMatches.create!(
+teammatches_t2_ma = TeamMatch.create!(
   team_id: team_francis_t2.id,
   match_id: match_t2_a.id
 )
 
-teammatches_t2_ma = TeamMatches.create!(
+teammatches_t2_ma = TeamMatch.create!(
   team_id: team_herve_t2.id,
   match_id: match_t2_a.id
 )
 
-teammatches_t2_mb = TeamMatches.create!(
+teammatches_t2_mb = TeamMatch.create!(
   team_id: team_francis_t2.id,
   match_id: match_t2_b.id
 )
 
-teammatches_t2_mb = TeamMatches.create!(
+teammatches_t2_mb = TeamMatch.create!(
   team_id: team_gael_t2.id,
   match_id: match_t2_b.id
 )
 
-teammatches_t2_mc = TeamMatches.create!(
+teammatches_t2_mc = TeamMatch.create!(
   team_id: team_francis_t2.id,
   match_id: match_t2_c.id
 )
 
-teammatches_t2_mc = TeamMatches.create!(
+teammatches_t2_mc = TeamMatch.create!(
   team_id: team_gael_t2.id,
   match_id: match_t2_c.id
 )
