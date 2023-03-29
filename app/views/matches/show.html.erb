@@ -11,5 +11,14 @@
       <% end %>
     <% end %>
   <% end %>
-
+</div>
+<div>
+<% @match.teams.each do |team| %>
+    <h3><%= team.name %></h3>
+    <% team.politics.each do |politic| %>
+      <ul>
+        <li><%= politic.first_name %> <%= politic.last_name %><%= button_to "Ajouter à l'équipe", match_line_ups_path(@match, politic_id:politic.id), method: :post%></li>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
