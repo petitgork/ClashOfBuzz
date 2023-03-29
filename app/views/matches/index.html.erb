@@ -1,7 +1,14 @@
-<h1>Résultats du championnat</h1>
+<h1>Mes matchs</h1>
 
 <% @matches.each do |match| %>
-  <h3>Match <%= match.id %></h3>
-  <p><%= match.tournament.name %></p>
-  <p><%= match.match_result %></p>
+  <%= match.team_matches[0].team.name %>
+  VS
+  <%= match.team_matches[1].team.name %>
 <% end %>
+
+
+<%# <% @matches.each do |match| %> %>
+  <%# <h3>Match <%= match.id %></h3> %>
+  <%# <p><%= match.tournament.name %></p> %>
+  <%# <p><%= match.match_result %></p> %>
+<%# <% end %> %>

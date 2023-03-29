@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   def index
-    @matches = Match.all
+    @team = Team.where(tournament: params[:tournament_id], user: current_user).first
+    @matches = @team.matches
   end
 
   def new
