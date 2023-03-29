@@ -20,44 +20,90 @@ User.destroy_all
 # USERS SEEDS
 
 password = "123456"
-User.create!(nickname: 'xalirius', email: 'becharafrancis@gmail.com', password: password)
-User.create!(nickname: 'RVNG64', email: 'herve.nguetsop@gmail.com', password: password)
-User.create(nickname: 'petitgork', email: 'gaelcarayon@hotmail.com', password: password)
-User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password)
+
+francis = User.create!(nickname: 'xalirius', email: 'becharafrancis@gmail.com', password: password)
+herve = User.create!(nickname: 'RVNG64', email: 'herve.nguetsop@gmail.com', password: password)
+gael = User.create(nickname: 'petitgork', email: 'gaelcarayon@hotmail.com', password: password)
+marine = User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password)
 
 # TOURNOIS SEEDS
 
-5.times do
-  tournament = Tournament.new(
-    name: Faker::Beer.brand,
-    status: ["created", "launched", "finished"].sample,
-    final_result: (0..10_000).to_a.sample
-  )
-  tournament.save!
-end
+tournament_1 = Tournament.create!(
+  name: "Tournoi 1",
+  status: "created",
+  final_result: 0
+)
+
+tournament_2 = Tournament.create!(
+  name: "Tournoi 2",
+  status: "created",
+  final_result: 0
+)
 
 # TEAMS SEEDS
+  # Equipe du tournoi 1
+team_francis_t1 = Team.create!(
+  name: "team de francis du tournoi 1",
+  number_of_politics: 10,
+  user_id: francis.id,
+  tournament_id: tournament_1.id
+)
 
-5.times do
-  team = Team.new(
-    name: Faker::Beer.name,
-    number_of_politics: (3..5).to_a.sample,
-    avatar: Faker::Avatar.image,
-    user_id: User.all.sample.id,
-    tournament_id: Tournament.all.sample.id
-  )
-  team.save!
-end
+team_herve_t1 = Team.create!(
+  name: "team de herve du tournoi 1",
+  number_of_politics: 10,
+  user_id: herve.id,
+  tournament_id: tournament_1.id
+)
+
+  # Equipe du tournoi 2
+
+team_francis_t2 = Team.create!(
+  name: "team de francis du tournoi 2",
+  number_of_politics: 10,
+  user_id: francis.id,
+  tournament_id: tournament_2.id
+)
+
+team_gael_t2 = Team.create!(
+  name: "team de gael du tournoi 2",
+  number_of_politics: 10,
+  user_id: gael.id,
+  tournament_id: tournament_2.id
+)
 
 # MATCHES SEEDS
+  # Matchs du tournoi 1
+match_t1_a = Match.create!(
+  tournament_id: tournament_1.id,
+  match_result: 0
+)
 
-5.times do
-  match = Match.new(
-    tournament_id: Tournament.all.sample.id,
-    match_result: (0..500).to_a.sample
-  )
-  match.save!
-end
+match_t1_b = Match.create!(
+  tournament_id: tournament_1.id,
+  match_result: 0
+)
+
+match_t1_c = Match.create!(
+  tournament_id: tournament_1.id,
+  match_result: 0
+)
+
+  # Matchs du tournoi 2
+match_t2_a = Match.create!(
+  tournament_id: tournament_2.id,
+  match_result: 0
+)
+
+match_t2_b = Match.create!(
+  tournament_id: tournament_2.id,
+  match_result: 0
+)
+
+match_t2_c = Match.create!(
+  tournament_id: tournament_2.id,
+  match_result: 0
+)
 
 # POLITICS SEEDS
 
@@ -105,7 +151,7 @@ philippot = Politic.create(
 
 dupont_aignan = Politic.create(
   first_name: "Nicolas",
-  last_name: "Dupont6Qignqn",
+  last_name: "Dupont-Aignan",
   politic_board: "Debout la France/",
   avatar: Faker::Avatar.image
 )
@@ -117,42 +163,300 @@ wauquiez = Politic.create(
   avatar: Faker::Avatar.image
 )
 
+# TEAMS_POLITICS SEEDS
+  # Composition des equipes du tournoi 1 (4 persos / equipe)
+teampolitic_francis_t1_p1 = TeamPolitic.create!(
+  team_id: team_francis_t1.id,
+  politic_id: wauquiez.id
+)
+
+teampolitic_francis_t1_p2 = TeamPolitic.create!(
+  team_id: team_francis_t1.id,
+  politic_id: macron.id
+)
+
+teampolitic_francis_t1_p3 = TeamPolitic.create!(
+  team_id: team_francis_t1.id,
+  politic_id: lepen.id
+)
+
+teampolitic_francis_t1_p4 = TeamPolitic.create!(
+  team_id: team_francis_t1.id,
+  politic_id: dupont_aignan.id
+)
+
+teampolitic_herve_t1_p1 = TeamPolitic.create!(
+  team_id: team_herve_t1.id,
+  politic_id: ruffin.id
+)
+
+teampolitic_herve_t1_p2 = TeamPolitic.create!(
+  team_id: team_herve_t1.id,
+  politic_id: philippot.id
+)
+
+teampolitic_herve_t1_p3 = TeamPolitic.create!(
+  team_id: team_herve_t1.id,
+  politic_id: melench.id
+)
+
+teampolitic_herve_t1_p4 = TeamPolitic.create!(
+  team_id: team_herve_t1.id,
+  politic_id: zemmour.id
+)
+
+  # Composition des equipes du tournoi 2 (4 persos / equipe)
+teampolitic_francis_t2_p1 = TeamPolitic.create!(
+  team_id: team_francis_t2.id,
+  politic_id: ruffin.id
+)
+
+teampolitic_francis_t2_p2 = TeamPolitic.create!(
+  team_id: team_francis_t2.id,
+  politic_id: zemmour.id
+)
+
+teampolitic_francis_t2_p3 = TeamPolitic.create!(
+  team_id: team_francis_t2.id,
+  politic_id: philippot.id
+)
+
+teampolitic_francis_t2_p4 = TeamPolitic.create!(
+  team_id: team_francis_t2.id,
+  politic_id: melench.id
+)
+
+teampolitic_gael_t2_p1 = TeamPolitic.create!(
+  team_id: team_gael_t2.id,
+  politic_id: lepen.id
+)
+
+teampolitic_gael_t2_p2 = TeamPolitic.create!(
+  team_id: team_gael_t2.id,
+  politic_id: dupont_aignan.id
+)
+
+teampolitic_gael_t2_p3 = TeamPolitic.create!(
+  team_id: team_gael_t2.id,
+  politic_id: macron.id
+)
+
+teampolitic_gael_t2_p3 = TeamPolitic.create!(
+  team_id: team_gael_t2.id,
+  politic_id: wauquiez.id
+)
+
 # LINE-UPS SEEDS
 
-20.times do
-  lineup = LineUp.new(
-    match_id: Match.all.sample.id,
-    politic_id: Politic.all.sample.id
-  )
-  lineup.save!
-end
+#  Tournoi 1 - Line_ups (Francis vs Herve)
+  # Match A
+lineup_t1_ma_la = LineUp.create!(
+  match_id: match_t1_a.id,
+  politic_id: macron.id
+)
 
-# TEAMS_POLITICS SEEDS
+lineup_t1_ma_lb = LineUp.create!(
+  match_id: match_t1_a.id,
+  politic_id: wauquiez.id
+)
 
-5.times do
-  teampolitic = TeamPolitic.new(
-    team_id: Team.all.sample.id,
-    politic_id: Politic.all.sample.id
-  )
-  teampolitic.save!
-end
+lineup_t1_ma_lc = LineUp.create!(
+  match_id: match_t1_a.id,
+  politic_id: melench.id
+)
+
+lineup_t1_ma_ld = LineUp.create!(
+  match_id: match_t1_a.id,
+  politic_id: ruffin.id
+)
+
+# Match B
+lineup_t1_mb_la = LineUp.create!(
+  match_id: match_t1_b.id,
+  politic_id: macron.id
+)
+
+lineup_t1_mb_lb = LineUp.create!(
+  match_id: match_t1_b.id,
+  politic_id: lepen.id
+)
+
+lineup_t1_mb_lc = LineUp.create!(
+  match_id: match_t1_b.id,
+  politic_id: zemmour.id
+)
+
+lineup_t1_mb_ld = LineUp.create!(
+  match_id: match_t1_b.id,
+  politic_id: melench.id
+)
+
+# Match C
+lineup_t1_mc_la = LineUp.create!(
+  match_id: match_t1_c.id,
+  politic_id: philippot.id
+)
+
+lineup_t1_mc_lb = LineUp.create!(
+  match_id: match_t1_c.id,
+  politic_id: ruffin.id
+)
+
+lineup_t1_mc_lc = LineUp.create!(
+  match_id: match_t1_c.id,
+  politic_id: dupont_aignan.id
+)
+
+lineup_t1_mc_ld = LineUp.create!(
+  match_id: match_t1_c.id,
+  politic_id: macron.id
+)
+
+# Tournoi 2 - line_ups (Gael vs Francis)
+  # Match A
+lineup_t2_ma_la = LineUp.create!(
+  match_id: match_t2_a.id,
+  politic_id: lepen.id
+)
+
+lineup_t2_ma_lb = LineUp.create!(
+  match_id: match_t2_a.id,
+  politic_id: ruffin.id
+)
+
+lineup_t2_ma_lc = LineUp.create!(
+  match_id: match_t2_a.id,
+  politic_id: wauquiez.id
+)
+
+lineup_t2_ma_ld = LineUp.create!(
+  match_id: match_t2_a.id,
+  politic_id: zemmour.id
+)
+
+#   Match B
+lineup_t2_mb_la = LineUp.create!(
+  match_id: match_t2_b.id,
+  politic_id: macron.id
+)
+
+lineup_t2_mb_lb = LineUp.create!(
+  match_id: match_t2_b.id,
+  politic_id: melench.id
+)
+
+lineup_t2_mb_lc = LineUp.create!(
+  match_id: match_t2_b.id,
+  politic_id: wauquiez.id
+)
+
+lineup_t2_mb_ld = LineUp.create!(
+  match_id: match_t2_b.id,
+  politic_id: ruffin.id
+)
+
+#  Match C
+lineup_t2_mc_la = LineUp.create!(
+  match_id: match_t2_c.id,
+  politic_id: ruffin.id
+)
+
+lineup_t2_mc_lb = LineUp.create!(
+  match_id: match_t2_c.id,
+  politic_id: lepen.id
+)
+
+lineup_t2_mc_lc = LineUp.create!(
+  match_id: match_t2_c.id,
+  politic_id: philippot.id
+)
+
+lineup_t2_mc_ld = LineUp.create!(
+  match_id: match_t2_c.id,
+  politic_id: dupont_aignan.id
+)
 
 # USER_TOURNAMENTS SEEDS
+  # 2 joueurs / tournoi
+usertournament_t1_francis = UserTournament.create!(
+  user_id: francis.id,
+  tournament_id: tournament_1.id
+)
 
-5.times do
-  usertournament = UserTournament.new(
-    user_id: User.all.sample.id,
-    tournament_id: Tournament.all.sample.id
-  )
-  usertournament.save!
-end
+usertournament_t1_herve = UserTournament.create!(
+  user_id: herve.id,
+  tournament_id: tournament_1.id
+)
 
-# USER_MATCHES SEEDS
+usertournament_t2_francis = UserTournament.create!(
+  user_id: francis.id,
+  tournament_id: tournament_2.id
+)
 
-5.times do
-  usermatches = UserMatch.new(
-    user_id: User.all.sample.id,
-    match_id: Match.all.sample.id
-  )
-  usermatches.save!
-end
+usertournament_t2_gael = UserTournament.create!(
+  user_id: gael.id,
+  tournament_id: tournament_2.id
+)
+
+# TEAM_MATCHES
+  # Tournoi 1 - 3 matchs - 2 equipes s'affrontent
+teammatches_t1_ma = TeamMatches.create!(
+  team_id: team_francis_t1.id,
+  match_id: match_t1_a.id
+)
+
+teammatches_t1_ma = TeamMatches.create!(
+  team_id: team_herve_t1.id,
+  match_id: match_t1_a.id
+)
+
+teammatches_t1_mb = TeamMatches.create!(
+  team_id: team_francis_t1.id,
+  match_id: match_t1_b.id
+)
+
+teammatches_t1_mb = TeamMatches.create!(
+  team_id: team_herve_t1.id,
+  match_id: match_t1_b.id
+)
+
+teammatches_t1_mc = TeamMatches.create!(
+  team_id: team_francis_t1.id,
+  match_id: match_t1_c.id
+)
+
+teammatches_t1_mc = TeamMatches.create!(
+  team_id: team_herve_t1.id,
+  match_id: match_t1_c.id
+)
+
+  # Tournoi 2 - 3 matchs - 2 equipes s'affrontent
+teammatches_t2_ma = TeamMatches.create!(
+  team_id: team_francis_t2.id,
+  match_id: match_t2_a.id
+)
+
+teammatches_t2_ma = TeamMatches.create!(
+  team_id: team_herve_t2.id,
+  match_id: match_t2_a.id
+)
+
+teammatches_t2_mb = TeamMatches.create!(
+  team_id: team_francis_t2.id,
+  match_id: match_t2_b.id
+)
+
+teammatches_t2_mb = TeamMatches.create!(
+  team_id: team_gael_t2.id,
+  match_id: match_t2_b.id
+)
+
+teammatches_t2_mc = TeamMatches.create!(
+  team_id: team_francis_t2.id,
+  match_id: match_t2_c.id
+)
+
+teammatches_t2_mc = TeamMatches.create!(
+  team_id: team_gael_t2.id,
+  match_id: match_t2_c.id
+)
