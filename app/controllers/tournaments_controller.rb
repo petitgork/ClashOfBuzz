@@ -51,17 +51,17 @@ class TournamentsController < ApplicationController
     # ne leur a encore été attribué
 
     # statut de l'équipe passe à "launched"
-    tournament.status = "launched"
-    tournament.save!
+    @tournament.status = "launched"
+    @tournament.save!
 
     # on définit la taille des effectifs de chaque équipe
-    team_size = (Politic.count / tournament.users.count)
+    team_size = (Politic.count / @tournament.users.count)
 
     # on mélange tous les politics de la BDD dans un array aléatoire
     politics = Politic.all.shuffle
 
     # Tirage au sort des effectif de chaque équipe
-    tournament.teams.each do |team|
+    @tournament.teams.each do |team|
       team_size.times do
         politic = politics.pop
         TeamPolitic.create!(team: team, politic: politic)
@@ -69,7 +69,7 @@ class TournamentsController < ApplicationController
     end
 
     flash[:notice] = "Le tournoi est lancé, découvrez vos équipes"
-    redirect_to tournament_path(tournament)
+    redirect_to tournament_path(@tournament)
   end
 
   private
