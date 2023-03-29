@@ -25,7 +25,7 @@ class TournamentsController < ApplicationController
     @tournament.status = "created"
     if @tournament.save
       UserTournament.create(tournament: @tournament, user: current_user)
-      redirect_to tournament_path(@tournament)
+      redirect_to new_tournament_team_path(@tournament)
     else
       render :new, status: :unprocessable_entity
     end
