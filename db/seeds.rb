@@ -7,7 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-UserMatch.destroy_all
 UserTournament.destroy_all
 LineUp.destroy_all
 Match.destroy_all
@@ -438,7 +437,7 @@ teammatches_t2_ma = TeamMatch.create!(
 )
 
 teammatches_t2_ma = TeamMatch.create!(
-  team_id: team_herve_t2.id,
+  team_id: team_gael_t2.id,
   match_id: match_t2_a.id
 )
 
