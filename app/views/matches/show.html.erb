@@ -1,19 +1,18 @@
 <div>
   <h1>Match of the week</h1>
 
-  <div>
+<% @match.line_ups.each do |line_up| %>
+  <% if @team_current_user.politics.include?(line_up.politic) %>
     <h3>Your team</h3>
-    <% @match.politics.each do |politic| %>
-      <%= politic.first_name %>
-      <%= politic.last_name %>
-    <% end %>
-  </div>
-
-  <div>
+    <ul>
+      <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></li>
+      <li><%= line_up.politic.politic_board %></li>
+    </ul>
+  <% elsif @team_adversary_user.politics.include?(line_up.politic) %>
     <h3>Your competitor</h3>
-  </div>
-</div>
-
-<% @match.users.each do |user| %>
-  <%= user.nickname %>
+    <ul>
+      <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></li>
+      <li><%= line_up.politic.politic_board %></li>
+    </ul>
+  <% end %>
 <% end %>
