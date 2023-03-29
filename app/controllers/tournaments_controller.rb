@@ -9,7 +9,7 @@ class TournamentsController < ApplicationController
       UserTournament.create(tournament: @tournament, user: current_user)
       flash[:notice] = "Vous êtes bien inscrit à ce tournoi"
     end
-    redirect_to tournament_path(@tournament)
+    redirect_to new_tournament_team_path(@tournament)
   end
 
   def index
