@@ -1,9 +1,11 @@
 <div>
   <h3><%= @tournament.name %></h3>
-  <p><%= @tournament.status %></p>
-    <% @tournament.users.each do |user| %>
-      <p><%= user.nickname %></p>
-    <% end %>
+  <p>Statut : "<%= @tournament.status %>"</p>
+
+  <p>Liste des équipes inscrites :</p>
+  <% @tournament.teams.each do |team| %>
+    <p><%= team.name %> - <%= team.user.nickname %></p>
+  <% end %>
 
   <% if @tournament.status == "created" %>
     <h4>Invite tes amis</h4>
@@ -14,15 +16,5 @@
 </div>
 
 <% if @tournament.status == "launched" %>
-  <p>Liste des équipes inscrites :</p>
-  <ul>
-    <% @tournament.teams.each do |team| %>
-      <li><%= team.name %></li>
-    <% end %>
-  </ul>
-  <p>Liste des joueurs ayant rejoint le tournoi : (à retirer ?)</p>
-
-  <%= link_to "+ Nouvel equipe", new_tournament_team_path(@tournament.id), class: "button" %>
-
   <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "button" %>
 <% end %>
