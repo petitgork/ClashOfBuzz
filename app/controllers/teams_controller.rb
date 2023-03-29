@@ -1,4 +1,9 @@
 class TeamsController < ApplicationController
+  def show
+    @team = Team.find(params[:id])
+    @politics = @team.politics
+  end
+
   def new
     @team = Team.new
     @user = current_user

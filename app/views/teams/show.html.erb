@@ -1,0 +1,8 @@
+<%= @team.name %>
+<% @politics.each do |politic| %>
+  <ul>
+    <li>
+      <%= politic.first_name %> <%= politic.last_name %>, <%= politic.politic_board %>
+    </li>
+  </ul>
+<% end %>
