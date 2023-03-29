@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :tournaments do
     resources :teams, only: %i[show new create]
+    resources :matches, only: [:index]
     member do
       post :join
       patch :launch

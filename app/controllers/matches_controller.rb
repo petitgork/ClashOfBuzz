@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   def index
-    @matches = Match.all
+    @tournament = Tournament.find(params[:tournament_id])
+    @matches = @tournament.matches
   end
 
   def show

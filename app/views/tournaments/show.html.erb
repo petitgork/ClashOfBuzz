@@ -25,4 +25,7 @@
   <%= link_to "+ Nouvel equipe", new_tournament_team_path(@tournament.id), class: "button" %>
 
   <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "button" %>
+
+  <%= link_to "Liste des matchs", matches_path(tournament_id: @tournament.id) %>
+
 <% end %>

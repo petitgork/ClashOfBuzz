@@ -1,7 +1,7 @@
-<h1>Résultats du championnat</h1>
+<h1>Résultats du championnat <%= @tournament.name %></h1>
 
 <% @matches.each do |match| %>
+  <% tournament = match.tournament %>
   <h3>Match <%= match.id %></h3>
-  <p><%= match.tournament.name %></p>
-  <p><%= match.match_result %></p>
+  <p><%= tournament.name %></p>
 <% end %>
