@@ -11,7 +11,9 @@
     <h4>Invite tes amis</h4>
     <p><%= url_for(only_path: false) %></p>
     <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch %>
-    <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post %>
+    <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
+      <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post %>
+    <% end %>
   <% end %>
 </div>
 
