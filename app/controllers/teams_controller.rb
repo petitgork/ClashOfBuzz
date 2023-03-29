@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
     team.tournament = tournament
     if team.save
       flash[:notice] = "Team created successfully."
-      redirect_to user_path(current_user)
+      redirect_to tournament_path(tournament)
     else
       render ender :new, status: :unprocessable_entity
     end
