@@ -3,10 +3,10 @@ class TournamentsController < ApplicationController
 
   def join
     @tournament = Tournament.find(params[:id])
-    if current_user.user_tournaments.include?(@tournament)
+    if current_user.tournaments.include?(@tournament)
       flash[:alert] = "Vous êtes déjà inscrit à ce tournoi"
     else
-      @tournament.users << current_user
+      UserTournament.create(tournament: @tournament, user: current_user)
       flash[:notice] = "Vous êtes bien inscrit à ce tournoi"
     end
     redirect_to tournament_path(@tournament)
@@ -23,8 +23,8 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     @tournament.status = "created"
-    UserTournament.create(tournament: @tournament, user: current_user)
     if @tournament.save
+      UserTournament.create(tournament: @tournament, user: current_user)
       redirect_to tournament_path(@tournament)
     else
       render :new, status: :unprocessable_entity
@@ -50,25 +50,26 @@ class TournamentsController < ApplicationController
     # quand on lance le tournoi toutes les équipes ont déjà été créées, mais aucun effectif
     # ne leur a encore été attribué
 
-    @tournament.status = "launched"
-    @tournament.save!
+    # statut de l'équipe passe à "launched"
+    tournament.status = "launched"
+    tournament.save!
 
     # on définit la taille des effectifs de chaque équipe
-    team_size = (Politic.count / @tournament.users.count)
+    team_size = (Politic.count / tournament.users.count)
 
-    # on place toutes les polics de la BDD dans un ordre aléatoire
+    # on mélange tous les politics de la BDD dans un array aléatoire
     politics = Politic.all.shuffle
 
     # Tirage au sort des effectif de chaque équipe
-    @tournament.teams.each do |team|
+    tournament.teams.each do |team|
       team_size.times do
         politic = politics.pop
-        TeamPolitic.create!(team_id: team, politic_id: politic)
+        TeamPolitic.create!(team: team, politic: politic)
       end
     end
 
-    flash[:notice] = "Le tournoi est lancé, vous pouvez désormais créer votre équipe"
-    redirect_to tournament_path(@tournament)
+    flash[:notice] = "Le tournoi est lancé, découvrez vos équipes"
+    redirect_to tournament_path(tournament)
   end
 
   private
