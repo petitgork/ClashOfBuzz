@@ -17,4 +17,5 @@
 
 <% if @tournament.status == "launched" %>
   <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "button" %>
+  <%= link_to "Voir mes matchs", matches_path(tournament_id: @tournament), class: "button" %>
 <% end %>
