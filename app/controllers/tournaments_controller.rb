@@ -68,6 +68,9 @@ class TournamentsController < ApplicationController
       end
     end
 
+    # On génère le "calendrier" des rencontres
+    calendar(@tournament)
+
     flash[:notice] = "Le tournoi est lancé, découvrez vos équipes"
     redirect_to tournament_path(@tournament)
   end
@@ -82,4 +85,14 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
   end
 
+  def calendar(tournament)
+    teams = tournament.teams.all.shuffle
+    (0...teams.size-1).each do |i|
+      (i+1...teams.size).each do |j|
+        match = Match.create!(tournament: tournament)
+        TeamMatch.create!(match: match, team: teams[i])
+        TeamMatch.create!(match: match, team: teams[j])
+      end
+    end
+  end
 end
