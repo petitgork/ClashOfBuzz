@@ -1,6 +1,8 @@
 <div class="container-match">
   <h1>Match of the week</h1>
-  <%= button_to "Mettre à jour les résultats", update_results_match_path(@match), method: :patch %>
+  <% if @match.statut == "In progress" %>
+    <%= button_to "Mettre à jour les résultats", update_results_match_path(@match), method: :patch, class: "pixel_art_btn_match_adversary" %>
+  <% end %>
   <div class="container-match-teams">
     <div class="container-match-vs">
       <% @match.teams.each do |team| %>
