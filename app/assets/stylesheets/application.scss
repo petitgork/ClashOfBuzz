@@ -20,21 +20,30 @@
 
 
 // CSS pour l'appli entière
-a {
-  text-decoration: none;
-}
 
 h1 {
   margin-top: 2rem;
   font-family: 'Press Start 2P';
+  font-size: xx-large;
 }
 
 h2 {
   margin-top: 2rem;
   font-family: 'Press Start 2P';
+  font-size: medium;
 }
 
 h3 {
   margin-top: 2rem;
   font-family: 'Press Start 2P';
+  font-size: small;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+  margin-left: 0;
 }

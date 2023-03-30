@@ -1,0 +1,139 @@
+.container-match {
+  margin: 2rem;
+}
+
+.container-match-teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-match-vs {
+  padding: 12px 24px;
+  border: 5px solid #fff;
+  background-color: $yellow;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
+  text-decoration: none;
+  margin: 60px;
+  padding: 44px;
+}
+
+.container-match-composition {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.team-list-politic {
+  display: flex;
+  justify-content: center;
+}
+
+.team-list-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.container-match-in-progress {
+
+}
+
+.container-match-finished {
+
+}
+
+.pixel_art_btn_match {
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background-color: #fe8e1b;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  box-shadow: 2px 2px 0 #fff;
+  transition: 0.1s;
+  text-decoration: none;
+}
+.pixel_art_btn_match:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 1px dotted rgba(255, 255, 255, 0.3);
+box-sizing: border-box;
+pointer-events: none;
+}
+
+.pixel_art_btn_match:hover {
+box-shadow: 1px 1px 0 #fff, 2px 2px 0 #fff, 3px 3px 0 #fff;
+transform: translate(3px, 3px);
+}
+
+.pixel_art_btn_match:active {
+box-shadow: none;
+transform: translate(6px, 6px);
+background-color: #fe8e1b;
+}
+
+.pixel_art_btn_match_adversary {
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  padding: 12px 24px;
+  border: 5px solid #fff;
+  background-color: #fe8e1b;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
+  transition: 0.1s;
+  text-decoration: none;
+}
+.pixel_art_btn_match_adversary:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 1px dotted rgba(255, 255, 255, 0.3);
+box-sizing: border-box;
+pointer-events: none;
+}
+
+.pixel_art_btn_match_adversary:hover {
+box-shadow: 1px 1px 0 #fff, 2px 2px 0 #fff, 3px 3px 0 #fff;
+transform: translate(3px, 3px);
+}
+
+.pixel_art_btn_match_adversary:active {
+box-shadow: none;
+transform: translate(6px, 6px);
+background-color: #fe8e1b;
+}
