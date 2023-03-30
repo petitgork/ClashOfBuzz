@@ -169,6 +169,335 @@ wauquiez = Politic.create(
   avatar: Faker::Avatar.image
 )
 
+quatennens = Politic.create(
+  first_name: "Adrien",
+  last_name: "Quatennens",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+gluksmann = Politic.create(
+  first_name: "Raphaël",
+  last_name: "Gluksmann",
+  politic_board: "Parti Populiste",
+  avatar: Faker::Avatar.image
+)
+
+bardella = Politic.create(
+  first_name: "Jordan",
+  last_name: "Bardella",
+  politic_board: "Rassemblement National",
+  avatar: Faker::Avatar.image
+)
+
+asselineau = Politic.create(
+  first_name: "François",
+  last_name: "Asselineau",
+  politic_board: "Union Populaire Républicaine",
+  avatar: Faker::Avatar.image
+)
+
+lisnard = Politic.create(
+  first_name: "David",
+  last_name: "Lisnard",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+autain = Politic.create(
+  first_name: "Clémentine",
+  last_name: "Autain",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+aubry = Politic.create(
+  first_name: "Manon",
+  last_name: "Aubry",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+darmanin = Politic.create(
+  first_name: "Gérald",
+  last_name: "Darmanin",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+ciotti = Politic.create(
+  first_name: "Eric",
+  last_name: "Ciotti",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+lassalle = Politic.create(
+  first_name: "Jean-",
+  last_name: "Lassalle",
+  politic_board: "Résistons",
+  avatar: Faker::Avatar.image
+)
+
+collard = Politic.create(
+  first_name: "Gilbert",
+  last_name: "Collard",
+  politic_board: "Reconquête",
+  avatar: Faker::Avatar.image
+)
+
+attal = Politic.create(
+  first_name: "Gabriel",
+  last_name: "Attal",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+lemaire = Politic.create(
+  first_name: "Bruno",
+  last_name: "Lemaire",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+pecresse = Politic.create(
+  first_name: "Valérie",
+  last_name: "Pécresse",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+marechal = Politic.create(
+  first_name: "Marion",
+  last_name: "Maréchal",
+  politic_board: "Rassemblement National",
+  avatar: Faker::Avatar.image
+)
+
+faure = Politic.create(
+  first_name: "Olivier",
+  last_name: "Faure",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+roussel = Politic.create(
+  first_name: "Fabien",
+  last_name: "Roussel",
+  politic_board: "Parti Communiste Français",
+  avatar: Faker::Avatar.image
+)
+
+obono = Politic.create(
+  first_name: "Danièle",
+  last_name: "Obono",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+corbiere = Politic.create(
+  first_name: "Alexis",
+  last_name: "Corbière",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+coquerel = Politic.create(
+  first_name: "Eric",
+  last_name: "Coquerel",
+  politic_board: "La France Insoumise",
+  avatar: Faker::Avatar.image
+)
+
+bay = Politic.create(
+  first_name: "Nicolas",
+  last_name: "Bay",
+  politic_board: "Rassemblement National",
+  avatar: Faker::Avatar.image
+)
+
+rousseau = Politic.create(
+  first_name: "Sandrine",
+  last_name: "Rousseau",
+  politic_board: "Europe Ecologie Les Verts",
+  avatar: Faker::Avatar.image
+)
+
+bellamy = Politic.create(
+  first_name: "François-Xavier",
+  last_name: "Bellamy",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+messiha = Politic.create(
+  first_name: "Jean",
+  last_name: "Messiha",
+  politic_board: "Reconquête",
+  avatar: Faker::Avatar.image
+)
+
+estrosi = Politic.create(
+  first_name: "Christian",
+  last_name: "Estrosi",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+poutou = Politic.create(
+  first_name: "Philippe",
+  last_name: "Poutou",
+  politic_board: "Nouveau Parti Anticapitaliste",
+  avatar: Faker::Avatar.image
+)
+
+piolle = Politic.create(
+  first_name: "Eric",
+  last_name: "Piolle",
+  politic_board: "Europe Ecologie Les Verts",
+  avatar: Faker::Avatar.image
+)
+
+philippe = Politic.create(
+  first_name: "Edouard",
+  last_name: "Philippe",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+hidalgo = Politic.create(
+  first_name: "Anne",
+  last_name: "Hidalgo",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+veran = Politic.create(
+  first_name: "Olivier",
+  last_name: "Véran",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+jadot = Politic.create(
+  first_name: "Yannick",
+  last_name: "Jadot",
+  politic_board: "Europe Ecologie Les Verts",
+  avatar: Faker::Avatar.image
+)
+
+bayou = Politic.create(
+  first_name: "Julien",
+  last_name: "Bayou",
+  politic_board: "Europe Ecologie Les Verts",
+  avatar: Faker::Avatar.image
+)
+
+cazeneuve = Politic.create(
+  first_name: "Bernard",
+  last_name: "Cazeneuve",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+o = Politic.create(
+  first_name: "Cédric",
+  last_name: "O",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+castex = Politic.create(
+  first_name: "Jean",
+  last_name: "Castex",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+aliot = Politic.create(
+  first_name: "Louis",
+  last_name: "Aliot",
+  politic_board: "Rassemblement National",
+  avatar: Faker::Avatar.image
+)
+
+blanquer = Politic.create(
+  first_name: "Jean-Michel",
+  last_name: "Blanquer",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+hollande = Politic.create(
+  first_name: "François",
+  last_name: "Hollande",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+sarkozy = Politic.create(
+  first_name: "Nicolas",
+  last_name: "Sarkozy",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+bertrand = Politic.create(
+  first_name: "Xavier",
+  last_name: "Bertrand",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+montebourg = Politic.create(
+  first_name: "Arnaud",
+  last_name: "Montebourg",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+valls = Politic.create(
+  first_name: "Manuel",
+  last_name: "Valls",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+borne = Politic.create(
+  first_name: "Elisabeth",
+  last_name: "Borne",
+  politic_board: "La République en Marche",
+  avatar: Faker::Avatar.image
+)
+
+besancenot = Politic.create(
+  first_name: "Olivier",
+  last_name: "Besancenot",
+  politic_board: "Nouveau Parti Anticapitaliste",
+  avatar: Faker::Avatar.image
+)
+
+morano = Politic.create(
+  first_name: "Nadine",
+  last_name: "Morano",
+  politic_board: "Les Républicains",
+  avatar: Faker::Avatar.image
+)
+
+aubry = Politic.create(
+  first_name: "Martine",
+  last_name: "Aubry",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
+taubira = Politic.create(
+  first_name: "Christiane",
+  last_name: "Taubira",
+  politic_board: "Parti Socialiste",
+  avatar: Faker::Avatar.image
+)
+
 # TEAMS_POLITICS SEEDS
   # Composition des equipes du tournoi 1 (4 persos / equipe)
 teampolitic_francis_t1_p1 = TeamPolitic.create!(
