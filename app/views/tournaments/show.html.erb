@@ -1,35 +1,44 @@
-<div>
-  <h3><%= @tournament.name %></h3>
-  <p>Statut : "<%= @tournament.status %>"</p>
+<div class="tournament">
+  <h3 class="tournament-name"><%= @tournament.name %></h3>
+  <p class="tournament-status">Statut : "<%= @tournament.status %>"</p>
 
-  <p>Liste des équipes inscrites :</p>
-  <% @tournament.teams.each do |team| %>
-    <p><%= team.name %> - <%= team.user.nickname %></p>
-  <% end %>
+  <h4 class="team-list-title">Liste des équipes inscrites :</h4>
+  <ul class="team-list">
+    <% @tournament.teams.each do |team| %>
+      <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
+    <% end %>
+  </ul>
 
   <% if @tournament.status == "created" %>
-    <h4>Invite tes amis</h4>
-    <p><%= url_for(only_path: false) %></p>
-    <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch %>
+    <h4 class="invite-title">Invite tes amis</h4>
+    <p class="invite-url"><%= url_for(only_path: false) %></p>
+    <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "btn btn-launch" %>
     <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
-      <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post %>
+      <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "btn btn-join" %>
     <% end %>
   <% end %>
 </div>
 
+
 <% if @tournament.status == "launched" %>
+  <div class="match-list-container">
+    <h4 class="match-list-title">Calendrier du tournoi</h4>
+    <div class="matches">
+      <% @matches.each do |match| %>
+        <div class="match">
+          <p><%= match.team_matches[0].team.name %> VS <%= match.team_matches[1].team.name %></p>
+          <% if match.match_result %>
+            <p>Résultat : <%= match.match_result %></p>
+          <% else %>
+            <p>Match à venir</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
-  <% @matches.each do |match| %>
-    <p><%= match.team_matches[0].team.name %>
-    VS
-    <%= match.team_matches[1].team.name %></p>
-    <% if match.match_result %>
-      <p>Résultat : <%= match.match_result %></p>
-    <% else %>
-      <p>Match à venir</p>
-    <% end %>
-  <% end %>
-
-  <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "button" %>
-  <%= link_to "Voir mes matchs", matches_path(tournament_id: @tournament), class: "button" %>
+    <div class="buttons">
+      <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "btn-team" %>
+      <%= link_to "Voir mes matchs", matches_path(tournament_id: @tournament), class: "btn-matches" %>
+    </div>
+  </div>
 <% end %>
