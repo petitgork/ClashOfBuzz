@@ -1,0 +1,25 @@
+// .container_tournament{
+//    justify-content: center;
+//    width: 600px;
+//    background-color: $yellow;
+//    padding: 32px;
+//   border-end-end-radius: 10px;
+//   border-end-start-radius: 10px;
+//   box-shadow: 0 4px 6px 0 rgba(91, 91, 91, 0.5);
+
+// }
+.container_tournament{
+  padding: 12px 24px;
+    border: 5px solid #fff;
+    background-color: $yellow;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
+    text-decoration: none;
+    margin: 80px;
+    padding: 64px;
+}
+.pixel_art_btn{
+  margin-top:32px;
+}
