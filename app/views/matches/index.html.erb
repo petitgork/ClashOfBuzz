@@ -1,7 +1,7 @@
 <h1>Résultats de la journée de championnat</h1>
 
 <% @matches.each do |match| %>
-  <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
+  <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2><%= button_to "Voir détails du match", match_path(match), method: :get %>
   <% if match.match_result %>
     <p>Résultat : <%= match.match_result %></p>
   <% else %>
