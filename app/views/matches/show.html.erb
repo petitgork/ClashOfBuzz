@@ -33,23 +33,24 @@
     <% end %>
   </div>
   <div>
-    <h3>Ta sélection pour le match</h3>
-    <% @match.teams.each do |team| %>
-      <% if team.user == current_user %>
-        <% @match.line_ups.each do |line_up| %>
-          <% 
-          team.politics.include?(line_up.politic) && team.user == current_user %>
-            <ul>
-              <li>
-                <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-                - <%= line_up.result %> POINTS
-                <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
-                  <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
-                    <%= f.submit "Retirer de la sélection" %>
+    <% if @match.statut == "In progress" %>
+      <h3>Ta sélection pour le match</h3>
+      <% @match.teams.each do |team| %>
+        <% if team.user == current_user %>
+          <% @match.line_ups.each do |line_up| %>
+            <% if team.politics.include?(line_up.politic) && team.user == current_user %>
+              <ul>
+                <li>
+                  <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                  - <%= line_up.result %> POINTS
+                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
+                    <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
+                      <%= f.submit "Retirer de la sélection" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
