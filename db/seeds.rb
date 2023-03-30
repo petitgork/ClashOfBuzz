@@ -76,33 +76,39 @@ team_gael_t2 = Team.create!(
   # Matchs du tournoi 1
 match_t1_a = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0
+  match_result: 0,
+  statut: "Composition"
 )
 
 match_t1_b = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0
+  match_result: 0,
+  statut: "En cours"
 )
 
 match_t1_c = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0
+  match_result: 0,
+  statut: "Closed"
 )
 
   # Matchs du tournoi 2
 match_t2_a = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0
+  match_result: 0,
+  statut: "En cours"
 )
 
 match_t2_b = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0
+  match_result: 0,
+  statut: "Composition"
 )
 
 match_t2_c = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0
+  match_result: 0,
+  statut: "Closed"
 )
 
 # POLITICS SEEDS

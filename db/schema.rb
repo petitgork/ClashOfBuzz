@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_095355) do
     t.integer "match_result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "statut", default: "Composition"
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
   end
 

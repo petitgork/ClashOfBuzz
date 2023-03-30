@@ -18,6 +18,18 @@
 </div>
 
 <% if @tournament.status == "launched" %>
+
+  <% @matches.each do |match| %>
+    <p><%= match.team_matches[0].team.name %>
+    VS
+    <%= match.team_matches[1].team.name %></p>
+    <% if match.match_result %>
+      <p>Résultat : <%= match.match_result %></p>
+    <% else %>
+      <p>Match à venir</p>
+    <% end %>
+  <% end %>
+
   <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "button" %>
   <%= link_to "Voir mes matchs", matches_path(tournament_id: @tournament), class: "button" %>
 <% end %>
