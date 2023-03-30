@@ -33,6 +33,7 @@ class TournamentsController < ApplicationController
 
   def show
     @team = Team.where(user: current_user, tournament: @tournament).first
+    @matches = @tournament.matches
   end
 
   def edit
