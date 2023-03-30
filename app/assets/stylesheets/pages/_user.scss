@@ -1,0 +1,27 @@
+.dashboard-container {
+  margin: 2rem;
+}
+
+.dashboard-tournaments-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.dashboard-tournaments-buttons {
+  margin-top: 10px;
+}
+
+.dashboard-tournaments-details-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+}
+
+h1 {
+  margin-top: 2rem;
+  font-family: 'Press Start 2P';
+}
