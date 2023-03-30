@@ -1,20 +1,26 @@
 .dashboard-card {
-  background-color: $red;
+  background-color: $dark-grey;
   border-radius: 15px;
   width: 20rem;
-  height: 60rem;
+  height: 40rem;
   text-align: center;
   box-shadow: 2px 2px 4px #474747;
   color: $white;
+  transition: 0.2s;
 }
 
 .dashboard-card:hover {
-  background-color: $red;
+  transform: translate(-3px, -3px);
 }
 
 .dashboard-title {
   padding-top: 1rem;
   font-family: 'Press Start 2P';
+}
+
+.team-avatar {
+  width: 8px;
+  border-radius: 50%;
 }
 
 .dashboard-card-list {
@@ -47,7 +53,7 @@
 .dashboard-card-politic-in-game {
   font-family: 'Press Start 2P';
   font-size: small;
-  background-color: $red;
+  background-color: $dark-grey;
   height: 30%;
   color: $white;
   padding: 4px;
