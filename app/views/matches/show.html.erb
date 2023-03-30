@@ -6,7 +6,7 @@
     <% @match.line_ups.each do |line_up| %>
       <% if team.politics.include?(line_up.politic) %>
         <ul>
-          <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></li>
+          <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %> <%= line_up.result %></li>
         </ul>
       <% end %>
     <% end %>

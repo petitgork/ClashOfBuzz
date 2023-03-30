@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new
+    @match = Match.new,
     @teams = Team.all
   end
 
@@ -22,9 +22,10 @@ class MatchesController < ApplicationController
   def show
     @match = Match.find(params[:id])
     @tournament = @match.tournament
+    @line_up = @match.line_ups
   end
 
-  
+
   private
 
   def match_params

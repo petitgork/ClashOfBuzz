@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_29_124352) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_095355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,14 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_124352) do
     t.bigint "politic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "result"
+    t.integer "result", default: 0
     t.index ["match_id"], name: "index_line_ups_on_match_id"
     t.index ["politic_id"], name: "index_line_ups_on_politic_id"
   end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "tournament_id", null: false
-    t.integer "match_result"
+    t.integer "match_result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "statut", default: "Composition"
