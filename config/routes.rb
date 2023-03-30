@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :line_ups, only: %i[show new create]
   end
   resources :users
+  resources :line_ups, only: %i[destroy]
 end

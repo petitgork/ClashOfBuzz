@@ -11,4 +11,11 @@ class LineUpsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @line_up = LineUp.find(params[:id])
+    @match = Match.where(id: @line_up.match_id).first
+    @line_up.destroy
+    redirect_to match_path(@match), status: :see_other
+  end
 end

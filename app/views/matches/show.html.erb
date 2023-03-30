@@ -1,24 +1,74 @@
-<div>
-  <h1>Match of the week</h1>
+<h1>Match of the week</h1>
 
+<div class="container d-flex justify-content-between">
   <% @match.teams.each do |team| %>
-    <h3><%= team.name %></h3>
-    <% @match.line_ups.each do |line_up| %>
-      <% if team.politics.include?(line_up.politic) %>
-        <ul>
-          <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %> <%= line_up.result %></li>
-        </ul>
+    <% if team.user == current_user %>
+      <h2><%= team.name %></h2>
+    <% end %>
+  <% end %>
+  <h2>VS</h2>
+  <% @match.teams.each do |team| %>
+    <% if team.user != current_user %>
+      <h2><%= team.name %></h2>
+    <% end %>
+  <% end %>
+</div>
+<br>
+<h2><strong>Est-ce qu'on affiche l'équipe globale de l'adversaire ici ?</strong></h2>
+<div class="container d-flex align-items-start">
+  <div>
+    <% @match.statut == "Composition" %>
+      <div>
+        <% @match.teams.each do |team| %>
+          <h4><%= team.name %></h4>
+          <% team.politics.each do |politic| %>
+            <ul>
+              <li>
+                <%= politic.first_name %> <%= politic.last_name %>
+                <% if team.user == current_user && !@match.line_ups.exists?(politic_id: politic.id) %>
+                  <%= button_to "Ajouter à l'équipe", match_line_ups_path(@match, politic_id: politic.id), method: :post %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+  <div>
+    <h3>Ta sélection pour le match</h3>
+    <% @match.teams.each do |team| %>
+      <% if team.user == current_user %>
+        <% @match.line_ups.each do |line_up| %>
+          <% if team.politics.include?(line_up.politic) && team.user == current_user %>
+            <ul>
+              <li>
+                <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
+                  <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
+                    <%= f.submit "Retirer de la sélection" %>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
-<div>
-<% @match.teams.each do |team| %>
-    <h3><%= team.name %></h3>
-    <% team.politics.each do |politic| %>
-      <ul>
-        <li><%= politic.first_name %> <%= politic.last_name %><%= button_to "Ajouter à l'équipe", match_line_ups_path(@match, politic_id:politic.id), method: :post%></li>
-      </ul>
+
+<% if @match.statut == "In Progress" %>
+  <div>
+    <h3>Ta sélection</h3>
+    <% @match.teams.each do |team| %>
+      <% @match.line_ups.each do |line_up| %>
+        <% if team.politics.include?(line_up.politic) %>
+          <h3><%= team.name %></h3>
+          <ul>
+            <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></li>
+          </ul>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
