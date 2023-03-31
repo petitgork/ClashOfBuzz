@@ -21,9 +21,10 @@
             <% tournament.teams.each do |team| %>
               <% if team.user == current_user && tournament.id == @user.tournaments.first.id %>
                 <h6><%= team.name %></h6>
+                <%# <%= image_tag(team.avatar, class: "team-avatar") %>
                 <% if team.politics.count > 0 %>
                   <div class="dashboard-card-list">
-                    <% team.politics.each do |politic| %>
+                    <% team.politics.first(4).each do |politic| %>
                       <div class="dashboard-card-politic">
                         <div class="dashboard-card-politic-name">
                           <p class="last-name"><%= politic.last_name %></p>
@@ -36,12 +37,13 @@
                       </div>
                     <% end %>
                   </div>
+                  <h1>...</h1>
                 <% end %>
               <% end %>
             <% end %>
           <% end %>
         </div>
-        <div class="button">VOIR +</div>
+        <div class="button">Voir toute l'équipe</div>
       </div>
       <div>
         <div class="dashboard-card">
