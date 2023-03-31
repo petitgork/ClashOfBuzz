@@ -8,7 +8,7 @@
           <h3>Match à venir</h3>
           <%= button_to "Composez votre équipe", match_path(match), method: :get, class: "button" %>
         </div>
-      <% elsif match.statut == "En cours" %>
+      <% elsif match.statut == "In progress" %>
         <div class="match-result statut-running">
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match en cours</h3>
