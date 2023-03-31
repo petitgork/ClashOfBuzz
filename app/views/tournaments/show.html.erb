@@ -27,8 +27,8 @@
       <% @matches.each do |match| %>
         <div class="match">
           <p><%= match.team_matches[0].team.name %> VS <%= match.team_matches[1].team.name %></p>
-          <% if match.match_result %>
-            <p>Résultat : <%= match.match_result %></p>
+          <% if match.winner %>
+            <p>Résultat : <%= match.winner %></p>
           <% else %>
             <p>Match à venir</p>
           <% end %>
