@@ -9,9 +9,32 @@
 
 // Your CSS partials
 @import "pages/index";
+@import "pages/tournament_new";
+@import "pages/tournament_show";
+@import "pages/matches_index";
+@import "pages/login";
 @import "components/index";
+@import "components/dashboard-card";
+@import "components/button";
+@import "components/navbar";
+
 
 // CSS pour l'appli entière
 a {
   text-decoration: none;
+}
+
+h1 {
+  margin-top: 2rem;
+  font-family: 'Press Start 2P';
+}
+
+h2 {
+  margin-top: 2rem;
+  font-family: 'Press Start 2P';
+}
+
+h3 {
+  margin-top: 2rem;
+  font-family: 'Press Start 2P';
 }

@@ -1,25 +1,15 @@
-<h1>Résultats de la journée de championnat</h1>
+<div class="championship-results">
+  <h1>Mon calendrier</h1>
 
-<% @matches.each do |match| %>
-  <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2><%= button_to "Voir détails du match", match_path(match), method: :get %>
-  <% if match.match_result %>
-    <p>Résultat : <%= match.match_result %></p>
-  <% else %>
-    <p>Match à venir</p>
+  <% @matches.each do |match| %>
+    <div class="match-result">
+      <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
+      <%= button_to "Voir détails du match", match_path(match), method: :get, class: "btn-details" %>
+      <% if match.match_result %>
+        <p>Résultat : <%= match.match_result %></p>
+      <% else %>
+        <p>Match à venir</p>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
-
-<h1>Mes matchs</h1>
-
-<p><% @matches.each do |match| %>
-  <p><%= match.team_matches[0].team.name %>
-  VS
-  <%= match.team_matches[1].team.name %></p>
-<% end %></p>
-
-
-<%# <% @matches.each do |match| %> %>
-  <%# <h3>Match <%= match.id %></h3> %>
-  <%# <p><%= match.tournament.name %></p> %>
-  <%# <p><%= match.match_result %></p> %>
-<%# <% end %> %>
+</div>
