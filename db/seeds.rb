@@ -21,95 +21,201 @@ User.destroy_all
 
 password = "123456"
 
-francis = User.create!(nickname: 'xalirius', email: 'becharafrancis@gmail.com', password: password)
+francis = User.create!(nickname: 'Xalirius', email: 'becharafrancis@gmail.com', password: password)
 herve = User.create!(nickname: 'RVNG64', email: 'herve.nguetsop@gmail.com', password: password)
-gael = User.create(nickname: 'petitgork', email: 'gaelcarayon@hotmail.com', password: password)
+gael = User.create(nickname: 'Petitgork', email: 'gaelcarayon@hotmail.com', password: password)
 marine = User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password)
+julien = User.create(nickname: 'Jul', email: 'julien@gmail.com', password: password)
+louis = User.create(nickname: 'Loulou', email: 'loulou@gmail.com', password: password)
+lucas = User.create(nickname: 'Louk', email: 'louk@gmail.com', password: password)
+sebastien = User.create(nickname: 'Seb', email: 'seb@gmail.com', password: password)
+paul = User.create(nickname: 'Polo', email: 'polo@gmail.com', password: password)
+pierre = User.create(nickname: 'Peio', email: 'peio@gmail.com', password: password)
+jb = User.create(nickname: 'JB', email: 'jb@gmail.com', password: password)
+laurent = User.create(nickname: 'Lolo', email: 'lolo@gmail.com', password: password)
 
 # TOURNOIS SEEDS
 
 tournament_1 = Tournament.create!(
-  name: "Tournoi 1",
-  status: "created",
-  final_result: 0
+  name: "Ligue des Sénateurs",
+  status: "created"
 )
 
 tournament_2 = Tournament.create!(
-  name: "Tournoi 2",
-  status: "created",
-  final_result: 0
+  name: "La Guerre des Clans",
+  status: "created"
+)
+
+tournament_3 = Tournament.create!(
+  name: "Battle Royale",
+  status: "created"
+)
+
+tournament_4 = Tournament.create!(
+  name: "Highlanders",
+  status: "created"
+)
+
+tournament_5 = Tournament.create!(
+  name: "Octogone League",
+  status: "created"
+)
+
+tournament_6 = Tournament.create!(
+  name: "League All In",
+  status: "created"
 )
 
 # TEAMS SEEDS
   # Equipe du tournoi 1
 team_francis_t1 = Team.create!(
-  name: "team de francis du tournoi 1",
-  number_of_politics: 10,
+  name: "Les Marcheurs Enflammés",
   user_id: francis.id,
   tournament_id: tournament_1.id
 )
 
 team_herve_t1 = Team.create!(
-  name: "team de herve du tournoi 1",
-  number_of_politics: 10,
+  name: "Les Sarko Flingueurs",
   user_id: herve.id,
+  tournament_id: tournament_1.id
+)
+
+team_gael_t1 = Team.create!(
+  name: "Les Gilets Jaunes",
+  user_id: gael.id,
+  tournament_id: tournament_1.id
+)
+
+team_marine_t1 = Team.create!(
+  name: "Les Copé-cabana",
+  user_id: marine.id,
+  tournament_id: tournament_1.id
+)
+
+team_julien_t1 = Team.create!(
+  name: "Les Marseillais",
+  user_id: julien.id,
+  tournament_id: tournament_1.id
+)
+
+team_louis_t1 = Team.create!(
+  name: "Les Valls Angels",
+  user_id: louis.id,
   tournament_id: tournament_1.id
 )
 
   # Equipe du tournoi 2
 
 team_francis_t2 = Team.create!(
-  name: "team de francis du tournoi 2",
-  number_of_politics: 10,
+  name: "Les Juppéters",
   user_id: francis.id,
   tournament_id: tournament_2.id
 )
 
 team_gael_t2 = Team.create!(
-  name: "team de gael du tournoi 2",
-  number_of_politics: 10,
+  name: "Les Macronautes",
   user_id: gael.id,
   tournament_id: tournament_2.id
 )
 
+team_pierre_t2 = Team.create!(
+  name: "Les LePenistes Décomplexés",
+  user_id: pierre.id,
+  tournament_id: tournament_2.id
+)
+
+team_lucas_t2 = Team.create!(
+  name: "Les Barbouzes de l'Assemblée",
+  user_id: lucas.id,
+  tournament_id: tournament_2.id
+)
+
+  # Equipe du tournoi 3
+
+team_paul_t3 = Team.create!(
+  name: "Les Fils de Poutine",
+  user_id: paul.id,
+  tournament_id: tournament_3.id
+)
+
+team_sebastien_t3 = Team.create!(
+  name: "Les Fromages Qui Puent",
+  user_id: sebastien.id,
+  tournament_id: tournament_3.id
+)
+
+team_jb_t3 = Team.create!(
+  name: "Les Marcheurs épuisés",
+  user_id: jb.id,
+  tournament_id: tournament_3.id
+)
+
+team_laurent_t3 = Team.create!(
+  name: "Les SM Insoumis",
+  user_id: laurent.id,
+  tournament_id: tournament_3.id
+)
+
+  # Equipe du tournoi 4
+
+team_francis_t4 = Team.create!(
+  name: "Les LR sur le Grill",
+  user_id: francis.id,
+  tournament_id: tournament_4.id
+)
+
+team_herve_t4 = Team.create!(
+  name: "Les Poutou-Flingueurs",
+  user_id: herve.id,
+  tournament_id: tournament_4.id
+)
+
+team_gael_t4 = Team.create!(
+  name: "Les Fillon-toutes-des-problèmes",
+  user_id: gael.id,
+  tournament_id: tournament_4.id
+)
+
+team_marine_t4 = Team.create!(
+  name: "Les Revers de la Force",
+  user_id: marine.id,
+  tournament_id: tournament_4.id
+)
+
+=begin
 # MATCHES SEEDS
   # Matchs du tournoi 1
 match_t1_a = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0,
   statut: "Composition"
 )
 
 match_t1_b = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0,
   statut: "En cours"
 )
 
 match_t1_c = Match.create!(
   tournament_id: tournament_1.id,
-  match_result: 0,
   statut: "Closed"
 )
 
   # Matchs du tournoi 2
 match_t2_a = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0,
   statut: "En cours"
 )
 
 match_t2_b = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0,
   statut: "Composition"
 )
 
 match_t2_c = Match.create!(
   tournament_id: tournament_2.id,
-  match_result: 0,
   statut: "Closed"
 )
+=end
 
 # POLITICS SEEDS
 
@@ -233,7 +339,7 @@ ciotti = Politic.create(
 )
 
 lassalle = Politic.create(
-  first_name: "Jean-",
+  first_name: "Jean",
   last_name: "Lassalle",
   politic_board: "Résistons",
   avatar: Faker::Avatar.image
@@ -498,6 +604,7 @@ taubira = Politic.create(
   avatar: Faker::Avatar.image
 )
 
+=begin
 # TEAMS_POLITICS SEEDS
   # Composition des equipes du tournoi 1 (4 persos / equipe)
 teampolitic_francis_t1_p1 = TeamPolitic.create!(
@@ -710,9 +817,9 @@ lineup_t2_mc_ld = LineUp.create!(
   match_id: match_t2_c.id,
   politic_id: dupont_aignan.id
 )
+=end
 
 # USER_TOURNAMENTS SEEDS
-  # 2 joueurs / tournoi
 usertournament_t1_francis = UserTournament.create!(
   user_id: francis.id,
   tournament_id: tournament_1.id
@@ -720,6 +827,26 @@ usertournament_t1_francis = UserTournament.create!(
 
 usertournament_t1_herve = UserTournament.create!(
   user_id: herve.id,
+  tournament_id: tournament_1.id
+)
+
+usertournament_t1_gael = UserTournament.create!(
+  user_id: gael.id,
+  tournament_id: tournament_1.id
+)
+
+usertournament_t1_marine = UserTournament.create!(
+  user_id: marine.id,
+  tournament_id: tournament_1.id
+)
+
+usertournament_t1_julien = UserTournament.create!(
+  user_id: julien.id,
+  tournament_id: tournament_1.id
+)
+
+usertournament_t1_louis = UserTournament.create!(
+  user_id: louis.id,
   tournament_id: tournament_1.id
 )
 
@@ -733,6 +860,57 @@ usertournament_t2_gael = UserTournament.create!(
   tournament_id: tournament_2.id
 )
 
+usertournament_t2_pierre = UserTournament.create!(
+  user_id: pierre.id,
+  tournament_id: tournament_2.id
+)
+
+usertournament_t2_lucas = UserTournament.create!(
+  user_id: lucas.id,
+  tournament_id: tournament_2.id
+)
+
+usertournament_t3_paul = UserTournament.create!(
+  user_id: paul.id,
+  tournament_id: tournament_3.id
+)
+
+usertournament_t3_sebastien = UserTournament.create!(
+  user_id: sebastien.id,
+  tournament_id: tournament_3.id
+)
+
+usertournament_t3_jb = UserTournament.create!(
+  user_id: jb.id,
+  tournament_id: tournament_3.id
+)
+
+usertournament_t3_laurent = UserTournament.create!(
+  user_id: laurent.id,
+  tournament_id: tournament_3.id
+)
+
+usertournament_t4_francis = UserTournament.create!(
+  user_id: francis.id,
+  tournament_id: tournament_4.id
+)
+
+usertournament_t4_herve = UserTournament.create!(
+  user_id: herve.id,
+  tournament_id: tournament_4.id
+)
+
+usertournament_t4_gael = UserTournament.create!(
+  user_id: gael.id,
+  tournament_id: tournament_4.id
+)
+
+usertournament_t4_marine = UserTournament.create!(
+  user_id: marine.id,
+  tournament_id: tournament_4.id
+)
+
+=begin
 # TEAM_MATCHES
   # Tournoi 1 - 3 matchs - 2 equipes s'affrontent
 teammatches_t1_ma = TeamMatch.create!(
@@ -795,3 +973,4 @@ teammatches_t2_mc = TeamMatch.create!(
   team_id: team_gael_t2.id,
   match_id: match_t2_c.id
 )
+=end
