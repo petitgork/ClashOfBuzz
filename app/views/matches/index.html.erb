@@ -4,18 +4,21 @@
   <% @matches.each do |match| %>
       <% if match.statut == "Composition" %>
         <div class="match-result statut-compo">
+          <p><%= match.date.strftime("%d/%m/%Y") %></p>
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match à venir</h3>
           <%= button_to "Composez votre équipe", match_path(match), method: :get, class: "button" %>
         </div>
       <% elsif match.statut == "In progress" %>
         <div class="match-result statut-running">
+          <p><%= match.date.strftime("%d/%m/%Y") %></p>
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match en cours</h3>
           <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
         </div>
       <% else %>
         <div class="match-result statut-finish">
+          <p><%= match.date.strftime("%d/%m/%Y") %></p>
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match terminé</h3>
           <h4>WINNER : <%= match.winner %></h4>
