@@ -1,5 +1,7 @@
 <h1>Match of the week</h1>
 
+<%= button_to "Mettre à jour les résultats", update_results_match_path(@match), method: :patch %>
+
 <div class="container d-flex justify-content-between">
   <% @match.teams.each do |team| %>
     <% if team.user == current_user %>
@@ -43,6 +45,7 @@
             <ul>
               <li>
                 <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                - <%= line_up.result %> POINTS
                 <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
                   <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
                     <%= f.submit "Retirer de la sélection" %>

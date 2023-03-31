@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
   resources :matches do
     resources :line_ups, only: %i[show new create]
+    member do
+      patch :update_results
+    end
   end
   resources :users
   resources :line_ups, only: %i[destroy]
