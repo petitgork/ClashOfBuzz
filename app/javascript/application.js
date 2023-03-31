@@ -3,5 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-import LineUp from "./controllers/line_up_controller.js"
-Stimulus.register("line_up", LineUp)

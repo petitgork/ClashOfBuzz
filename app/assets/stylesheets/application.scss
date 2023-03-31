@@ -8,15 +8,16 @@
 @import "font-awesome";
 
 // Your CSS partials
-@import "components/index";
 @import "pages/index";
-@import "components/dashboard-card";
-@import "components/button";
-@import "pages/login";
-@import "components/navbar";
-@import "pages/tournament";
+@import "pages/tournament_new";
 @import "pages/tournament_show";
 @import "pages/matches_index";
+@import "pages/login";
+@import "components/index";
+@import "components/dashboard-card";
+@import "components/button";
+@import "components/navbar";
+
 
 
 // CSS pour l'appli entière
