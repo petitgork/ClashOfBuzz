@@ -13,7 +13,6 @@
 }
 
 .match-result {
-  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
@@ -24,6 +23,16 @@
   justify-content: center;
   width: 50%;
   align-items: center;
+
+  &.statut-compo {
+    background-color: white;
+  }
+  &.statut-running {
+    background-color: $yellow;
+  }
+  &.statut-finish {
+    background-color: lightgrey;
+  }
 }
 
 .match-result h2 {
@@ -36,20 +45,20 @@
   font-size: 16px;
   margin-bottom: 0;
 }
+// Pas utilisé car on prend le composant bouton général
+// .btn-details {
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+//   padding: 8px 16px;
+//   border-radius: 5px;
+//   text-decoration: none;
+//   font-size: 14px;
+//   transition: all 0.2s ease;
+//   display: inline-block;
+//   margin-bottom: 10px;
+// }
 
-.btn-details {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.btn-details:hover {
-  background-color: #0062cc;
-}
+// .btn-details:hover {
+//   background-color: #0062cc;
+// }
