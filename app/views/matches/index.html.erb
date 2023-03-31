@@ -5,7 +5,7 @@
     <div class="match-result">
       <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
       <%= button_to "Voir détails du match", match_path(match), method: :get, class: "btn-details" %>
-      <% if match.match_result %>
+      <% if match.statut ==  %>
         <p>Résultat : <%= match.match_result %></p>
       <% else %>
         <p>Match à venir</p>
