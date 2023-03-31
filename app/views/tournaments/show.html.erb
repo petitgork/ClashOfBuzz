@@ -1,44 +1,81 @@
-<div class="tournament">
-  <h3 class="tournament-name"><%= @tournament.name %></h3>
-  <p class="tournament-status">Statut : "<%= @tournament.status %>"</p>
-
-  <h4 class="team-list-title">Liste des équipes inscrites :</h4>
-  <ul class="team-list">
-    <% @tournament.teams.each do |team| %>
-      <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
-    <% end %>
-  </ul>
-
-  <% if @tournament.status == "created" %>
-    <h4 class="invite-title">Invite tes amis</h4>
-    <p class="invite-url"><%= url_for(only_path: false) %></p>
-    <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "btn btn-launch" %>
-    <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
-      <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "btn btn-join" %>
-    <% end %>
-  <% end %>
-</div>
-
-
-<% if @tournament.status == "launched" %>
-  <div class="match-list-container">
-    <h4 class="match-list-title">Calendrier du tournoi</h4>
-    <div class="matches">
-      <% @matches.each do |match| %>
-        <div class="match">
-          <p><%= match.team_matches[0].team.name %> VS <%= match.team_matches[1].team.name %></p>
-          <% if match.match_result %>
-            <p>Résultat : <%= match.match_result %></p>
-          <% else %>
-            <p>Match à venir</p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="buttons">
-      <%= link_to "Voir ma team", tournament_team_path(@tournament, @team), class: "btn-team" %>
-      <%= link_to "Voir mes matchs", matches_path(tournament_id: @tournament), class: "btn-matches" %>
-    </div>
+<div class="dashboard-container">
+  <div>
+    <h1>TABLEAU DE BORD</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam varius felis, gravida varius est porta et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
   </div>
-<% end %>
+  <%= link_to "+ Nouveau tournoi", new_tournament_path, class: "button" %>
+  <div class="dashboard-tournaments-container">
+    <div>
+      <h3>Mes tournois</h3>
+      <div class="dashboard-tournaments-buttons">
+        <% current_user.tournaments.each do |tournament| %>
+          <p><%= link_to tournament.name, tournament_path(tournament),
+          class: tournament == @tournament ? "button-red" : "button"%></p>
+        <% end %>
+      </div>
+    </div>
+    <% if @tournament.status == "created" %>
+      <div class="tournament">
+        <p class="tournament-status">Statut : "ATTENTE DE LANCEMENT"</p>
+        <h4 class="team-list-title">Liste des équipes inscrites :</h4>
+        <ul class="team-list">
+          <% @tournament.teams.each do |team| %>
+            <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
+          <% end %>
+        </ul>
+        <h4 class="invite-title">Invite tes amis</h4>
+        <p class="invite-url"><%= url_for(only_path: false) %></p>
+        <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "btn btn-launch" %>
+        <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
+          <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "btn btn-join" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="dashboard-tournaments-details-container">
+        <div>
+          <div class="dashboard-card">
+            <p class="dashboard-title">MON EQUIPE</p>
+            <% @tournament.teams.each do |team| %>
+              <% if team.user == current_user %>
+                <h6><%= team.name %></h6>
+                <%# <%= image_tag(team.avatar, class: "team-avatar") %>
+                <% if team.politics.count > 0 %>
+                  <div class="dashboard-card-list">
+                    <% team.politics.first(4).each do |politic| %>
+                      <div class="dashboard-card-politic">
+                        <div class="dashboard-card-politic-name">
+                          <p class="last-name"><%= politic.last_name %></p>
+                          <p class="first-name"><%= politic.first_name %></p>
+                        </div>
+                        <div>
+                          <%= image_tag(politic.avatar, class: "dashboard-card-list-avatar")  %>
+                        </div>
+                        <p class="dashboard-card-politic-in-game">IN GAME</p>
+                      </div>
+                    <% end %>
+                  </div>
+                  <h1>...</h1>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "button" %>
+
+        </div>
+        <div>
+          <div class="dashboard-card">
+            <p class="dashboard-title">CALENDRIER</p>
+          </div>
+          <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "button" %>
+
+        </div>
+        <div>
+          <div class="dashboard-card">
+            <p class="dashboard-title">CLASSEMENT</p>
+          </div>
+          <div class="button">VOIR +</div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

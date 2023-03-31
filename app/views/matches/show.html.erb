@@ -1,5 +1,6 @@
 <div class="container-match">
   <h1>Match of the week</h1>
+  <%= button_to "Mettre à jour les résultats", update_results_match_path(@match), method: :patch %>
   <div class="container-match-teams">
     <div class="container-match-vs">
       <% @match.teams.each do |team| %>
@@ -32,20 +33,26 @@
     <% end %>
   </div>
   <div>
-    <% if @match.statut == "In Progress" %>
-      <div>
-        <h3>Ta sélection</h3>
-        <% @match.teams.each do |team| %>
-          <% @match.line_ups.each do |line_up| %>
-            <% if team.politics.include?(line_up.politic) %>
-              <h3><%= team.name %></h3>
-              <ul>
-                <li><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></li>
-              </ul>
-            <% end %>
+    <h3>Ta sélection pour le match</h3>
+    <% @match.teams.each do |team| %>
+      <% if team.user == current_user %>
+        <% @match.line_ups.each do |line_up| %>
+          <% 
+          team.politics.include?(line_up.politic) && team.user == current_user %>
+            <ul>
+              <li>
+                <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                - <%= line_up.result %> POINTS
+                <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
+                  <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
+                    <%= f.submit "Retirer de la sélection" %>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

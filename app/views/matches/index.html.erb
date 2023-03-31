@@ -2,14 +2,25 @@
   <h1>Mon calendrier</h1>
 
   <% @matches.each do |match| %>
-    <div class="match-result">
-      <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
-      <%= button_to "Voir détails du match", match_path(match), method: :get, class: "btn-details" %>
-      <% if match.match_result %>
-        <p>Résultat : <%= match.match_result %></p>
+      <% if match.statut == "Composition" %>
+        <div class="match-result statut-compo">
+          <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
+          <h3>Match à venir</h3>
+          <%= button_to "Composez votre équipe", match_path(match), method: :get, class: "button" %>
+        </div>
+      <% elsif match.statut == "En cours" %>
+        <div class="match-result statut-running">
+          <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
+          <h3>Match en cours</h3>
+          <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
+        </div>
       <% else %>
-        <p>Match à venir</p>
+        <div class="match-result statut-finish">
+          <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
+          <h3>Match terminé</h3>
+          <h4>WINNER : <%= match.winner %></h4>
+          <%= button_to "Voir le détail des résultats", match_path(match), method: :get, class: "button" %>
+        </div>
       <% end %>
-    </div>
   <% end %>
 </div>
