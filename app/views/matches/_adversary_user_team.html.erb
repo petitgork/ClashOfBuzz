@@ -1,0 +1,18 @@
+<div data-controller="display-team">
+  <% @match.teams.each do |team| %>
+    <% if team.user != current_user %>
+      <h2><%= team.user.nickname %> club</h2>
+      <button name="button" class="pixel_art_btn_match_adversary" data-display-team-target="button" data-action="click->display-team#display">Afficher son club</button>
+      <div data-display-team-target="adversary" class="d-none team-list">
+        <% team.politics.each do |politic| %>
+        <ul>
+          <li>
+            <%= image_tag(politic.avatar, class: "team-list-avatar") %>
+            <%= politic.first_name %> <%= politic.last_name %>
+          </li>
+        </ul>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

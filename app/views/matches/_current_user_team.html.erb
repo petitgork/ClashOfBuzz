@@ -1,0 +1,20 @@
+<% @match.teams.each do |team| %>
+  <% if team.user == current_user %>
+    <h2>Ton club</h2>
+    <div class="team-list">
+      <% team.politics.each do |politic| %>
+        <ul>
+          <li class="team-list-politic">
+            <div>
+              <%= politic.first_name %> <%= politic.last_name %>
+              <%= image_tag(politic.avatar, class: "team-list-avatar") %>
+            </div>
+            <% if team.user == current_user && !@match.line_ups.exists?(politic_id: politic.id) %>
+              <%= button_to "+", match_line_ups_path(@match, politic_id: politic.id), method: :post, class: "pixel_art_btn_match" %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
