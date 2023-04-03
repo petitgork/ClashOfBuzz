@@ -66,6 +66,12 @@
         <div>
           <div class="dashboard-card">
             <p class="dashboard-title">CALENDRIER</p>
+            <p>DEBUT</p>
+            <%= @dates.first.strftime("%d/%m/%Y") %>
+            <p>FIN</p>
+            <%= @dates.last.strftime("%d/%m/%Y") %>
+            <p>Match en cours</p>
+            <p>Temps restant</p>
           </div>
           <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "button" %>
 

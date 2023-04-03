@@ -36,6 +36,11 @@ class TournamentsController < ApplicationController
   def show
     @team = Team.where(user: current_user, tournament: @tournament).first
     @matches = @tournament.matches
+    @dates = []
+    @matches.each do |match|
+      @dates << match.date unless @dates.include?(match.date)
+    end
+    @dates.sort!
   end
 
   def edit
