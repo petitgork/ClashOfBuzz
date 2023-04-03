@@ -111,7 +111,7 @@ class MatchesController < ApplicationController
       year = date_components[2].to_i
       # si la date est valide elle marque 1 point si elle comprise entre les 2 bornes
       if Date.valid_date?(year, month, day)
-        date = Date.parse(date_string_with_num_month)
+        date = Date.new(year, month, day)
         @score += 1 if date.between?(last_monday, today)
       # si la date n'est pas valide cela signifie qu'elle est de type "10h" ou "hier",
       # ça marque donc un point aussi (sauf si on est lundi et que la date est "Hier")
