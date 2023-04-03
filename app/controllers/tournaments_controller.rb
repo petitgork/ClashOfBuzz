@@ -36,11 +36,22 @@ class TournamentsController < ApplicationController
   def show
     @team = Team.where(user: current_user, tournament: @tournament).first
     @matches = @tournament.matches
-    @dates = []
+
+    # affichage du calendrier
+    dates = []
     @matches.each do |match|
-      @dates << match.date unless @dates.include?(match.date)
+      dates << match.date unless dates.include?(match.date)
     end
-    @dates.sort!
+    @begin = dates.min
+    @end = dates.max
+    @next_date = dates.find do |date|
+      date > Date.today
+    end
+
+    # match en cours
+    @current_match = @team.matches.find do |match|
+      match.statut == "In progress"
+    end
   end
 
   def edit

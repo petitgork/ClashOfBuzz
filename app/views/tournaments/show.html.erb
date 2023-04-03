@@ -64,14 +64,34 @@
 
         </div>
         <div>
-          <div class="dashboard-card">
+          <div class="dashboard-card" data-controller="countdown" data-countdown-date-value="<%= @next_date %>">
             <p class="dashboard-title">CALENDRIER</p>
-            <p>DEBUT</p>
-            <%= @dates.first.strftime("%d/%m/%Y") %>
-            <p>FIN</p>
-            <%= @dates.last.strftime("%d/%m/%Y") %>
-            <p>Match en cours</p>
-            <p>Temps restant</p>
+            <div class="dashboard-subcard">
+              <h2>DEBUT</h2>
+              <h2><%= @begin.strftime("%d/%m/%Y") %></h2>
+              <h2>FIN</h2>
+              <h2><%= @end.strftime("%d/%m/%Y") %></h2>
+            </div>
+            <div class="dashboard-subcard">
+              <h2>MATCH EN COURS</h2>
+              <% if @current_match %>
+                <%= button_to "#{@current_match.teams.first.name} VS #{@current_match.teams.last.name}", match_path(@current_match), method: :get, class: "button" %>
+              <% else %>
+                <p>Aucun match en cours</p>
+              <% end %>
+            </div>
+            <h2>TEMPS RESTANT</h2>
+            <div data-countdown-target="next" class="d-none"><%= @next_date %></div>
+            <% if @next_date %>
+              <div class="countdown">
+                <span data-countdown-target="days"></span>J:
+                <span data-countdown-target="hours"></span>h:
+                <span data-countdown-target="minutes"></span>m:
+                <span data-countdown-target="seconds"></span>s
+              </div>
+            <% else %>
+              <p>Plus de match à venir</p>
+            <% end %>
           </div>
           <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "button" %>
 
