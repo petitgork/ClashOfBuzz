@@ -7,13 +7,17 @@ class MatchesController < ApplicationController
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
     @matches = @team.matches
     @matches.each do |match|
-      if match.statut == "In progress" && match.date < Date.current - 7
+
+      if match.date == Date.today
+        match.statut = "In progress"
+        match.save
+      elsif match.statut == "In progress" && match.date < Date.today - 7
         match.statut = "Closed"
         match.save
         match_score_count(match)
-      else
+      elsif match.statut == "Closed"
         match.team_matches.each do |team_match|
-          match_score_count(match) if match.statut == "Closed" && team_match.match_score.zero?
+          match_score_count(match) if team_match.match_score.zero?
         end
       end
     end
