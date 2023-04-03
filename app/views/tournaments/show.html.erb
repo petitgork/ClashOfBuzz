@@ -1,3 +1,5 @@
+<% console %>
+
 <div class="dashboard-container">
   <div>
     <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
@@ -45,23 +47,52 @@
               <% if team.user == current_user %>
                 <h6><%= team.name %></h6>
                 <%# <%= image_tag(team.avatar, class: "team-avatar") %>
-                <% if team.politics.count > 0 %>
-                  <div class="dashboard-card-list">
-                    <% team.politics.first(4).each do |politic| %>
-                      <div class="dashboard-card-politic">
-                        <div class="dashboard-card-politic-name">
-                          <p class="last-name"><%= politic.last_name %></p>
-                          <p class="first-name"><%= politic.first_name %></p>
+                <div id="politicCarousel" class="carousel slide">
+                  <% if team.politics.count > 0 %>
+                    <div class="carousel-inner">
+                      <% if @politics_slice_a %>
+                        <div class="dashboard-card-list carousel-item active">
+                          <% @politics_slice_a.each do |politic| %>
+                            <div class="dashboard-card-politic">
+                              <div class="dashboard-card-politic-name">
+                                <p class="last-name"><%= politic.last_name %></p>
+                                <p class="first-name"><%= politic.first_name %></p>
+                              </div>
+                              <div>
+                                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                              </div>
+                              <p class="dashboard-card-politic-in-game">IN GAME</p>
+                            </div>
+                          <% end %>
                         </div>
-                        <div>
-                          <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                      <% end %>
+                      <% if @politics_slice_b %>
+                        <div class="dashboard-card-list carousel-item">
+                          <% @politics_slice_b.each do |politic| %>
+                            <div class="dashboard-card-politic">
+                              <div class="dashboard-card-politic-name">
+                                <p class="last-name"><%= politic.last_name %></p>
+                                <p class="first-name"><%= politic.first_name %></p>
+                              </div>
+                              <div>
+                                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                              </div>
+                              <p class="dashboard-card-politic-in-game">IN GAME</p>
+                            </div>
+                          <% end %>
                         </div>
-                        <p class="dashboard-card-politic-in-game">IN GAME</p>
-                      </div>
-                    <% end %>
-                  </div>
-                  <h1>...</h1>
-                <% end %>
+                      <% end %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#politicCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#politicCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  <% end %>
+                </div>
               <% end %>
             <% end %>
           </div>
