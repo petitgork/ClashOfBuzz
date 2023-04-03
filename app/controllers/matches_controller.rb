@@ -6,10 +6,21 @@ class MatchesController < ApplicationController
   def index
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
     @matches = @team.matches
+    @matches.each do |match|
+      if match.statut == "In progress" && match.created_at < Date.current - 7
+        match.statut = "Closed"
+        match.save
+        match_score_count(match)
+      else
+        match.team_matches.each do |team_match|
+          match_score_count(match) if match.statut == "Closed" && team_match.match_score.zero?
+        end
+      end
+    end
   end
 
   def new
-    @match = Match.new,
+    @match = Match.new
     @teams = Team.all
   end
 
@@ -111,6 +122,33 @@ class MatchesController < ApplicationController
       # aide la méthode update_results à savoir s'il faut continuer d'aller chercher
       # les pages suivantes
         @sunday_yesterday += 1
+      end
+    end
+  end
+
+  def match_score_count(match)
+    @my_match_score = 0
+    @match_score_adversary = 0
+    # calcul du match_score par équipe
+    line_ups = LineUp.where(match_id: match.id)
+    match.teams.each do |team|
+      if team.user == current_user
+        line_ups.each do |line_up|
+          @my_match_score += line_up.result if team.politics.include?(line_up.politic) && team.user == current_user
+        end
+      elsif team.user != current_user
+        line_ups.each do |line_up|
+          @match_score_adversary += line_up.result if team.politics.include?(line_up.politic) && team.user != current_user
+        end
+      end
+      # Sauvegarde du match_score dans la db
+      match.team_matches.each do |team_match|
+        if team_match.team.user == current_user
+          team_match.match_score = @my_match_score
+        else
+          team_match.match_score = @match_score_adversary
+        end
+        team_match.save
       end
     end
   end

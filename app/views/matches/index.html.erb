@@ -15,6 +15,7 @@
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match en cours</h3>
           <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
+          <h2><%= match.team_matches[0].match_score %> - <%= match.team_matches[1].match_score %></h2>
         </div>
       <% else %>
         <div class="match-result statut-finish">
@@ -23,6 +24,7 @@
           <h3>Match terminé</h3>
           <h4>WINNER : <%= match.winner %></h4>
           <%= button_to "Voir le détail des résultats", match_path(match), method: :get, class: "button" %>
+          <h2><%= match.team_matches[0].match_score %> - <%= match.team_matches[1].match_score %></h2>
         </div>
       <% end %>
   <% end %>
