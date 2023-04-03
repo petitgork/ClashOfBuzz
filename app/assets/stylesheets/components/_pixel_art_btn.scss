@@ -7,11 +7,12 @@
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
-  position: relative;
   text-align: center;
   box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
   transition: 0.1s;
   text-decoration: none;
+  width: 16vw;
+  align-self: center;
 }
 .pixel_art_btn:before {
 content: '';
