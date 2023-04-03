@@ -1,0 +1,52 @@
+/* Style pour la page d'équipe */
+.team-page {
+  width: 100%;
+}
+
+.team-header {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 20px;
+}
+
+.team-name {
+  font-size: 36px;
+  margin: 0;
+}
+
+.politics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 40px 1rem;
+}
+
+.politic-item {
+  background-color: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.politic-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.politic-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.politic-board {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
