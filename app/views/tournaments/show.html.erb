@@ -1,7 +1,8 @@
 <div class="dashboard-container">
   <div>
-    <h1>TABLEAU DE BORD</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam varius felis, gravida varius est porta et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
+    <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
+    <br>
+    C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
   </div>
   <%= link_to "+ Nouveau tournoi", new_tournament_path, class: "button" %>
   <div class="dashboard-tournaments-container">
