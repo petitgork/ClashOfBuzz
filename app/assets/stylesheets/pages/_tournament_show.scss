@@ -133,6 +133,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .players{
   display: block;
   justify-content: center;
@@ -142,4 +143,10 @@
   border-radius: 10px;
 
 
+.input-group {
+  width: 40%;
+}
+
+#copy-button {
+  width: 200px;
 }
