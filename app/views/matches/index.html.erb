@@ -1,7 +1,7 @@
 <div class="championship-results">
   <h1>Mon calendrier</h1>
   <div class="buttons">
-    <%= link_to "retour",tournament_path(params[:tournament_id]),class: "pixel_art_btn" %>
+    <%= link_to "retour", tournament_path(params[:tournament_id]), class: "pixel_art_btn" %>
   </div>
   <div class="flex-arrow">
     <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up"), matches_path(tournament_id: @tournament, anchor: "container-macthes") %>

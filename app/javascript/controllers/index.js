@@ -17,9 +17,7 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
     arrowElement.classList.remove("d-none");
-    console.log("hello")
   } else {
     arrowElement.classList.add("d-none");
-    console.log("bye")
   }
 }
