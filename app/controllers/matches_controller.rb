@@ -7,6 +7,7 @@ class MatchesController < ApplicationController
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
     @matches = @team.matches
     @matches.each do |match|
+
       if match.date == Date.today
         match.statut = "In progress"
         match.save
