@@ -7,7 +7,7 @@ class MatchesController < ApplicationController
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
     @matches = @team.matches
     @matches.each do |match|
-      if match.statut == "In progress" && match.created_at < Date.current - 7
+      if match.statut == "In progress" && match.date < Date.current - 7
         match.statut = "Closed"
         match.save
         match_score_count(match)
