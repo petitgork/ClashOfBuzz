@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   end
   resources :matches do
     resources :line_ups, only: %i[show new create]
+    resources :team_matches, only: %i[index] do
+      member do
+        get :match_score
+      end
+    end
     member do
       patch :update_results
     end

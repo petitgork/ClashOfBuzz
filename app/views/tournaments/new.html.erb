@@ -2,9 +2,9 @@
 <div class="container_tournament">
   <div id="tournament-form">
     <%= simple_form_for @tournament do |f| %>
-      <%= f.input :name, label: "Nom du tournoi" %>
+      <%= f.input :name, label: "Nom du tournoi", class: 'mini_title' %>
       <%= f.input :photo, label: "Avatar de votre tournoi", as: :file %>
-      <%= f.submit "Creer mon tournoi", class:'pixel_art_btn'%>
+      <%= f.submit "Creer", class:'pixel_art_btn'%>
     <% end %>
   </div>
 </div>

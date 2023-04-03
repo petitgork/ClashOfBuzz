@@ -71,7 +71,7 @@ class TournamentsController < ApplicationController
       end
     end
 
-    # On génère le "calendrier" des rencontres
+    # On génère le "calendrier" et les dates de des rencontres
     calendar(@tournament)
 
     # On part sur la page show du tournoi
