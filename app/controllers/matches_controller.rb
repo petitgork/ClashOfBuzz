@@ -15,6 +15,9 @@ class MatchesController < ApplicationController
         match.team_matches.each do |team_match|
           match_score_count(match) if match.statut == "Closed" && team_match.match_score.zero?
         end
+        match.team_matches.sort_by(&:match_score)
+        match.winner = match.team_matches[0].team.name
+        match.save
       end
     end
   end
