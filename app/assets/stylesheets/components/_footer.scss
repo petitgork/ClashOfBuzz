@@ -38,3 +38,13 @@
 .menu_links{
   padding-top: 16px;
 }
+
+.footer-menu {
+  text-decoration: none;
+  color: white;
+  transition: .2s;
+}
+
+.footer-menu:hover {
+  color: $yellow;
+}
