@@ -1,3 +1,5 @@
+require "date"
+
 class TournamentsController < ApplicationController
   before_action :set_params, only: %i[join show edit update launch]
 
@@ -72,6 +74,7 @@ class TournamentsController < ApplicationController
     # On génère le "calendrier" et les dates de des rencontres
     calendar(@tournament)
 
+    # On part sur la page show du tournoi
     flash[:notice] = "Le tournoi est lancé, découvrez vos équipes"
     redirect_to tournament_path(@tournament)
   end
@@ -93,6 +96,29 @@ class TournamentsController < ApplicationController
         match = Match.create!(tournament: tournament)
         TeamMatch.create!(match: match, team: teams[i])
         TeamMatch.create!(match: match, team: teams[j])
+      end
+    end
+    # on calcule la durée du tournoi
+    weeks_count = teams.count - 1
+    # on définit le début du tournoi à lundi prochain
+    lundi = Date.parse("monday")
+    delta = lundi > Date.today ? 0 : 7
+    tournament_begin = lundi + delta
+    tournament_dates = [tournament_begin]
+    # on définit toutes les dates suivantes (j'ajoute un +5 car je ne suis pas la
+    # logique round robin) et c'est pas optimisé
+    while tournament_dates.count < (weeks_count + 5)
+      tournament_dates << (tournament_dates.last + 7)
+    end
+    # on associe les dates aux matchs
+    tournament.matches.each do |match|
+      tournament_dates.each do |date|
+        similar_matches = Match.joins(:team_matches)
+                               .where(tournament: tournament, date: date)
+                               .where("team_matches.team_id IN (?)", match.team_ids)
+        match.date = date if similar_matches.empty?
+        match.save!
+        break if match.date
       end
     end
   end
