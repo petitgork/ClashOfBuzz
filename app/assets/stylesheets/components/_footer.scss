@@ -1,11 +1,12 @@
 .footer {
   width: 100%;
-  height: 300px;
+  height: 250px;
   background-color: #ff5722;
   padding: 20px 0;
   text-align: center;
   color:white;
-  font-family: 'press-start-2p';
+  padding-top: 32px;
+
 
 }
 
@@ -32,4 +33,8 @@
 
 .footer-copyright {
   font-size: 16px;
+
+}
+.menu_links{
+  padding-top: 16px;
 }

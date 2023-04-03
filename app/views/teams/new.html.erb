@@ -1,10 +1,10 @@
-<h1 class="text-center">Creation d'une equipe</h1>
-<div class="container_tournament">
+<h1>Creation d'une equipe</h1>
+<div class="new_teeam_container">
   <div id="team-form">
     <%= simple_form_for [@tournament, @team] do |f| %>
       <%= f.input :name, label: "Nom de l'équipe" %>
       <%= f.input :avatar, label: "Avatar", as: :file %>
-      <%= f.submit "Je suis pret", class:'pixel_art_btn' %>
+      <%= f.submit "pret", class:'pixel_art_btn' %>
     <% end %>
   </div>
 </div>
