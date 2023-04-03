@@ -133,3 +133,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+.players{
+  display: block;
+  justify-content: center;
+  width: 100%;
+  background-color: $yellow;
+  padding: 16px ;
+  border-radius: 10px;
+
+
+.input-group {
+  width: 40%;
+}
+
+#copy-button {
+  width: 200px;
+}
