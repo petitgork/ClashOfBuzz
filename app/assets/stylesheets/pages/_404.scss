@@ -1,20 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
 
-body{
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  background: #131313;
-  color: #fff;
-  font-size: 96px;
-  font-family: 'Fira Mono', monospace;
-  letter-spacing: -7px;
-}
 
-div{
+
+.erreur{
   animation: glitch 1s linear infinite;
 }
 
@@ -30,14 +18,14 @@ div{
   }
 }
 
-div:before,
-div:after{
+.erreur:before,
+.erreur:after{
   content: attr(title);
   position: absolute;
   left: 0;
 }
 
-div:before{
+.erreur:before{
   animation: glitchTop 1s linear infinite;
   clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
@@ -55,7 +43,7 @@ div:before{
   }
 }
 
-div:after{
+.erreur:after{
   animation: glitchBotom 1.5s linear infinite;
   clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
