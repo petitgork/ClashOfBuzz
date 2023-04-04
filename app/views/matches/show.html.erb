@@ -23,10 +23,10 @@
   <br>
   <div class="container-match-composition">
     <% if @match.statut == "Composition" %>
-      <div class="selection-divider">
-        <%= render "current_user_team" %>
-      </div class="selection-divider">
       <div>
+        <%= render "current_user_team" %>
+      </div>
+      <div class="selection-divider match_selection" >
         <%= render "match_selection" %>
       </div>
       <div class="selection-divider">
