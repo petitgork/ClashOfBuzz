@@ -1,13 +1,22 @@
 <div class="team-header">
     <h1 class="team-header-name">Creation d'une équipe</h1>
   </div>
-
-<div class="new_teeam_container">
-  <div id="team-form">
-    <%= simple_form_for [@tournament, @team] do |f| %>
-      <%= f.input :name, label: "Nom de l'équipe" %>
-      <%= f.input :avatar, label: "Avatar", as: :file %>
-      <%= f.submit "pret", class:'pixel_art_btn' %>
-    <% end %>
+<div class="container_team">
+  <div class="new_team_container">
+    <div id="team-form">
+      <%= simple_form_for [@tournament, @team] do |f| %>
+        <%= f.input :name, label: "Nom de l'équipe" %>
+        <%= f.input :avatar, label: "Avatar", as: :file %>
+        <%= f.submit "pret", class:'pixel_art_btn' %>
+      <% end %>
+    </div>
   </div>
+</div>
+<div class="run">
+  <%= image_tag "run.png", class:'run-img' %>
+  <p>"Personne ne me touche, <br>
+  ma personne est sacrée, <br>
+  je suis un parlementaire"<br>
+
+  <span><br>Jean-Luc Mélenchon</br></span></p>
 </div>
