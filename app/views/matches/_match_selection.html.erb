@@ -7,7 +7,7 @@
           <div class="team-list-politic d-flex">
             <div class="player-info">
               <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-              <%= image_tag(line_up.politic.avatar, class: "team-list-avatar") %>
+              <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
             </div>
             <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
               <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
