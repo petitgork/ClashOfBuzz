@@ -23,13 +23,13 @@
   <br>
   <div class="container-match-composition">
     <% if @match.statut == "Composition" %>
-      <div>
+      <div class="selection-divider">
         <%= render "current_user_team" %>
-      </div>
+      </div class="selection-divider">
       <div>
         <%= render "match_selection" %>
       </div>
-      <div>
+      <div class="selection-divider">
         <%= render "adversary_user_team" %>
       </div>
     <% end %>

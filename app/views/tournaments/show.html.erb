@@ -54,7 +54,7 @@
                           <p class="first-name"><%= politic.first_name %></p>
                         </div>
                         <div>
-                          <%= image_tag(politic.avatar, class: "dashboard-card-list-avatar")  %>
+                          <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
                         </div>
                         <p class="dashboard-card-politic-in-game">IN GAME</p>
                       </div>
@@ -69,8 +69,34 @@
 
         </div>
         <div>
-          <div class="dashboard-card">
+          <div class="dashboard-card" data-controller="countdown" data-countdown-date-value="<%= @next_date %>">
             <p class="dashboard-title">CALENDRIER</p>
+            <div class="dashboard-subcard">
+              <h2>DEBUT</h2>
+              <h2><%= @begin.strftime("%d/%m/%Y") if @begin %></h2>
+              <h2>FIN</h2>
+              <h2><%= @end.strftime("%d/%m/%Y") if @end %></h2>
+            </div>
+            <div class="dashboard-subcard">
+              <h2>MATCH EN COURS</h2>
+              <% if @current_match %>
+                <%= button_to "#{@current_match.teams.first.name} VS #{@current_match.teams.last.name}", match_path(@current_match), method: :get, class: "button" %>
+              <% else %>
+                <p>Aucun match en cours</p>
+              <% end %>
+            </div>
+            <h2>TEMPS RESTANT</h2>
+            <div data-countdown-target="next" class="d-none"><%= @next_date %></div>
+            <% if @next_date %>
+              <div class="countdown">
+                <span data-countdown-target="days"></span>J:
+                <span data-countdown-target="hours"></span>h:
+                <span data-countdown-target="minutes"></span>m:
+                <span data-countdown-target="seconds"></span>s
+              </div>
+            <% else %>
+              <p>Plus de match à venir</p>
+            <% end %>
           </div>
           <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "button" %>
 
