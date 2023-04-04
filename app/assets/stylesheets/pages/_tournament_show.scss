@@ -137,10 +137,17 @@
 .players {
   display: block;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   background-color: $yellow;
   padding: 16px ;
+  margin-inline: auto;
   border-radius: 10px;
+}
+
+.ranking {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
 }
 
 .input-group {

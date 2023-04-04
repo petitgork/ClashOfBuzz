@@ -104,13 +104,22 @@
         <div>
           <div class="dashboard-card">
             <p class="dashboard-title">CLASSEMENT</p>
-            <div class="players">
-            <div class="title_section">
-            <% @tournament.teams.each do |team| %>
-            <%= team.score %>
-            <% end %>
+            <div>
+            <% @tournament.teams.each_with_index do |team, id| %>
+            <div class="ranking">
+              <div>
+                <%= id + 1 %> |
+                <% if team.name.length > 17 %>
+                  <%= team.name.first(17) %>...
+                <% else %>
+                  <%= team.name %>
+                <% end %>
+              </div>
+              <div>
+                | <%= team.score %> PTS
+              </div>
             </div>
-
+            <% end %>
             </div>
           </div>
           <div class="button">VOIR +</div>
