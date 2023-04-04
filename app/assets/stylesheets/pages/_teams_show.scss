@@ -4,32 +4,33 @@
 }
 
 .team-header {
-  background-color: #1a1a1a;
+  background-color: $grey;
   color: white;
   padding: 20px;
 }
 
 .team-name {
-  font-size: 36px;
+  font-size: 30px;
   margin: 0;
 }
 
 .politics-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 40px 1rem;
 }
 
 .politic-item {
-  background-color: white;
+  background-color: $yellow;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 20px;
+  padding: 25px;
   width: 30%;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .politic-avatar {
@@ -41,12 +42,12 @@
 
 .politic-name {
   margin: 0;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: bold;
 }
 
 .politic-board {
   margin: 0;
   font-size: 16px;
-  text-align: center;
+
 }
