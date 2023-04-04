@@ -2,5 +2,5 @@ meta_name: "ClashOfBuzz"
 meta_title: "ClashOfBuzz, ambiance rétro et joutes politiques"
 meta_description: "Monte ton club de d'hommes et de femmes politiques, et chaque
 semaine compose ton équipe de PLUS GROS BUZZERS !"
-meta_image: "logocob.jpg" # should exist in `app/assets/images/`
+meta_image: "og_image.png" # should exist in `app/assets/images/`
 twitter_account: "@your_twitter_account"   # required for Twitter Cards
