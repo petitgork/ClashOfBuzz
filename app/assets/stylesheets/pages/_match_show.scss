@@ -1,5 +1,8 @@
 .container-match {
   margin: 2rem;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .container-match-teams {
@@ -17,7 +20,7 @@
   text-align: center;
   box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
   text-decoration: none;
-  margin: 60px;
+  margin: 1rem;
   padding: 44px;
 }
 
@@ -25,10 +28,16 @@
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  margin-top: 2rem;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h2, h3 {
+h1, h2, h3 {
   text-align: center;
+  margin: 1rem 0;
 }
 
 .team-list {
@@ -42,6 +51,23 @@ h2, h3 {
 .team-list-politic {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #bbbbbb;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.team-list-politic ul li {
+  margin: 0;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .team-list-avatar {
@@ -49,6 +75,22 @@ h2, h3 {
   height: 40px;
   border-radius: 50%;
   text-align: center;
+  border: 2px solid #000000;
+  margin-top: 0.5rem;
+}
+
+.selection-divider {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1rem 0;
+  background-color: #f5f5f5;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container-match-in-progress {
