@@ -23,13 +23,13 @@
   <br>
   <div class="container-match-composition">
     <% if @match.statut == "Composition" %>
-      <div>
+      <div class="selection-divider">
         <%= render "current_user_team" %>
-      </div>
+      </div class="selection-divider">
       <div>
         <%= render "match_selection" %>
       </div>
-      <div>
+      <div class="selection-divider">
         <%= render "adversary_user_team" %>
       </div>
     <% end %>
@@ -45,7 +45,7 @@
                 <li>
                   <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
                   - <%= line_up.result %> POINTS
-                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) && @match.status != "In progress" %>
+                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
                     <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
                       <%= f.submit "Retirer de la sélection" %>
                     <% end %>
