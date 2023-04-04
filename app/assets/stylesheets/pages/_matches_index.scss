@@ -51,6 +51,12 @@
   justify-content: space-around;
   gap: 5px;
 }
+
+.pixel_art_btn_tournament {
+  display: flex;
+  justify-content: flex-start;
+}
+
 // Pas utilisé car on prend le composant bouton général
 // .btn-details {
 //   background-color: #007bff;
