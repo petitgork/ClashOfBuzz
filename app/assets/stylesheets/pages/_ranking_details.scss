@@ -1,17 +1,28 @@
 .results-table {
   margin: 4rem auto;
   padding: 8px;
-  color: white;
   font-weight: bold;
   text-align: center;
+  border: 10px solid #fff;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 6px #d7d7d7;
 
 
   th {
     font-family: 'Press Start 2P';
-    border-color:$grey;
-    background-color: $grey;
-    border-width: 2px;
+    border-color: white;
+    background-color: $dark-grey;
+    color: $yellow;
+    border-width: 5px;
     padding: 1rem;
+  }
+
+  td {
+    border-color: white;
+    background-color: $yellow;
+    color: $dark-grey;
+    border-width: 5px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   tr {
@@ -22,24 +33,20 @@
 
 .results-container {
   padding: 12px 24px;
-    border: 10px solid #fff;
-    background-color: $yellow;
-    color: $gray;
-    text-transform: uppercase;
-    text-align: center;
-    box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 6px #d7d7d7;
-    text-decoration: none;
-    margin: 40px;
-    padding: 61px;
-
-
+  color: $gray;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  margin: 40px;
+  padding: 61px;
+  width: 90%;
 }
 .image-container {
-  opacity: 0.5; /* définit la transparence à 50% */
+  opacity: 0.3; /* définit la transparence à 50% */
 }
 
 .results-container{
 display: flex;
-justify-content: space-around;
-
+justify-content: space-between;
+align-items: center;
 }
