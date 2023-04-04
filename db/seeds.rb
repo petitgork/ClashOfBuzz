@@ -224,6 +224,7 @@ macron = Politic.create(
   last_name: "Macron",
   politic_board: "LREM",
   # avatar: Faker::Avatar.image
+  punch_line: "S'ils veulent un responsable, il est devant vous. Qu'ils viennent me chercher"
 )
 
 lepen = Politic.create(
@@ -231,6 +232,7 @@ lepen = Politic.create(
   last_name: "Le Pen",
   politic_board: "RN",
   # avatar: Faker::Avatar.image
+  punch_line: "De toute façon la France sera dirigée par une femme : ce sera, ou moi, ou Madame Merkel."
 )
 
 melench = Politic.create(
@@ -238,6 +240,7 @@ melench = Politic.create(
   last_name: "Mélenchon",
   politic_board: "La France Insoumise",
   # avatar: Faker::Avatar.image
+  punch_line:'Personne ne me touche, ma personne est sacrée, je suis un parlementaire'
 )
 
 zemmour = Politic.create(
@@ -245,6 +248,7 @@ zemmour = Politic.create(
   last_name: "Zemmour",
   politic_board: "Reconquête",
   # avatar: Faker::Avatar.image
+  punch_line:"Regardez, dans les milieux où il y a vraiment le pouvoir, il n'y a pas de femmes."
 )
 
 ruffin = Politic.create(
@@ -252,6 +256,7 @@ ruffin = Politic.create(
   last_name: "Ruffin",
   politic_board: "La France Insoumise",
   # avatar: Faker::Avatar.image
+  punch_line:"La liberté c'est la sécurité, la sécurité c'est la surveillance, donc la liberté c'est la surveillance."
 )
 
 philippot = Politic.create(
@@ -259,6 +264,7 @@ philippot = Politic.create(
   last_name: "Philippot",
   politic_board: "Les Patriotes",
   # avatar: Faker::Avatar.image
+  punch_line:"Des leçons de ce bonhomme, non !"
 )
 
 dupont_aignan = Politic.create(
@@ -266,6 +272,7 @@ dupont_aignan = Politic.create(
   last_name: "Dupont-Aignan",
   politic_board: "Debout la France/",
   # avatar: Faker::Avatar.image
+  punch_line:"Alain Juppé était ministre du Budget lorsque j'étais étudiant en 1986."
 )
 
 wauquiez = Politic.create(
@@ -273,6 +280,7 @@ wauquiez = Politic.create(
   last_name: "Wauquiez",
   politic_board: "Les Républicains",
   # avatar: Faker::Avatar.image
+  punch_line:"Être de droite, ce n’est pas une maladie honteuse."
 )
 
 quatennens = Politic.create(
@@ -280,6 +288,7 @@ quatennens = Politic.create(
   last_name: "Quatennens",
   politic_board: "La France Insoumise",
   # avatar: Faker::Avatar.image
+  punch_line:"Je suis venu à la politique par frustration"
 )
 
 gluksmann = Politic.create(
