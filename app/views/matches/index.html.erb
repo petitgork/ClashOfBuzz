@@ -14,10 +14,12 @@
       <div>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
         <% end %>
         <h2> vs </h2>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
         <% end %>
       </div>
       <h3>Match en cours</h3>
@@ -31,10 +33,12 @@
       <div>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
         <% end %>
         <h2> vs </h2>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
         <% end %>
       </div>
       <h3>Match à venir</h3>
@@ -48,10 +52,12 @@
       <div>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
         <% end %>
         <h2> vs </h2>
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
         <% end %>
       </div>
       <h3>Match terminé</h3>
