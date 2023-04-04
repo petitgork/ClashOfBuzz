@@ -45,7 +45,7 @@
                 <li>
                   <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
                   - <%= line_up.result %> POINTS
-                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) %>
+                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) && @match.statut != "In progress" %
                     <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
                       <%= f.submit "Retirer de la sélection" %>
                     <% end %>
