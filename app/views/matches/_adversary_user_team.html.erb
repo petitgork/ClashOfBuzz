@@ -7,7 +7,7 @@
         <% team.politics.each do |politic| %>
         <ul>
           <li>
-            <%= image_tag(politic.avatar, class: "team-list-avatar") %>
+            <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
             <%= politic.first_name %> <%= politic.last_name %>
           </li>
         </ul>

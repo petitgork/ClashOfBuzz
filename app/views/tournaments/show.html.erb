@@ -54,7 +54,7 @@
                           <p class="first-name"><%= politic.first_name %></p>
                         </div>
                         <div>
-                          <%= image_tag(politic.avatar, class: "dashboard-card-list-avatar")  %>
+                          <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
                         </div>
                         <p class="dashboard-card-politic-in-game">IN GAME</p>
                       </div>
@@ -73,9 +73,9 @@
             <p class="dashboard-title">CALENDRIER</p>
             <div class="dashboard-subcard">
               <h2>DEBUT</h2>
-              <h2><%= @begin.strftime("%d/%m/%Y") %></h2>
+              <h2><%= @begin.strftime("%d/%m/%Y") if @begin %></h2>
               <h2>FIN</h2>
-              <h2><%= @end.strftime("%d/%m/%Y") %></h2>
+              <h2><%= @end.strftime("%d/%m/%Y") if @end %></h2>
             </div>
             <div class="dashboard-subcard">
               <h2>MATCH EN COURS</h2>
@@ -106,11 +106,9 @@
             <p class="dashboard-title">CLASSEMENT</p>
             <div class="players">
             <div class="title_section">
-              <p>Meilleur joueur du tournoi</p>
-              <%= %>
-
-
-              <p>Meilleure équipe du tournoi</p>
+            <% @tournament.teams.each do |team| %>
+            <%= team.score %>
+            <% end %>
             </div>
 
             </div>
