@@ -21,10 +21,10 @@ User.destroy_all
 
 password = "123456"
 
-francis = User.create!(nickname: 'Xalirius', email: 'becharafrancis@gmail.com', password: password)
-herve = User.create!(nickname: 'RVNG64', email: 'herve.nguetsop@gmail.com', password: password)
-gael = User.create(nickname: 'Petitgork', email: 'gaelcarayon@hotmail.com', password: password)
-marine = User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password)
+francis = User.create!(nickname: 'Xalirius', email: 'becharafrancis@gmail.com', password: password, avatar: 'francis.jpg')
+herve = User.create!(nickname: 'RVNG64', email: 'herve.nguetsop@gmail.com', password: password, avatar: 'herve-nguetsop itw.jpg')
+gael = User.create(nickname: 'Petitgork', email: 'gaelcarayon@hotmail.com', password: password, avatar: 'gael.jpg')
+marine = User.create(nickname: 'MarineC', email: 'marine_coltel@hotmail.fr', password: password, avatar: 'marine.jpg')
 julien = User.create(nickname: 'Jul', email: 'julien@gmail.com', password: password)
 louis = User.create(nickname: 'Loulou', email: 'loulou@gmail.com', password: password)
 lucas = User.create(nickname: 'Louk', email: 'louk@gmail.com', password: password)
