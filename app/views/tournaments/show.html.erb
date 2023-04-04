@@ -106,11 +106,9 @@
             <p class="dashboard-title">CLASSEMENT</p>
             <div class="players">
             <div class="title_section">
-              <p>Meilleur joueur du tournoi</p>
-              <%= %>
-
-
-              <p>Meilleure équipe du tournoi</p>
+            <% @tournament.teams.each do |team| %>
+            <%= team.score %>
+            <% end %>
             </div>
 
             </div>

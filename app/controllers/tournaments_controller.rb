@@ -37,6 +37,9 @@ class TournamentsController < ApplicationController
     @team = Team.where(user: current_user, tournament: @tournament).first
     @matches = @tournament.matches
 
+    @tournament = Tournament.find(params[:id])
+    tournament_results(@tournament)
+
     # affichage du calendrier
     dates = []
     @matches.each do |match|
@@ -97,7 +100,54 @@ class TournamentsController < ApplicationController
     redirect_to tournament_path(@tournament)
   end
 
+
+
+
   private
+
+  def tournament_results(tournament)
+    tournament = Tournament.find(params[:id])
+    team_matches = tournament.team_matches
+    teams = tournament.teams
+    matches = tournament.matches
+
+    teams.each do |team|
+      all_matches = team.team_matches
+      team.score = 0
+	    all_matches.each do |all_match|
+
+        if team_matches.include?(all_match)
+        team.score += all_match.match_score
+        team.save
+        end
+      end
+	  end
+  end
+
+
+
+  # def tournament_results(tournament)
+  #   # on récupère le tournoi
+  #   tournament = Tournament.find(params[:id])
+  #   team_matches = tournament.team_matches
+  #   # on récupère les équipes du tournoi
+  #   teams = tournament.teams
+  #   # on récupère les matchs du tournoi
+  #   matches = tournament.matches
+  #   # recuperer tous matchs de chaque teams (peut importe le tournois)
+  #   teams.each do |team|
+  #     all_matches = team.team_matches.pluck(:id)
+  #   # recuperer tous les matchs du tournoi et de l'équipe
+  #     # all_matches_of_tournament = TeamMatch.joins(:teams).where(tournament: tournament).where(team_id: team.id)
+
+
+  #   # recuperer les matchs score pour les ajouter au score de la team
+  #     all_matches_of_tournament.each do |match|
+  #       team.score += match.match_score
+  #       team.score.save
+  #     end
+  #   end
+  # end
 
   def tournament_params
     params.require(:tournament).permit(:name, :status, :final_result)
