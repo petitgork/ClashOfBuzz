@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  margin: 1rem auto 0;
+  margin: 1rem;
 }
 
 .dashboard-card-politic {
@@ -36,7 +36,7 @@
   background-color: $white;
   color: black;
   border-radius: 10px;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
   box-shadow: 2px 2px 2px $dark-grey;
 }
 
