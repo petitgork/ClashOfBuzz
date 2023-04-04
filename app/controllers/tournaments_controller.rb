@@ -20,6 +20,10 @@ class TournamentsController < ApplicationController
 
   def new
     @tournament = Tournament.new
+    @teams = Team.where(user_id: current_user)
+    @teams.each do |team|
+      @politic = team.politics.sample
+    end
   end
 
   def create
