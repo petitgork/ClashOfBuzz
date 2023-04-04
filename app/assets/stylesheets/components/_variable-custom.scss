@@ -1,3 +1,11 @@
 .carousel {
   overflow: hidden;
 }
+.alert {
+  background-color: $yellow;
+  border-color: $dark-grey;
+}
+
+.alert-info {
+  color: $dark-grey;
+}
