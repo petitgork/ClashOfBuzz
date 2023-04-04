@@ -27,7 +27,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  margin: 1rem;
+  height: 30rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.fleche {
+  width: 40px;
+  height: auto;
+}
+
+#fleche-bas {
+  padding-bottom: 1rem;
 }
 
 .dashboard-card-politic {
