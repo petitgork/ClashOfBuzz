@@ -70,10 +70,6 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def results
-
-  end
-
   def launch
     # quand on lance le tournoi toutes les équipes ont déjà été créées, mais aucun effectif
     # ne leur a encore été attribué
@@ -104,7 +100,12 @@ class TournamentsController < ApplicationController
     redirect_to tournament_path(@tournament)
   end
 
+  def ranking_details
+    @tournament = Tournament.find(params[:id])
+    @team = Team.where(user: current_user, tournament: @tournament).first
+    @matches = @tournament.matches
 
+  end
 
 
   private
