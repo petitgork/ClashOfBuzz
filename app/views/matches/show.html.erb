@@ -21,8 +21,8 @@
     </div>
   </div>
   <br>
-  <div class="container-match-composition">
-    <% if @match.statut == "Composition" %>
+  <% if @match.statut == "Composition" %>
+    <div class="container-match-composition">
       <div>
         <%= render "current_user_team" %>
       </div>
@@ -32,30 +32,114 @@
       <div class="selection-divider">
         <%= render "adversary_user_team" %>
       </div>
-    <% end %>
-  </div>
-  <div>
-    <% if @match.statut == "In progress" %>
-      <h3>Ta sélection pour le match</h3>
-      <% @match.teams.each do |team| %>
-        <% if team.user == current_user %>
-          <% @match.line_ups.each do |line_up| %>
-            <% if team.politics.include?(line_up.politic) && team.user == current_user %>
-              <ul>
-                <li>
-                  <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-                  - <%= line_up.result %> POINTS
-                  <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) && @match.statut != "In progress" %>
-                    <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
-                      <%= f.submit "Retirer de la sélection" %>
-                    <% end %>
-                  <% end %>
-                </li>
-              </ul>
+    </div>
+  <% end %>
+  <% if @match.statut == "In progress" %>
+    <div class="container-match-composition">
+      <div class="selection-divider">
+        <h3>Ta sélection pour le match</h3>
+        <% @match.teams.each do |team| %>
+          <% if team.user == current_user %>
+            <% @match.line_ups.each do |line_up| %>
+              <% if team.politics.include?(line_up.politic) && team.user == current_user %>
+                <ul>
+                  <li>
+                    <div class="team-list-politic d-flex">
+                      <div class="player-info">
+                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
+                        <p><%= line_up.result %> POINTS</p>
+                      </div>
+                      <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) && @match.statut != "In progress" %>
+                        <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
+                          <%= f.submit "Retirer de la sélection", class: "pixel_art_btn_match" %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+      <div class="selection-divider">
+        <h3>Équipe adverse</h3>
+        <% @match.teams.each do |team| %>
+          <% if team.user != current_user %>
+            <% @match.line_ups.each do |line_up| %>
+              <% if team.politics.include?(line_up.politic) && team.user != current_user %>
+                <ul>
+                  <li>
+                    <div class="team-list-politic d-flex">
+                      <div class="player-info">
+                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
+                        <p><%= line_up.result %> POINTS</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+    <% if @match.statut == "Closed" %>
+    <div class="result-container">
+      <div class="match-final-result">
+        <h3>Match terminé</h3>
+        <h4>WINNER: <%= @match.winner %></h4>
+        <h2><%= @match.team_matches[0].match_score %> - <%= @match.team_matches[1].match_score %></h2>
+      </div>
+    </div>
+    <div class="container-match-composition">
+      <div class="selection-divider <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[0].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[0].team.name %>">
+        <h3>Ta sélection pour le match</h3>
+        <% @match.teams.each do |team| %>
+          <% if team.user == current_user %>
+            <% @match.line_ups.each do |line_up| %>
+              <% if team.politics.include?(line_up.politic) && team.user == current_user %>
+                <ul>
+                  <li>
+                    <div class="team-list-politic d-flex">
+                      <div class="player-info">
+                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
+                        <p><%= line_up.result %> POINTS</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="selection-divider <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[1].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[1].team.name %>">
+        <h3>Équipe adverse</h3>
+        <% @match.teams.each do |team| %>
+          <% if team.user != current_user %>
+            <% @match.line_ups.each do |line_up| %>
+              <% if team.politics.include?(line_up.politic) && team.user != current_user %>
+                <ul>
+                  <li>
+                    <div class="team-list-politic d-flex">
+                      <div class="player-info">
+                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
+                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
+                        <p><%= line_up.result %> POINTS</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
