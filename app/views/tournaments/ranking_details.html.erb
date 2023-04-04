@@ -1,3 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Rang</th>
+      <th>Equipe</th>
+      <th>Score</th>
+      <th>Matchs gagnés</th>
+      <th>Matchs perdus</th>
+      <th>Delta</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @tournament.teams.sort_by(&:score).reverse.each_with_index do |team, id| %>
+      <tr>
+        <td><%= id + 1 %></td>
+        <td><%= team.name %></td>
+        <td><%= team.score %></td>
+        <td><%= team.matches.count %></td>
+        <td><%= team.matches.count %></td>
+        <td><%= team.matches.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <div>
   <div class="dashboard-card">
     <p class="dashboard-title">CLASSEMENT</p>
