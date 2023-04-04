@@ -49,8 +49,10 @@ class TournamentsController < ApplicationController
     end
 
     # match en cours
-    @current_match = @team.matches.find do |match|
-      match.statut == "In progress"
+    if @team
+      @current_match = @team.matches.find do |match|
+        match.statut == "In progress"
+      end
     end
   end
 
