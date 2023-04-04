@@ -137,10 +137,29 @@
 .players {
   display: block;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   background-color: $yellow;
   padding: 16px ;
+  margin-inline: auto;
   border-radius: 10px;
+}
+
+.ranking-group {
+  margin-top: 2rem;
+}
+
+.player-rank {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: 'Press Start 2P';
+}
+
+.ranking-item {
+  display: flex;
+  margin: 1rem;
+  font-family: 'Press Start 2P';
+  font-size: 0.8rem;
+  text-align: left;
 }
 
 .input-group {
