@@ -24,6 +24,15 @@
   text-align: center;
 }
 
+.tournaments-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  height: 850px;
+}
+
 .team-list-title {
   margin-top: 20px;
   font-size: 18px;
@@ -204,4 +213,12 @@
   flex-direction: column;
   justify-content: flex-start;
 
+}
+
+.center {
+  text-align: center;
+}
+
+.dates {
+  margin-bottom: 30px;
 }
