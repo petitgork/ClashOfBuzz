@@ -23,7 +23,7 @@
     <% if @tournament.status == "created" %>
       <div class="tournament">
         <p class="tournament-status">Statut : "ATTENTE DE LANCEMENT"</p>
-        <h4 class="team-list-title">Liste des équipes inscrites :</h4>
+        <h4 class="team-list-title">Liste des Equipes inscrites :</h4>
         <ul class="team-list">
           <% @tournament.teams.each do |team| %>
             <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
