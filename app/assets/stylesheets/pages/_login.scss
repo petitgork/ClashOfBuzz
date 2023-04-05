@@ -1,11 +1,12 @@
- .container-log{
+.container-log{
   background-color:$yellow;
   height: 400px;
   width: 700px;
 
   justify-content: center;
   align-items: center;
-  margin-top: 90px;
+  margin: 90px auto;
+  padding: 2rem;
 
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -22,6 +23,4 @@
 }
 .maincontainer{
   justify-content: center;
-
-
 }
