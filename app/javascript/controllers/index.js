@@ -15,6 +15,7 @@ const arrowElement = document.getElementById("arrow-up");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
+  console.log("hello")
   if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
     arrowElement.classList.remove("d-none");
   } else {
@@ -23,11 +24,11 @@ function scrollFunction() {
 }
 
 const arrowElementMatch = document.getElementById("arrow-up-match");
+console.log(arrowElementMatch)
 
 window.onscroll = function() {scrollFunctionMatch()};
 
 function scrollFunctionMatch() {
-  console.log("hello")
   if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
     arrowElementMatch.classList.remove("d-none");
   } else {

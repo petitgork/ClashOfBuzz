@@ -1,12 +1,12 @@
 <div class="user-header">
   <h1 class="user-header-name">Match de la semaine</h1>
 </div>
-<div class="container-match" id="container-matches">
-  <div class="buttons">
+<div class="container-match" id="container-match">
+  <div class="buttons back">
     <%= link_to "retour", matches_path(tournament_id: @tournament),class: "pixel_art_btn" %>
   </div>
   <div class="flex-arrow">
-    <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up-match"), match_path(@match, anchor: "container-macthes") %>
+    <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up-match"), match_path(@match, anchor: "container-match") %>
   </div>
   <% if @match.statut == "In progress" %>
     <%= button_to "Mettre a jour les resultats", update_results_match_path(@match, match: @match), method: :patch, class: "pixel_art_btn_match_adversary" %>

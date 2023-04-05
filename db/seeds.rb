@@ -69,7 +69,7 @@ tournament_6 = Tournament.create!(
 # TEAMS SEEDS
   # Equipe du tournoi 1
 team_francis_t1 = Team.create!(
-  name: "Les Marcheurs Enflammés",
+  name: "Les Marcheurs Enflammes",
   user_id: francis.id,
   tournament_id: tournament_1.id
 )
@@ -87,7 +87,7 @@ team_gael_t1 = Team.create!(
 )
 
 team_marine_t1 = Team.create!(
-  name: "Les Copé-cabana",
+  name: "Les Cope-cabana",
   user_id: marine.id,
   tournament_id: tournament_1.id
 )
@@ -107,7 +107,7 @@ team_louis_t1 = Team.create!(
   # Equipe du tournoi 2
 
 team_francis_t2 = Team.create!(
-  name: "Les Juppéters",
+  name: "Les Juppeters",
   user_id: francis.id,
   tournament_id: tournament_2.id
 )
@@ -119,13 +119,13 @@ team_gael_t2 = Team.create!(
 )
 
 team_pierre_t2 = Team.create!(
-  name: "Les LePenistes Décomplexés",
+  name: "Les LePenistes Décomplexes",
   user_id: pierre.id,
   tournament_id: tournament_2.id
 )
 
 team_lucas_t2 = Team.create!(
-  name: "Les Barbouzes de l'Assemblée",
+  name: "Les Barbouzes de l'Assemblee",
   user_id: lucas.id,
   tournament_id: tournament_2.id
 )
@@ -145,7 +145,7 @@ team_sebastien_t3 = Team.create!(
 )
 
 team_jb_t3 = Team.create!(
-  name: "Les Marcheurs épuisés",
+  name: "Les Marcheurs épuises",
   user_id: jb.id,
   tournament_id: tournament_3.id
 )
@@ -171,7 +171,7 @@ team_herve_t4 = Team.create!(
 )
 
 team_gael_t4 = Team.create!(
-  name: "Les Fillon-toutes-des-problèmes",
+  name: "Les Fillon-toutes-des-problemes",
   user_id: gael.id,
   tournament_id: tournament_4.id
 )
