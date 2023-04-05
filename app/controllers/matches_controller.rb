@@ -149,19 +149,22 @@ class MatchesController < ApplicationController
   end
 
   def change_status(match)
-    if match.date == Date.today
+    if Date.today > match.date && Date.today < ( match.date + 7)
       match.statut = "In progress"
       match.save
-    elsif match.statut == "In progress" && match.date < Date.today - 7
+    elsif Date.today > ( match.date + 7)
       match.statut = "Closed"
       match.save
       match_score_count(match)
-    elsif match.statut == "Closed"
-      match.team_matches.each do |team_match|
-        match_score_count(match) if team_match.match_score.zero?
-      end
+    # elsif match.statut == "Closed"
+      # match.team_matches.each do |team_match|
+      #   match_score_count(match) if team_match.match_score.zero?
+      # end
       match.team_matches.sort_by(&:match_score)
       match.winner = match.team_matches[0].team.name
+      match.save
+    else
+      match.statut = "Composition"
       match.save
     end
   end
