@@ -1,3 +1,4 @@
+<% console %>
 <div class="dashboard-container">
   <div>
     <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
@@ -49,35 +50,75 @@
                   <% if team.politics.count > 0 %>
                     <div class="carousel-inner">
                       <% if @politics_slice_a %>
-                        <div class="dashboard-card-list carousel-item active">
-                          <% @politics_slice_a.each do |politic| %>
-                            <div class="dashboard-card-politic">
-                              <div class="dashboard-card-politic-name">
-                                <p class="last-name"><%= politic.last_name %></p>
-                                <p class="first-name"><%= politic.first_name %></p>
+                        <div class="carousel-item active">
+                          <div class="dashboard-card-list">
+                            <% @politics_slice_a.each do |politic| %>
+                              <div class="dashboard-card-politic">
+                                <div class="dashboard-card-politic-name">
+                                  <p class="last-name"><%= politic.last_name %></p>
+                                  <p class="first-name"><%= politic.first_name %></p>
+                                </div>
+                                <div>
+                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                                </div>
+                                <p class="dashboard-card-politic-in-game">IN GAME</p>
                               </div>
-                              <div>
-                                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
-                              </div>
-                              <p class="dashboard-card-politic-in-game">IN GAME</p>
-                            </div>
-                          <% end %>
+                            <% end %>
+                          </div>
                         </div>
                       <% end %>
                       <% if @politics_slice_b %>
-                        <div class="dashboard-card-list carousel-item">
-                          <% @politics_slice_b.each do |politic| %>
-                            <div class="dashboard-card-politic">
-                              <div class="dashboard-card-politic-name">
-                                <p class="last-name"><%= politic.last_name %></p>
-                                <p class="first-name"><%= politic.first_name %></p>
+                        <div class="carousel-item">
+                          <div class="dashboard-card-list">
+                            <% @politics_slice_b.each do |politic| %>
+                              <div class="dashboard-card-politic">
+                                <div class="dashboard-card-politic-name">
+                                  <p class="last-name"><%= politic.last_name %></p>
+                                  <p class="first-name"><%= politic.first_name %></p>
+                                </div>
+                                <div>
+                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                                </div>
+                                <p class="dashboard-card-politic-in-game">IN GAME</p>
                               </div>
-                              <div>
-                                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                      <% if @politics_slice_c %>
+                        <div class="carousel-item">
+                          <div class="dashboard-card-list">
+                            <% @politics_slice_c.each do |politic| %>
+                              <div class="dashboard-card-politic">
+                                <div class="dashboard-card-politic-name">
+                                  <p class="last-name"><%= politic.last_name %></p>
+                                  <p class="first-name"><%= politic.first_name %></p>
+                                </div>
+                                <div>
+                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                                </div>
+                                <p class="dashboard-card-politic-in-game">IN GAME</p>
                               </div>
-                              <p class="dashboard-card-politic-in-game">IN GAME</p>
-                            </div>
-                          <% end %>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                      <% if @politics_slice_d %>
+                        <div class="carousel-item">
+                          <div class="dashboard-card-list">
+                            <% @politics_slice_d.each do |politic| %>
+                              <div class="dashboard-card-politic">
+                                <div class="dashboard-card-politic-name">
+                                  <p class="last-name"><%= politic.last_name %></p>
+                                  <p class="first-name"><%= politic.first_name %></p>
+                                </div>
+                                <div>
+                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                                </div>
+                                <p class="dashboard-card-politic-in-game">IN GAME</p>
+                              </div>
+                            <% end %>
+                          </div>
                         </div>
                       <% end %>
                     </div>
