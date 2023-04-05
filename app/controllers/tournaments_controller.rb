@@ -160,7 +160,7 @@ class TournamentsController < ApplicationController
   # end
 
   def tournament_params
-    params.require(:tournament).permit(:name, :status, :final_result)
+    params.require(:tournament).permit(:name, :status, :final_result, :photo)
   end
 
   def set_params

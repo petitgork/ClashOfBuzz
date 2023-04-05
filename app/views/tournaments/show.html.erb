@@ -9,14 +9,16 @@
   </div>
   <div class="dashboard-tournaments-container">
     <div>
-    <div class="menu_tournois">
-        <h3>Mes tournois</h3>
-        <div class="dashboard-tournaments-buttons">
-          <% current_user.tournaments.each do |tournament| %>
-            <p><%= link_to tournament.name, tournament_path(tournament),
-            class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament"%></p>
-          <% end %>
-        </div>
+      <h3>Mes tournois</h3>
+      <div class="dashboard-tournaments-buttons">
+        <% current_user.tournaments.each do |tournament| %>
+          <p>
+            <%= link_to tournament.name, tournament_path(tournament), class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament" do %>
+              <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
+              <%= tournament.name %>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     </div>
     <% if @tournament.status == "created" %>

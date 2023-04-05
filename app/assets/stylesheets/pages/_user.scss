@@ -34,6 +34,48 @@ h1 {
 .dashboard-container p {
   text-align: center;
 }
+
+.dashboard-tournaments-buttons .avatar {
+  margin-right: 10px;
+}
+
+.tournaments-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 12px;
+  background-color: $yellow;
+  color: $white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 3px 3px 2px #474747;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &:hover {
+    background-color: $red;
+    color: $white;
+  }
+}
+
+.button-red-tournament {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 12px;
+  background-color: $red;
+  color: $white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 3px 3px 2px #474747;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .user-header {
   background-color: $grey;
   color: white;
