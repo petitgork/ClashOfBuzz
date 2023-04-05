@@ -11,7 +11,12 @@
       <h3>Mes tournois</h3>
       <div class="dashboard-tournaments-buttons">
         <% @user.tournaments.each do |tournament| %>
-          <p><%= link_to tournament.name, tournament_path(tournament), class: "button" %></p>
+          <p>
+            <%= link_to tournament_path(tournament), class: "tournaments-button" do %>
+              <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
+              <%= tournament.name %>
+            <% end %>
+          </p>
         <% end %>
       </div>
     </div>
