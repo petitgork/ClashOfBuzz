@@ -17,7 +17,7 @@
           <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
         </div>
       <% else %>
-        <div class="match-result statut-finish">
+        <div class="match-result statut-closed">
           <p><%= match.date.strftime("%d/%m/%Y") %></p>
           <h2><%= match.team_matches[0].team.name %> vs <%= match.team_matches[1].team.name %></h2>
           <h3>Match terminé</h3>
