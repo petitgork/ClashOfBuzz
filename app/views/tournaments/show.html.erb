@@ -4,7 +4,6 @@
 <div class="dashboard-container">
   <div>
     <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
-    <br>
     C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
   </div>
   <div class="dashboard-tournaments-container">
@@ -49,7 +48,7 @@
             <p class="dashboard-title">MON EQUIPE</p>
             <% @tournament.teams.each do |team| %>
               <% if team.user == current_user %>
-                <h6><%= team.name %></h6>
+                <h4><%= team.name %></h4>
                 <%# <%= image_tag(team.avatar, class: "team-avatar") %>
                 <div id="politicCarousel" class="carousel slide">
                   <% if team.politics.count > 0 %>
@@ -66,7 +65,7 @@
                                 <div>
                                   <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
                                 </div>
-                                <p class="dashboard-card-politic-in-game">IN GAME</p>
+
                               </div>
                             <% end %>
                           </div>
@@ -84,7 +83,7 @@
                                 <div>
                                   <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
                                 </div>
-                                <p class="dashboard-card-politic-in-game">IN GAME</p>
+
                               </div>
                             <% end %>
                           </div>
@@ -102,7 +101,7 @@
                                 <div>
                                   <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
                                 </div>
-                                <p class="dashboard-card-politic-in-game">IN GAME</p>
+
                               </div>
                             <% end %>
                           </div>
@@ -118,9 +117,9 @@
                                   <p class="first-name"><%= politic.first_name %></p>
                                 </div>
                                 <div>
-                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "dashboard-card-list-avatar") %>
+                                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "check") %>
                                 </div>
-                                <p class="dashboard-card-politic-in-game">IN GAME</p>
+
                               </div>
                             <% end %>
                           </div>
@@ -140,22 +139,22 @@
               <% end %>
             <% end %>
           </div>
-          <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "button" %>
+          <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "check" %>
 
         </div>
         <div>
           <div class="dashboard-card" data-controller="countdown" data-countdown-date-value="<%= @next_date %>">
             <p class="dashboard-title">CALENDRIER</p>
             <div class="dashboard-subcard">
-              <h2>DEBUT</h2>
+              <h4>DEBUT</h4>
               <h2><%= @begin.strftime("%d/%m/%Y") if @begin %></h2>
-              <h2>FIN</h2>
+              <h4>FIN</h4>
               <h2><%= @end.strftime("%d/%m/%Y") if @end %></h2>
             </div>
             <div class="dashboard-subcard">
               <h2>MATCH EN COURS</h2>
               <% if @current_match %>
-                <%= button_to "#{@current_match.teams.first.name} VS #{@current_match.teams.last.name}", match_path(@current_match), method: :get, class: "button" %>
+                <%= button_to "#{@current_match.teams.first.name} VS #{@current_match.teams.last.name}", match_path(@current_match), method: :get, class: "pixel_art_btn_tournament" %>
               <% else %>
                 <p>Aucun match en cours</p>
               <% end %>
@@ -173,7 +172,7 @@
               <p>Plus de match à venir</p>
             <% end %>
           </div>
-          <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "button" %>
+          <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "check" %>
 
         </div>
         <div>
@@ -214,7 +213,7 @@
               <% end %>
             </div>
           </div>
-          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "button" %>
+          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "check" %>
         </div>
       </div>
     <% end %>
