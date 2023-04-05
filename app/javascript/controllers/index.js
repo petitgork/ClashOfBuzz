@@ -21,3 +21,16 @@ function scrollFunction() {
     arrowElement.classList.add("d-none");
   }
 }
+
+const arrowElementMatch = document.getElementById("arrow-up-match");
+
+window.onscroll = function() {scrollFunctionMatch()};
+
+function scrollFunctionMatch() {
+  console.log("hello")
+  if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+    arrowElementMatch.classList.remove("d-none");
+  } else {
+    arrowElementMatch.classList.add("d-none");
+  }
+}
