@@ -2,12 +2,8 @@
     <h1 class="tournament-header-name">Tableau de bord</h1>
   </div>
 <div class="dashboard-container">
-  <div>
-    <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
-    C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
-  </div>
   <div class="dashboard-tournaments-container">
-    <div>
+    <div class='tournament_list'>
       <h3>Mes tournois</h3>
       <div class="dashboard-tournaments-buttons">
         <% current_user.tournaments.each do |tournament| %>
@@ -161,13 +157,13 @@
                 <p>Aucun match en cours</p>
               <% end %>
             </div>
-            <h2>TEMPS RESTANT</h2>
+            <h2>PROCHAIN MATCH</h2>
             <div data-countdown-target="next" class="d-none"><%= @next_date %></div>
             <% if @next_date %>
               <div class="countdown">
-                <span data-countdown-target="days"></span>J:
-                <span data-countdown-target="hours"></span>h:
-                <span data-countdown-target="minutes"></span>m:
+                <span data-countdown-target="days"></span>J
+                <span data-countdown-target="hours"></span>h
+                <span data-countdown-target="minutes"></span>m
                 <span data-countdown-target="seconds"></span>s
               </div>
             <% else %>
