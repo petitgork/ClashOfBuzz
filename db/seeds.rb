@@ -37,7 +37,7 @@ laurent = User.create(nickname: 'Lolo', email: 'lolo@gmail.com', password: passw
 # TOURNOIS SEEDS
 
 tournament_1 = Tournament.create!(
-  name: "Ligue des Sénateurs",
+  name: "Ligue des Senateurs",
   status: "created"
 )
 
