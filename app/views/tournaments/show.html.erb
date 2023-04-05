@@ -1,18 +1,22 @@
+<div class="tournament-header">
+    <h1 class="tournament-header-name">Tableau de bord</h1>
+  </div>
 <div class="dashboard-container">
   <div>
     <p>Hey <%= current_user.nickname %>, bienvenue sur votre tableau de bord !
     <br>
     C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
   </div>
-  <%= link_to "+ Nouveau tournoi", new_tournament_path, class: "button" %>
   <div class="dashboard-tournaments-container">
     <div>
-      <h3>Mes tournois</h3>
-      <div class="dashboard-tournaments-buttons">
-        <% current_user.tournaments.each do |tournament| %>
-          <p><%= link_to tournament.name, tournament_path(tournament),
-          class: tournament == @tournament ? "button-red" : "button"%></p>
-        <% end %>
+    <div class="menu_tournois">
+        <h3>Mes tournois</h3>
+        <div class="dashboard-tournaments-buttons">
+          <% current_user.tournaments.each do |tournament| %>
+            <p><%= link_to tournament.name, tournament_path(tournament),
+            class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament"%></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <% if @tournament.status == "created" %>
