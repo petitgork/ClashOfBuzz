@@ -36,7 +36,7 @@ class TournamentsController < ApplicationController
   def show
     @team = Team.where(user: current_user, tournament: @tournament).first
     @matches = @tournament.matches
-    if @team.politics.count > 0
+    if @team.politics.count.positive?
       @politics_slice_a = @team.politics.slice(0, 4)
       @politics_slice_b = @team.politics.slice(4, 4)
       @politics_slice_c = @team.politics.slice(8, 4)

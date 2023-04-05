@@ -5,6 +5,7 @@ require "date"
 class MatchesController < ApplicationController
   def index
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
+    @tournament = @team.tournament
     @matches = @team.matches.sort_by(&:date)
     @matches.each do |match|
       change_status(match)

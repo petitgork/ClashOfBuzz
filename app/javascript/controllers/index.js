@@ -9,3 +9,17 @@ eagerLoadControllersFrom("controllers", application)
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
+
+const arrowElement = document.getElementById("arrow-up");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+    arrowElement.classList.remove("d-none");
+    console.log("hello")
+  } else {
+    arrowElement.classList.add("d-none");
+    console.log("bye")
+  }
+}
