@@ -1,66 +1,27 @@
-<table>
-  <thead>
-    <tr>
-      <th>Rang</th>
-      <th>Equipe</th>
-      <th>Score</th>
-      <th>Matchs gagnés</th>
-      <th>Matchs perdus</th>
-      <th>Delta</th>
-    </tr>
-  </thead>
-  <tbody>
-      <% @tournament.teams.sort_by(&:score).reverse.each_with_index do |team, id| %>
+<div class="results-container">
+  <table class="results-table">
+    <thead>
       <tr>
-        <td><%= id + 1 %></td>
-        <td><%= team.name %></td>
-        <td><%= team.score %></td>
-        <td><%= team.matches.count %></td>
-        <td><%= team.matches.count %></td>
-        <td><%= team.matches.count %></td>
+        <th>Rang</th>
+        <th>Equipe</th>
+        <th>Score</th>
+        <th>Matchs<br> joués</th>
+        <th>Matchs<br> gagnés</th>
+        <th>Matchs<br> perdus</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<div>
-  <div class="dashboard-card">
-    <p class="dashboard-title">CLASSEMENT</p>
-    <div class="ranking-group">
-      <% @tournament.teams.sort_by(&:score).reverse.each_with_index do |team, id| %>
-      <div class="ranking-item">
-        <div>
-          <%= id + 1 %>
-        </div>
-        <div>
-          <% if team.name.length > 15 %>
-            | <%= team.name.first(15) %>...
-          <% else %>
-            | <%= team.name %>
-          <% end %>
-          <br>
-          | <%= team.score %> PTS
-        </div>
-      </div>
+    </thead>
+    <tbody>
+        <% @tournament.teams.sort_by(&:score).reverse.each_with_index do |team, id| %>
+        <tr>
+          <td><%= id + 1 %></td>
+          <td><%= team.name %></td>
+          <td><%= team.score %></td>
+          <% closed_matches =  team.matches.select{|match| match.statut == "Closed"}%>
+          <td><%= closed_matches.count %></td>
+          <td><%= closed_matches.select{|match| match.winner == team.name}.count %></td>
+          <td><%= closed_matches.select{|match| match.winner != team.name}.count %></td>
+        </tr>
       <% end %>
-    </div>
-    <div class="player-rank">
-      TU ES
-      <% if @team == @tournament.teams.sort_by(&:score).reverse.first %>
-        1ER !!!
-        <br><br>
-        <i class="fa-solid fa-crown fa-2xl" style="color: #ffffff;"></i>
-      <% elsif @team == @tournament.teams.sort_by(&:score).reverse.last %>
-        DERNIER !!!
-        <br><br>
-        <i class="fa-solid fa-frog fa-2xl" style="color: #ffffff;"></i>
-      <% else %>
-        <%= @tournament.teams.sort_by(&:score).reverse.find_index(@team) + 1 %>EME
-        <br><br>
-        <i class="fa-solid fa-bolt fa-2xl" style="color: #ffffff;"></i>
-      <% end %>
-    </div>
-  </div>
-  <div class="button">VOIR +</div>
+    </tbody>
+  </table>
 </div>
