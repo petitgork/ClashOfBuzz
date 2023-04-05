@@ -1,5 +1,5 @@
 .results-table {
-  margin: 5rem auto;
+  margin: 3rem auto;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -8,6 +8,7 @@
   th {
     font-family: 'Press Start 2P';
     border-color: rgb(200, 200, 200);
+    background-color: $orange;
     border-width: 2px;
     padding: 1rem;
   }
