@@ -157,13 +157,13 @@
                 <p>Aucun match en cours</p>
               <% end %>
             </div>
-            <h2>TEMPS RESTANT</h2>
+            <h2>PROCHAIN MATCH</h2>
             <div data-countdown-target="next" class="d-none"><%= @next_date %></div>
             <% if @next_date %>
               <div class="countdown">
-                <span data-countdown-target="days"></span>J:
-                <span data-countdown-target="hours"></span>h:
-                <span data-countdown-target="minutes"></span>m:
+                <span data-countdown-target="days"></span>J
+                <span data-countdown-target="hours"></span>h
+                <span data-countdown-target="minutes"></span>m
                 <span data-countdown-target="seconds"></span>s
               </div>
             <% else %>
