@@ -171,7 +171,6 @@
 }
 
 .menu_tournois{
-
   color: $grey;
   padding: 20px;
   justify-content: space-between;
@@ -199,4 +198,10 @@
 .check:hover{
   background-color: $grey;
   color: white
+}
+.tournament_list{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
 }
