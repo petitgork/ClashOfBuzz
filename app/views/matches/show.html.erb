@@ -1,7 +1,7 @@
 <div class="container-match">
   <h1>Match de la semaine</h1>
   <% if @match.statut == "In progress" %>
-    <%= button_to "Mettre a jour les resultats", update_results_match_path(@match), method: :patch, class: "pixel_art_btn_match_adversary" %>
+    <%= button_to "Mettre a jour les resultats", update_results_match_path(@match, match: @match), method: :patch, class: "pixel_art_btn_match_adversary" %>
   <% end %>
   <div class="container-match-teams">
     <div class="container-match-vs">

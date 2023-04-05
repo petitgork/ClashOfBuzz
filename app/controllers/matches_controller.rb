@@ -5,10 +5,13 @@ require "date"
 class MatchesController < ApplicationController
   def index
     @team = Team.where(tournament: params[:tournament_id], user: current_user).first
-    @matches = @team.matches
+    @matches = @team.matches.sort_by(&:date)
     @matches.each do |match|
       change_status(match)
     end
+    @matches_composition = @matches.select{|match| match.statut == "Composition"}
+    @matches_in_progress = @matches.select{|match| match.statut == "In progress"}
+    @matches_closed = @matches.select{|match| match.statut == "Closed"}
   end
 
   def new
@@ -33,9 +36,11 @@ class MatchesController < ApplicationController
     # update_results
   end
 
-  def update_results
-    @match = Match.find(params[:id])
-    @line_up = @match.line_ups
+  def update_results(match=nil)
+    # @match = Match.find(params[:id])
+    redirection_at_end = true unless match
+    match = Match.find(params[:id]) unless match
+    @line_up = match.line_ups
     @line_up.each do |line_up|
       result = 0
       page = 0
@@ -59,7 +64,7 @@ class MatchesController < ApplicationController
       line_up.result = result
       line_up.save
     end
-    redirect_to request.referrer
+    redirect_to request.referrer if redirection_at_end
   end
 
   private
@@ -149,17 +154,13 @@ class MatchesController < ApplicationController
   end
 
   def change_status(match)
-    if match.date == Date.today
+    if Date.today > match.date && Date.today < (match.date + 7)
       match.statut = "In progress"
       match.save
-    elsif match.statut == "In progress" && match.date < Date.today - 7
+    elsif Date.today > (match.date + 7) && match.statut != "Closed"
       match.statut = "Closed"
-      match.save
+      update_results(match)
       match_score_count(match)
-    elsif match.statut == "Closed"
-      match.team_matches.each do |team_match|
-        match_score_count(match) if team_match.match_score.zero?
-      end
       match.team_matches.sort_by(&:match_score)
       match.winner = match.team_matches[0].team.name
       match.save
