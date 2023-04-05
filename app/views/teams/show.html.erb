@@ -1,7 +1,11 @@
+
 <div class="team-page">
   <div class="team-header">
     <h1 class="team-name"><%= @team.name %></h1>
   </div>
+    <div class="buttons">
+    <%= link_to "retour",tournament_path(current_user),class: "pixel_art_btn" %>
+    </div>
   <div class="politics-list">
     <% @politics.each do |politic| %>
       <div class="politic-item">

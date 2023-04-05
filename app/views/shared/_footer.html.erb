@@ -7,9 +7,15 @@
   </div>
   <div class="foot_menus">
   <ul class="menu_links">
-      <li><%= link_to "Règles du jeu", "#", class: "dropdown-item" %></li>
-      <li><%= link_to "A propos", "#", class: "dropdown-item" %></li>
-      <li><%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
+    <% if current_user %>
+      <li><%= link_to "Tableau de bord", user_path(current_user), class: "footer-menu" %></li>
+      <li><%= link_to "Créer un Tournoi", new_tournament_path, class: "footer-menu" %></li>
+    <% end %>
+      <li><%= link_to "Règles du jeu", "#", class: "footer-menu" %></li>
+      <li><%= link_to "A propos", "#", class: "footer-menu" %></li>
+    <% if current_user %>
+      <li><%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "footer-menu" %></li>
+    <% end %>
     </ul>
   </div>
   <div class="footer-copyright">

@@ -36,10 +36,12 @@ class TournamentsController < ApplicationController
   def show
     @team = Team.where(user: current_user, tournament: @tournament).first
     @matches = @tournament.matches
-    @politics_slice_a = @team.politics.slice(0, 4)
-    @politics_slice_b = @team.politics.slice(4, 4)
-    @politics_slice_c = @team.politics.slice(8, 4)
-    @politics_slice_d = @team.politics.slice(12, 4)
+    if @team.politics.count > 0
+      @politics_slice_a = @team.politics.slice(0, 4)
+      @politics_slice_b = @team.politics.slice(4, 4)
+      @politics_slice_c = @team.politics.slice(8, 4)
+      @politics_slice_d = @team.politics.slice(12, 4)
+    end
     @tournament = Tournament.find(params[:id])
     tournament_results(@tournament)
 
@@ -103,7 +105,12 @@ class TournamentsController < ApplicationController
     redirect_to tournament_path(@tournament)
   end
 
+  def ranking_details
+    @tournament = Tournament.find(params[:id])
+    @team = Team.where(user: current_user, tournament: @tournament).first
+    @matches = @tournament.matches
 
+  end
 
 
   private

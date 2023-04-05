@@ -169,3 +169,15 @@
 #copy-button {
   width: 200px;
 }
+
+.menu_tournois{
+
+  color: $grey;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: baseline;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
+  padding: 1rem;
+  margin:16px;
+  background-color: rgb(255, 255, 255);
+}

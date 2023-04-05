@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       post :join
       patch :launch
+      get :ranking_details
     end
   end
   resources :matches do

@@ -1,18 +1,20 @@
+<div>
+    <div class="user-header">
+    <h1 class="user-header-name">Tableau de bord</h1>
+  </div>
 <div class="dashboard-container">
-  <div>
-    <h1>TABLEAU DE BORD</h1>
     <p>Hey <%= @user.nickname %>, bienvenue sur votre tableau de bord !
     <br>
     C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
   </div>
-  <%= link_to "+ Nouveau tournoi", new_tournament_path, class: "button" %>
+  <div class="px"><%= link_to "Nouveau tournois", new_tournament_path, class: "pixel_art_btn_tournament" %></div>
   <div class="dashboard-tournaments-container">
-    <div>
-      <h3>Mes tournois</h3>
+    <div class="menu_tournois">
+      <h3>MES TOURNOIS</h3>
       <div class="dashboard-tournaments-buttons">
         <% @user.tournaments.each do |tournament| %>
           <p>
-            <%= link_to tournament_path(tournament), class: "tournaments-button" do %>
+            <%= link_to tournament.name, tournament_path(tournament), class: "pixel_art_tournament" do %>
               <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
               <%= tournament.name %>
             <% end %>
