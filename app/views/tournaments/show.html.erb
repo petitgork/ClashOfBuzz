@@ -13,7 +13,7 @@
       <div class="dashboard-tournaments-buttons">
         <% current_user.tournaments.each do |tournament| %>
           <p>
-            <%= link_to tournament.name, tournament_path(tournament), class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament" do %>
+            <%= link_to tournament_path(tournament), class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament" do %>
               <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
               <%= tournament.name %>
             <% end %>
@@ -30,11 +30,13 @@
             <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
           <% end %>
         </ul>
-        <h4 class="invite-title">Invite tes amis</h4>
-        <div class="input-group">
-          <input class="form-control" type="text" value="<%= url_for(only_path: false) %>" readonly>
-          <div class="input-group-append">
-            <button id="copy-button" class="btn btn-outline-primary">Copier l'invitation</button>
+        <div data-controller="clipboard">
+          <h4 class="invite-title">Invite tes amis</h4>
+          <div class="input-group">
+            <input class="form-control" type="text" value="<%= url_for(only_path: false) %>" readonly>
+            <div class="input-group-append">
+              <button id="copy-button" class="btn btn-outline-primary">Copier l'invitation</button>
+            </div>
           </div>
         </div>
         <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "btn btn-launch" %>
