@@ -32,7 +32,16 @@ h1{
 
 }
 
-
 #tournament-form{
   font-weight: 700;
+}
+.tournament-header {
+  background-color: $grey;
+  color: white;
+  padding: 20px;
+}
+
+.tournament-header-name {
+  font-size: 30px;
+  margin: 0;
 }

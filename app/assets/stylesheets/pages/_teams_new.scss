@@ -24,3 +24,13 @@ h1{
 #team-form{
   font-weight: 700;
 }
+.team-header {
+  background-color: $grey;
+  color: white;
+  padding: 20px;
+}
+
+.team-header-name {
+  font-size: 30px;
+  margin: 0;
+}
