@@ -1,14 +1,20 @@
-const copyButton = document.querySelector('#copy-button');
-const input = document.querySelector('input');
+import { Controller } from "@hotwired/stimulus"
 
-if (copyButton) {
-  copyButton.addEventListener('click', () => {
-    navigator.clipboard.writeText(input.value)
-      .then(() => {
-        copyButton.innerText = "Copié !";
-      })
-      .catch((error) => {
-        console.error('Failed to copy text: ', error);
+export default class extends Controller {
+  connect() {
+    const copyButton = this.element.querySelector('#copy-button');
+    const input = this.element.querySelector('input');
+
+    if (copyButton) {
+      copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(input.value)
+          .then(() => {
+            copyButton.innerText = "Copié !";
+          })
+          .catch((error) => {
+            console.error('Failed to copy text: ', error);
+          });
       });
-  });
+    }
+  }
 }
