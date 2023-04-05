@@ -162,9 +162,6 @@ class MatchesController < ApplicationController
       match.statut = "Closed"
       update_results(match)
       match_score_count(match)
-      match.team_matches.sort_by(&:match_score)
-      match.winner = match.team_matches[0].team.name
-      match.save
     end
   end
 end

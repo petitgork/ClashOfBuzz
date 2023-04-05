@@ -45,6 +45,12 @@
   font-size: 16px;
   margin-bottom: 0;
 }
+
+.team-names {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+}
 // Pas utilisé car on prend le composant bouton général
 // .btn-details {
 //   background-color: #007bff;
