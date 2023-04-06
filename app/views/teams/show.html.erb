@@ -3,9 +3,9 @@
   <div class="team-header">
     <h1 class="team-name"><%= @team.name %></h1>
   </div>
-    <div class="buttons">
+  <div class="back">
     <%= link_to "retour",tournament_path(params[:tournament_id]),class: "pixel_art_btn" %>
-    </div>
+  </div>
   <div class="politics-list">
     <% @politics.each do |politic| %>
       <div class="politic-item">
