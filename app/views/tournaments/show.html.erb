@@ -1,11 +1,11 @@
-<div class="tournament-header">
-    <h1 class="tournament-header-name">
-      <%= @tournament.name %>
-      <% if @tournament.status == "created" %>
-        <p> (en attente de lancement)</p>
-      <% end %>
-    </h1>
-  </div>
+<div class="tournament-header-show">
+  <%= image_tag(@tournament.photo.attached? ? url_for(@tournament.photo) : "chien.png", class: "avatar avatar-user", id: "avatar-tournament") %>
+  <h1 class="tournament-header-name"><%= @tournament.name %>
+    <% if @tournament.status == "created" %>
+      <p> (en attente de lancement)</p>
+    <% end %>
+  </h1>
+</div>
 <div class="dashboard-container">
   <div class="dashboard-tournaments-container">
     <% if @tournament.status == "created" %>

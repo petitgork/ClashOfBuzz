@@ -8,6 +8,20 @@
   flex-grow: 1
 }
 
+.tournament-header-show {
+  background-color: $grey;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#avatar-tournament {
+  width: 50px;
+  margin-right: 20px;
+}
+
 .tournament-name {
   margin: 0 0 10px 0;
   font-size: 24px;
