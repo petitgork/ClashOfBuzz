@@ -4,26 +4,36 @@
   background-color: $grey;
   border-radius: 10px;
   padding: 20px;
-  width: 30%;
-  display: flex;
+  width: 300px;
+  height: 150px;
+  display: bloc;
   align-items: center;
   text-transform: uppercase;
   justify-content: center;
   margin-top: 0;
+  color:$yellow;
+  font-family: 'press start 2p';
+
+
 
 }
 .general_card{
-  padding: 8px;
+  margin-bottom: 60px;
   display:flex;
   justify-content: space-around;
   margin: 16px;
-  align-items: center;
+
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(215, 215, 215);
+  border-radius: 8px;
+  padding: 20px;
 }
 .user_card_owner{
   background-color: $yellow;
   border-radius: 10px;
   padding: 25px;
-  width: 30%;
+  width: 300px;
+  height: 130px;
 
 
 
@@ -69,18 +79,31 @@
   justify-content: flex-start;
   text-transform: uppercase;
 }
-.vs{
-  font-size: 32px;
-  margin: 0;
-  color: $grey;
-  font-family: 'press start 2p';
-  display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  align-items: center;
-}
+
 
 .pixel_art_btn_tournament {
   display: flex;
   justify-content: flex-start;
+
+}
+
+.info{
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 64px;
+  padding-bottom: 8px;
+
+}
+.sword{
+  height: 60px;
+  width: 80px;
+  margin-top:50%;
+}
+.button_pix{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.margin{
+  margin-top: -62px;
 }
