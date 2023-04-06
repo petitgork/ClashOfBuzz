@@ -1,22 +1,8 @@
 <div class="tournament-header">
-    <h1 class="tournament-header-name">Tableau de bord</h1>
+    <h1 class="tournament-header-name"><%= @tournament.name %></h1>
   </div>
 <div class="dashboard-container">
-  <h2><%= @tournament.name %></h2>
   <div class="dashboard-tournaments-container">
-    <div class='tournament_list'>
-      <h3>Mes tournois</h3>
-      <div class="dashboard-tournaments-buttons">
-        <% current_user.tournaments.each do |tournament| %>
-          <p>
-            <%= link_to tournament_path(tournament), class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament" do %>
-              <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
-              <%= tournament.name %>
-            <% end %>
-          </p>
-        <% end %>
-      </div>
-    </div>
     <% if @tournament.status == "created" %>
       <div class="tournament">
         <p class="tournament-status">Statut : "ATTENTE DE LANCEMENT"</p>

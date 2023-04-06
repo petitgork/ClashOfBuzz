@@ -6,7 +6,7 @@
       </div>
       <ul class="nav-links">
         <% if user_signed_in? %>
-          <li><%= link_to "Tableau de bord", user_path(current_user), class: "nav-link active" %></li>
+          <li><%= link_to "Mes tournois", user_path(current_user), class: "nav-link active" %></li>
           <li><%= link_to "Créer un Tournoi", new_tournament_path, class: "nav-link" %></li>
           <li><%= link_to "", "#", class: "nav-link" %></li>
 
