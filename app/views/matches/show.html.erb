@@ -5,9 +5,6 @@
   <div class="back">
     <%= link_to "retour", matches_path(tournament_id: @tournament),class: "pixel_art_btn" %>
   </div>
-  <div class="flex-arrow">
-    <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up-match"), match_path(@match, anchor: "container-match") %>
-  </div>
   <% if @match.statut == "In progress" %>
     <%= button_to "Mettre a jour les resultats", update_results_match_path(@match, match: @match), method: :patch, class: "pixel_art_btn_match_adversary" %>
   <% end %>
