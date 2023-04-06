@@ -1,14 +1,17 @@
 <% @match.teams.each do |team| %>
   <% if team.user == current_user %>
-    <h2>Ton club</h2>
+    <h2 class="title-team-matches">Ton club</h2>
     <div class="team-list">
       <% team.politics.each do |politic| %>
         <% unless @match.line_ups.exists?(politic_id: politic.id) %>
           <ul>
             <li class="team-list-politic">
-              <div class="player-info">
-                <%= politic.first_name %> <%= politic.last_name %>
-                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
+              <div class="politic-item-current">
+                <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "politic-avatar") %>
+                <div class="politic-info">
+                  <h2 class="politic-name"><%= politic.first_name %> <%= politic.last_name %></h2>
+                  <p class="politic-board"><%= politic.politic_board %></p>
+                </div>
               </div>
               <% if team.user == current_user && !@match.line_ups.exists?(politic_id: politic.id) %>
                 <%= button_to "+", match_line_ups_path(@match, politic_id: politic.id), method: :post, class: "pixel_art_btn_match" %>
