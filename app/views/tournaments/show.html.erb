@@ -17,7 +17,7 @@
             <p class="dashboard-title mb-5">EQUIPES INSCRITES</p>
             <ul>
               <% @tournament.teams.each do |team| %>
-                <li class="pixel_art_tournament mb-1"><%= team.name %> - <%= team.user.nickname %></li>
+                <li class="mb-1"><h4><%= team.name %> - <%= team.user.nickname %></h4></li>
               <% end %>
             </ul>
           </div>
