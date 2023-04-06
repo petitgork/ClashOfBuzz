@@ -5,81 +5,86 @@
   <div class="flex-arrow">
     <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up"), matches_path(tournament_id: @tournament, anchor: "container-matches") %>
   </div>
-
-  <%#  card for each match %>
-  <% @matches_in_progress.each do |match| %>
-    <div class="general_card">
-      <p class='date_match'><%= match.date.strftime("%d/%m/%Y") %></p>
-        <div class="user_card">
-          <% match.team_matches.each do |team_match| %>
-            <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
-          <% end %>
+<div class="margin">
+    <%#  card for each match %>
+      <% @matches_in_progress.each do |match| %>
+        <div class="general_card">
+          <p class='date_match'><%= match.date.strftime("%d/%m/%Y") %></p>
+            <div class="user_card">
+              <% match.team_matches.each do |team_match| %>
+                <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+              <% end %>
+            </div>
+            <p class='vs'>VS</p>
+            <div class="user_card">
+              <% match.team_matches.each do |team_match| %>
+                <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+              <% end %>
+            </div>
+          <h3>Match en cours</h3>
+          <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
         </div>
-        <p class='vs'>VS</p>
-        <div class="user_card">
-          <% match.team_matches.each do |team_match| %>
-            <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
-          <% end %>
+      <% end %>
+
+
+    <%# Boutton composition de l'équipe %>
+      <% @matches_composition.each do |match| %>
+        <div class="info">
+          <p class='statut'>Match a venir</p>
+          <p class='date_match'><%= match.date.strftime("%d/%m/%Y") %></p>
         </div>
-      <h3>Match en cours</h3>
-      <%= button_to "Voir les résultats en direct", match_path(match), method: :get, class: "button-orange" %>
-    </div>
-  <% end %>
-
-  <%# Boutton composition de l'équipe %>
-
-  <% @matches_composition.each do |match| %>
-  <p class='statut'>Match a venir</p>
-  <p class='date_match'><%= match.date.strftime("%d/%m/%Y") %></p>
-    <div class="general_card">
-      <div class="user_card_owner">
-        <% match.team_matches.each do |team_match| %>
-          <p class='user_card_title'><%= team_match.team.name if team_match.team.user == current_user %></p>
-          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
-        <% end %>
-      </div>
-      <p class='vs'>VS</p>
-      <div class="user_card">
-        <% match.team_matches.each do |team_match| %>
-          <div class="partner_name">
-          <p><%= team_match.team.name if team_match.team.user != current_user %></p>
+        <div class="general_card">
+          <div class="user_card_owner">
+            <% match.team_matches.each do |team_match| %>
+              <p class='user_card_title'><%= team_match.team.name if team_match.team.user == current_user %></p>
+            <% end %>
           </div>
-          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
-        <% end %>
-      </div>
-      <%= button_to "Composez votre equipe", match_path(match), method: :get, class: "pixel_art_btn_tournament" %>
-    </div>
-  <% end %>
+          <p><%=image_tag'sword2.png', class:'sword' %></p>
+          <div class="user_card">
+            <% match.team_matches.each do |team_match| %>
+              <div class="partner_name">
+              <p><%= team_match.team.name if team_match.team.user != current_user %></p>
+              </div>
+              <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
+            <% end %>
+          </div>
+            <div class="button_pix">
+            <%= button_to "Composez votre equipe", match_path(match), method: :get, class: "pixel_art_btn_tournament" %>
+            </div>
+        </div>
+      <% end %>
 
- <% @matches_closed.each do |match| %>
-    <div class="general_card">
-      <p><%= match.date.strftime("%d/%m/%Y") %></p>
-      <div class="user_card">
-        <% match.team_matches.each do |team_match| %>
-          <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
-          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
-        <% end %>
+      <% @matches_closed.each do |match| %>
+          <div class="general_card">
+            <p><%= match.date.strftime("%d/%m/%Y") %></p>
+            <div class="user_card">
+              <% match.team_matches.each do |team_match| %>
+                <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+                <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
+              <% end %>
+            </div>
+            <div class="user_card">
+              <% match.team_matches.each do |team_match| %>
+                <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+                <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
+              <% end %>
+            </div>
+          </div>
       </div>
-      <div class="user_card">
-        <% match.team_matches.each do |team_match| %>
-          <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
-          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="user_card">
-      <%= button_to "Voir le détail des résultats", match_path(match), method: :get, class: "button" %>
       <div class="user_card">
-        <% match.team_matches.each do |team_match| %>
-          <h2><%= team_match.match_score if team_match.team.user == current_user %></h2>
-        <% end %>
+        <%= button_to "Voir le détail des résultats", match_path(match), method: :get, class: "button" %>
+        <div class="user_card">
+          <% match.team_matches.each do |team_match| %>
+            <h2><%= team_match.match_score if team_match.team.user == current_user %></h2>
+          <% end %>
+        </div>
+        <div class="user_card">
+          <% match.team_matches.each do |team_match| %>
+            <h2><%= team_match.match_score if team_match.team.user != current_user %></h2>
+          <% end %>
+        </div>
       </div>
-      <div class="user_card">
-        <% match.team_matches.each do |team_match| %>
-          <h2><%= team_match.match_score if team_match.team.user != current_user %></h2>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
