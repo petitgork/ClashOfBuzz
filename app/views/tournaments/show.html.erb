@@ -15,7 +15,7 @@
         <div data-controller="clipboard">
           <h4 class="invite-title">Invite tes amis</h4>
           <div class="input-group">
-            <input class="form-control" type="text" value="<%= url_for(only_path: false) %>" readonly>
+            <input class="form-control" type="text" value="<%= url_for(only_path: false, host: 'www.clashofbuzz.me') %>" readonly>
             <div class="input-group-append">
               <button id="copy-button" class="btn btn-outline-primary">Copier l'invitation</button>
             </div>
