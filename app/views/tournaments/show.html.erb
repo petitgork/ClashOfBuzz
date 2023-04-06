@@ -28,7 +28,7 @@
       </div>
     <% else %>
       <div class="tournaments-details-container">
-        <div>
+        <div class="dashboard-complete-card">
           <div class="dashboard-card">
             <p class="dashboard-title">MON EQUIPE</p>
             <% @tournament.teams.each do |team| %>
@@ -127,7 +127,7 @@
           <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "pixel_art_btn" %>
 
         </div>
-        <div>
+        <div class="dashboard-complete-card">
           <div class="dashboard-card" data-controller="countdown" data-countdown-date-value="<%= @next_date %>">
             <p class="dashboard-title">CALENDRIER</p>
             <div class="dashboard-subcard">
@@ -164,7 +164,7 @@
           <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "pixel_art_btn" %>
 
         </div>
-        <div>
+        <div class="dashboard-complete-card">
           <div class="dashboard-card">
             <p class="dashboard-title">CLASSEMENT</p>
             <div class="ranking-group">
@@ -202,7 +202,7 @@
               <% end %>
             </div>
           </div>
-          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "pixel_art_btn" %>
+          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "pixel_art_btn_big" %>
         </div>
       </div>
     <% end %>
