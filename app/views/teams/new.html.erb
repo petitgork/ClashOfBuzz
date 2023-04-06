@@ -6,7 +6,6 @@
     <div id="team-form">
       <%= simple_form_for [@tournament, @team] do |f| %>
         <%= f.input :name, label: "Nom de l'équipe" %>
-        <%= f.input :avatar, label: "Avatar", as: :file %>
         <%= f.submit "pret", class:'pixel_art_btn' %>
       <% end %>
     </div>
