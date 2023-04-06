@@ -2,7 +2,7 @@
   <h1 class="user-header-name">Mon calendrier</h1>
 </div>
 <div class="back">
-  <%= link_to "retour", matches_path(tournament_id: @tournament),class: "pixel_art_btn" %>
+  <%= link_to "retour", tournament_path(@tournament),class: "pixel_art_btn" %>
 </div>
 <div class="championship-results" id="container-matches">
 <div class="margin">
@@ -92,7 +92,7 @@
                   <% end %>
               <p><%=image_tag'sword2.png', class:'sword_reverse' %></p>
               <% match.team_matches.each do |team_match| %>
-              <p><%= team_match.match_score if team_match.team.user != current_user %></p>
+                <p><%= team_match.match_score if team_match.team.user != current_user %></p>
               <% end %>
             </div>
             <div class="user_card_owner_off">
