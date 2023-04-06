@@ -1,33 +1,51 @@
 <div class="tournament-header-show">
   <%= image_tag(@tournament.photo.attached? ? url_for(@tournament.photo) : "chien.png", class: "avatar avatar-user", id: "avatar-tournament") %>
-  <h1 class="tournament-header-name"><%= @tournament.name %></h1>
+  <h1 class="tournament-header-name"><%= @tournament.name %>
+    <% if @tournament.status == "created" %>
+      <p> (en attente de lancement)</p>
+    <% end %>
+  </h1>
 </div>
 <div class="dashboard-container">
   <div class="dashboard-tournaments-container">
     <% if @tournament.status == "created" %>
-      <div class="tournament">
-        <p class="tournament-status">Statut : "ATTENTE DE LANCEMENT"</p>
-        <h4 class="team-list-title">Liste des Equipes inscrites :</h4>
-        <ul class="team-list">
-          <% @tournament.teams.each do |team| %>
-            <li class="team"><%= team.name %> - <%= team.user.nickname %></li>
-          <% end %>
-        </ul>
-        <div data-controller="clipboard">
-          <h4 class="invite-title">Invite tes amis</h4>
-          <div class="input-group">
-            <input class="form-control" type="text" value="<%= url_for(only_path: false, host: 'www.clashofbuzz.me') %>" readonly>
-            <div class="input-group-append">
-              <button id="copy-button" class="btn btn-outline-primary">Copier l'invitation</button>
-            </div>
+      <div class="tournaments-details-container">
+        <div class="dashboard-complete-card">
+          <div class="dashboard-card small">
+            <p class="dashboard-title mb-5">EQUIPES INSCRITES</p>
+            <ul>
+              <% @tournament.teams.each do |team| %>
+                <li class="pixel_art_tournament mb-1"><%= team.name %> - <%= team.user.nickname %></li>
+              <% end %>
+            </ul>
           </div>
         </div>
-        <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "btn btn-launch" %>
-        <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
-          <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "btn btn-join" %>
-        <% end %>
       </div>
+
+      <div class="tournaments-details-container">
+        <div class="dashboard-complete-card">
+          <div class="dashboard-card small" data-controller="clipboard">
+            <p class="dashboard-title">INVITE TES AMIS</p>
+            <input class="form-control mt-5" type="text" value="<%= url_for(only_path: false, host: 'www.clashofbuzz.me') %>" readonly>
+            <button id="copy-button" class="pixel_art_btn_home_page mt-5">Copier l'invitation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tournaments-details-container">
+        <div class="dashboard-complete-card">
+          <div class="dashboard-card small">
+            <p class="dashboard-title text-white">INVITE TES AMIS</p>
+            <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
+              <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "pixel_art_btn_home_page mt-5" %>
+            <% end %>
+            <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "pixel_art_btn_home_page mt-5" %>
+          </div>
+        </div>
+      </div>
+
     <% else %>
+
       <div class="tournaments-details-container">
         <div class="dashboard-complete-card">
           <div class="dashboard-card">

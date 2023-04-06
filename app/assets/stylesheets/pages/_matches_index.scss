@@ -34,6 +34,8 @@
   padding: 25px;
   width: 300px;
   height: 130px;
+  text-transform: uppercase;
+
 
 
 
@@ -44,8 +46,7 @@
   margin: 0;
   color: white;
   font-family: 'press start 2p';
-  display: flex;
-  justify-content: center;
+  align-items: center;
 
 
 }
@@ -106,4 +107,71 @@
 }
 .margin{
   margin-top: -62px;
+}
+.general_card_online{
+  margin-bottom: 60px;
+  display:flex;
+  justify-content: space-around;
+  margin: 16px;
+
+  background-color: rgb(229, 229, 229);
+  border: 4px solid $yellow;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.sword_online{
+  height: 60px;
+  width: 80px;
+  margin-top:50%;
+  animation: hover 2s ease-in-out infinite;
+}
+
+@keyframes hover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.sword_reverse{
+  height: 60px;
+  width: 80px;
+  margin-top:50%;
+  filter: grayscale(1);
+}
+.score_game{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  align-items: center;
+
+
+}
+.score_game p{
+  color: white;
+  font-size: 32px;
+  font-family: 'press start 2p';
+}
+.general_card_off{
+  margin-bottom: 60px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 16px;
+  background-color: rgb(73, 73, 73);
+  border-radius: 8px;
+  padding: 20px;
+}
+.user_card_owner_off{
+  background-color: rgb(224, 224, 224);
+  border-radius: 10px;
+  padding: 25px;
+  width: 300px;
+  height: 130px;
+  text-transform: uppercase;
+
+;
 }

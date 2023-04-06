@@ -10,10 +10,15 @@
   width: 23rem;
   height: 40rem;
   margin-bottom: 32px;
+
+  &.small {
+    height: 27rem!important;
+  }
 }
 
 .dashboard-complete-card {
   text-align: center;
+  margin-inline: auto;
 }
 
 .dashboard-card:hover {
