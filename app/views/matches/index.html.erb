@@ -16,10 +16,21 @@
                 <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
               <% end %>
             </div>
-            <p><%=image_tag'sword2.png', class:'sword_online' %></p>
+            <div class="score_game_before">
+              <% match.team_matches.each do |team_match| %>
+                    <p><%= team_match.match_score if team_match.team.user == current_user %></p>
+                  <% end %>
+              <p><%=image_tag'sword2.png', class:'sword_online' %></p>
+              <% match.team_matches.each do |team_match| %>
+              <p><%= team_match.match_score if team_match.team.user != current_user %></p>
+              <% end %>
+            </div>
             <div class="user_card">
               <% match.team_matches.each do |team_match| %>
-                <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+                <div class="partner_name">
+                  <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+                </div>
+                <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
               <% end %>
             </div>
 

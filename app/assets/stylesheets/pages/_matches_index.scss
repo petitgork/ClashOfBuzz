@@ -155,6 +155,20 @@
   font-size: 32px;
   font-family: 'press start 2p';
 }
+.score_game_before{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  align-items: center;
+
+
+}
+.score_game_before p{
+  color: $grey;
+  font-size: 32px;
+  font-family: 'press start 2p';
+}
 .general_card_off{
   margin-bottom: 60px;
   display:flex;
