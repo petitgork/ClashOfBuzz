@@ -1,13 +1,7 @@
-.container-match {
-  margin: 2rem;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
 .container-match-teams {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -22,26 +16,48 @@
   text-decoration: none;
   margin: 1rem;
   padding: 44px;
+  width: 30%;
 }
 
 .container-match-composition {
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 2rem;
+  border-radius: 10px;
+}
+
+.container-match-composition-progress {
+  display: flex;
   justify-content: space-around;
   align-items: baseline;
   margin-top: 2rem;
-  background-color: #e6e6e6;
   border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.cut-container {
+  width: 33%;
+  padding: 1rem 3rem;
+}
 
+.back {
+  float: left;
+  margin-top: 0;
+}
+
+.vs {
+  width: 150px;
+}
+
+.title-team-matches {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 
 .team-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-content: space-between;
-  gap: 10px;
   margin-top: 6px;
 }
 
@@ -50,10 +66,56 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #bbbbbb;
+  background-color: $yellow;
   padding: 1rem;
   border-radius: 10px;
   margin-bottom: 1rem;
+}
+
+.team-list-politic-selection {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fe8e1b;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.team-list-politic-adv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #9b9b9b;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.politic-item-matches {
+  background-color: #fe8e1b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.politic-item-adv {
+  background-color: #9b9b9b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.politic-item-current {
+  background-color: $yellow;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .team-list-politic ul li {
@@ -64,7 +126,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+}
+
+.points {
+  margin: 0;
 }
 
 .team-list-avatar {
@@ -77,16 +142,12 @@
 }
 
 .selection-divider {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 1rem 0;
-  background-color: #f5f5f5;
+  border-left: #000000;
 }
 
 .match_selection {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 1rem 3rem;
+  width: 33%;
 }
 
 .d-flex {
@@ -99,6 +160,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 1rem;
 }
 
 .container-match-in-progress {
@@ -127,6 +191,26 @@
   transition: 0.1s;
   text-decoration: none;
 }
+
+.pixel_art_btn_match_black {
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  box-shadow: 2px 2px 0 #fff;
+  transition: 0.1s;
+  text-decoration: none;
+}
+
 .pixel_art_btn_match:before {
 content: '';
 position: absolute;

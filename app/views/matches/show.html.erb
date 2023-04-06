@@ -2,7 +2,7 @@
   <h1 class="user-header-name">Match de la semaine</h1>
 </div>
 <div class="container-match" id="container-match">
-  <div class="back-buttons">
+  <div class="back">
     <%= link_to "retour", matches_path(tournament_id: @tournament),class: "pixel_art_btn" %>
   </div>
   <div class="flex-arrow">
@@ -19,7 +19,7 @@
         <% end %>
       <% end %>
     </div>
-    <h1>VS</h1>
+    <span><%= image_tag("https://res.cloudinary.com/dvzsvgucq/image/upload/v1680687767/development/ie68ekzrn501l6utf8fnq20lsn0j.png", class: "vs") %></span>
     <div class="container-match-vs">
       <% @match.teams.each do |team| %>
         <% if team.user != current_user %>
@@ -31,10 +31,10 @@
   <br>
   <% if @match.statut == "Composition" %>
     <div class="container-match-composition">
-      <div>
+      <div class="cut-container">
         <%= render "current_user_team" %>
       </div>
-      <div class="selection-divider match_selection" >
+      <div class="match_selection" >
         <%= render "match_selection" %>
       </div>
       <div class="selection-divider">
@@ -43,26 +43,21 @@
     </div>
   <% end %>
   <% if @match.statut == "In progress" %>
-    <div class="container-match-composition">
-      <div class="selection-divider">
-        <h3>Ta sélection pour le match</h3>
+    <div class="container-match-composition-progress">
+      <div class="cut-container">
+        <h3 class="title-team-matches">Ta sélection pour le match</h3>
         <% @match.teams.each do |team| %>
           <% if team.user == current_user %>
             <% @match.line_ups.each do |line_up| %>
               <% if team.politics.include?(line_up.politic) && team.user == current_user %>
                 <ul>
-                  <li>
-                    <div class="team-list-politic d-flex">
-                      <div class="player-info">
-                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
-                        <p><%= line_up.result %> POINTS</p>
+                  <li class="team-list-politic-selection">
+                    <div class="politic-item-matches">
+                      <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "politic-avatar") %>
+                      <div class="politic-info">
+                        <h2 class="politic-name"><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></h2>
+                        <p class="politic-result"><%= line_up.result %> POINTS</p>
                       </div>
-                      <% if team.user == current_user && @match.line_ups.exists?(politic_id: line_up.politic.id) && @match.statut != "In progress" %>
-                        <%= form_with(url: line_up_path(line_up), method: :delete) do |f| %>
-                          <%= f.submit "Retirer de la sélection", class: "pixel_art_btn_match" %>
-                        <% end %>
-                      <% end %>
                     </div>
                   </li>
                 </ul>
@@ -71,19 +66,19 @@
           <% end %>
         <% end %>
       </div>
-      <div class="selection-divider">
-        <h3>Équipe adverse</h3>
+      <div class="cut-container">
+        <h3 class="title-team-matches">Équipe adverse</h3>
         <% @match.teams.each do |team| %>
           <% if team.user != current_user %>
             <% @match.line_ups.each do |line_up| %>
               <% if team.politics.include?(line_up.politic) && team.user != current_user %>
                 <ul>
-                  <li>
-                    <div class="team-list-politic d-flex">
-                      <div class="player-info">
-                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
-                        <p><%= line_up.result %> POINTS</p>
+                  <li class="team-list-politic-selection">
+                    <div class="politic-item-matches">
+                      <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "politic-avatar") %>
+                      <div class="politic-info">
+                        <h2 class="politic-name"><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></h2>
+                        <p class="politic-result"><%= line_up.result %> POINTS</p>
                       </div>
                     </div>
                   </li>
@@ -103,20 +98,23 @@
         <h2><%= @match.team_matches[0].match_score %> - <%= @match.team_matches[1].match_score %></h2>
       </div>
     </div>
-    <div class="container-match-composition">
-      <div class="selection-divider <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[0].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[0].team.name %>">
-        <h3>Ta sélection pour le match</h3>
+    <div class="container-match-composition-progress">
+      <div class="cut-container <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[0].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[0].team.name %>">
+        <h3 class="title-team-matches">Ta sélection pour le match</h3>
         <% @match.teams.each do |team| %>
           <% if team.user == current_user %>
             <% @match.line_ups.each do |line_up| %>
               <% if team.politics.include?(line_up.politic) && team.user == current_user %>
                 <ul>
                   <li>
-                    <div class="team-list-politic d-flex">
-                      <div class="player-info">
-                        <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
-                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
-                        <p><%= line_up.result %> POINTS</p>
+                    <div class="team-list-politic-selection d-flex">
+                      <div class="politic-item-matches">
+                        <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "politic-avatar") %>
+                        <div class="politic-info">
+                          <h2 class="politic-name"><%= line_up.politic.first_name %> <%= line_up.politic.last_name %></h2>
+                          <p class="politic-board"><%= line_up.politic.politic_board %></p>
+                          <p class="points"><%= line_up.result %> POINTS</p>
+                        </div>
                       </div>
                     </div>
                   </li>
@@ -126,15 +124,15 @@
           <% end %>
         <% end %>
       </div>
-      <div class="selection-divider <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[1].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[1].team.name %>">
-        <h3>Équipe adverse</h3>
+      <div class="cut-container <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[1].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[1].team.name %>">
+        <h3 class="title-team-matches">Équipe adverse</h3>
         <% @match.teams.each do |team| %>
           <% if team.user != current_user %>
             <% @match.line_ups.each do |line_up| %>
               <% if team.politics.include?(line_up.politic) && team.user != current_user %>
                 <ul>
                   <li>
-                    <div class="team-list-politic d-flex">
+                    <div class="team-list-politic-progress d-flex">
                       <div class="player-info">
                         <%= line_up.politic.first_name %> <%= line_up.politic.last_name %>
                         <%= image_tag("avatars/#{line_up.politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "team-list-avatar") %>
