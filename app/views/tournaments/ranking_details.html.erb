@@ -21,7 +21,10 @@
           <% @tournament.teams.sort_by(&:score).reverse.each_with_index do |team, id| %>
           <tr>
             <td><%= id + 1 %></td>
-            <td><%= team.name %></td>
+            <td>
+              <p class="mb-0"><%= team.name %></p>
+              <p class="mb-0"><%= team.user.nickname %></p>
+            </td>
             <td><%= team.score %></td>
             <% closed_matches =  team.matches.select{|match| match.statut == "Closed"}%>
             <td><%= closed_matches.count %></td>
