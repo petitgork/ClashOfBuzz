@@ -9,7 +9,7 @@ export default class extends Controller {
       copyButton.addEventListener('click', () => {
         navigator.clipboard.writeText(input.value)
           .then(() => {
-            copyButton.innerText = "Copié !";
+            copyButton.innerText = "Copie !";
           })
           .catch((error) => {
             console.error('Failed to copy text: ', error);
