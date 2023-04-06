@@ -1,13 +1,12 @@
 <div>
-    <div class="user-header">
+  <div class="user-header">
     <h1 class="user-header-name">Tableau de bord</h1>
   </div>
-<div class="dashboard-container">
+  <div class="dashboard-container">
     <p>Hey <%= @user.nickname %>, bienvenue sur votre tableau de bord !
     <br>
     C'est ici que tu pourras gérer tes tournois et tes équipes. A toi de jouer !</p>
   </div>
-  <div class="px"><%= link_to "Nouveau tournoi", new_tournament_path, class: "pixel_art_btn_tournament" %></div>
   <div class="dashboard-tournaments-container">
     <div class="menu_tournois">
       <h3>MES TOURNOIS</h3>
@@ -22,5 +21,12 @@
         <% end %>
       </div>
     </div>
+    <%= link_to new_tournament_path do %>
+    <div id="tournament-creation-card" class="menu_tournois">
+      <h3 class="text-white">NE PAS SUPPR</h3>
+      <p class="plus">+</p>
+      <h3>CREER UN TOURNOI</h3>
+    </div>
+    <% end %>
   </div>
 </div>
