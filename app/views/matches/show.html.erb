@@ -18,12 +18,21 @@
       <% end %>
     <% end %>
   </div>
-  <% if @match.statut == "In progress" %>
+    <span class="title-score">
+      <% @match.team_matches.each do |team_match| %>
+        <%= team_match.match_score if team_match.team.user == current_user && @match.statut != "Composition" %>
+      <% end %>
+    </span>
+    <% if @match.statut == "In progress" %>
       <p><%=image_tag'sword2.png', class:'sword_online' %></p>
     <% else %>
       <p><%=image_tag'sword2.png', class:'sword' %></p>
     <% end %>
-
+    <span class="title-score">
+      <% @match.team_matches.each do |team_match| %>
+        <%= team_match.match_score if team_match.team.user != current_user && @match.statut != "Composition" %>
+      <% end %>
+    </span>
     <div class="container-match-vs">
       <% @match.teams.each do |team| %>
         <% if team.user != current_user %>
