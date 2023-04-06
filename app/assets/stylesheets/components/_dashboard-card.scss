@@ -7,9 +7,13 @@
   padding: 1rem;
   margin:8px;
   background-color: rgb(255, 255, 255);
-  width: 20rem;
+  width: 23rem;
   height: 40rem;
   margin-bottom: 32px;
+}
+
+.dashboard-complete-card {
+  text-align: center;
 }
 
 .dashboard-card:hover {
@@ -87,10 +91,10 @@
 }
 
 .countdown {
-  background-color: $orange;
+  background-color: $dark-grey;
+  color: $white;
   margin: 1em 1em;
   padding: 0.5em 0.5em;
-  border-radius: 25px;
   font-family: 'Press Start 2P';
   text-align: center;
 }

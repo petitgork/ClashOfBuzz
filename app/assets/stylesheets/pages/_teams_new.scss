@@ -1,5 +1,11 @@
-.new_teeam_container{
+.container_team {
+  display: flex;
+  justify-content: center;
+}
+
+.new_team_container{
   padding: 12px 24px;
+  width: 50%;
   border: 10px solid #fff;
   background-color: $yellow;
   color: $gray;
@@ -9,12 +15,11 @@
   text-decoration: none;
   margin: 40px;
   padding: 61px;
-
-
 }
 .pixel_art_btn{
   margin-top:32px;
 }
+
 h1{
   display: flex;
   justify-content: center;

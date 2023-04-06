@@ -1,70 +1,109 @@
-.championship-results {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
+
+
+.user_card {
+  background-color: $grey;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  display: bloc;
   align-items: center;
-}
-
-.championship-results h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 20px 0;
-  text-align: center;
-}
-
-.match-result {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  text-transform: uppercase;
   justify-content: center;
-  width: 50%;
-  align-items: center;
+  margin-top: 0;
+  color:$yellow;
+  font-family: 'press start 2p';
 
-  &.statut-compo {
-    background-color: white;
-  }
-  &.statut-running {
-    background-color: $yellow;
-  }
-  &.statut-closed {
-    background-color: lightgrey;
-  }
+
+
 }
-
-.match-result h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.match-result p {
-  font-size: 16px;
-  margin-bottom: 0;
-}
-
-.team-names {
-  display: flex;
+.general_card{
+  margin-bottom: 60px;
+  display:flex;
   justify-content: space-around;
-  gap: 5px;
-}
-// Pas utilisé car on prend le composant bouton général
-// .btn-details {
-//   background-color: #007bff;
-//   color: #fff;
-//   border: none;
-//   padding: 8px 16px;
-//   border-radius: 5px;
-//   text-decoration: none;
-//   font-size: 14px;
-//   transition: all 0.2s ease;
-//   display: inline-block;
-//   margin-bottom: 10px;
-// }
+  margin: 16px;
 
-// .btn-details:hover {
-//   background-color: #0062cc;
-// }
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(215, 215, 215);
+  border-radius: 8px;
+  padding: 20px;
+}
+.user_card_owner{
+  background-color: $yellow;
+  border-radius: 10px;
+  padding: 25px;
+  width: 300px;
+  height: 130px;
+
+
+
+}
+.partner_name{
+  color: white;
+  font-size: 18px;
+  margin: 0;
+  color: white;
+  font-family: 'press start 2p';
+  display: flex;
+  justify-content: center;
+
+
+}
+.user_card_title{
+  font-size: 18px;
+  margin: 0;
+  color: white;
+  font-family: 'press start 2p';
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+
+}
+.date_match{
+  font-size: 18px;
+  margin: 0;
+  color: $grey;
+  font-family: 'press start 2p';
+  display: flex;
+  justify-content:flex-start;
+  text-transform: uppercase;
+  margin-left: 64px;
+
+}
+.statut{
+  font-size: 18px;
+  margin-left: 64px;
+  color: $grey;
+  font-family: 'press start 2p';
+  display: flex;
+  justify-content: flex-start;
+  text-transform: uppercase;
+}
+
+
+.pixel_art_btn_tournament {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.info{
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 64px;
+  padding-bottom: 8px;
+
+}
+.sword{
+  height: 60px;
+  width: 80px;
+  margin-top:50%;
+}
+.button_pix{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.margin{
+  margin-top: -62px;
+}
