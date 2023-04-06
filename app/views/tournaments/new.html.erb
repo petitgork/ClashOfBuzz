@@ -1,13 +1,23 @@
 <div class="tournament-header">
-    <h1 class="tournament-header-name">Creation d'un tournoi</h1>
-  </div>
-
+  <h1 class="tournament-header-name">Création d'un tournoi</h1>
+</div>
 <div class="container_tournament">
-  <div id="tournament-form">
-    <%= simple_form_for @tournament do |f| %>
-      <%= f.input :name, label: "Nom du tournoi", class: 'mini_title' %>
-      <%= f.input :photo, label: "Avatar de votre tournoi", as: :file %>
-      <%= f.submit "Creer", class:'pixel_art_btn'%>
-    <% end %>
+  <div class="container_form">
+    <div id="tournament-form">
+      <%= simple_form_for @tournament do |f| %>
+        <%= f.input :name, label: "Nom du tournoi", class: 'mini_title' %>
+        <%= f.input :photo, label: "Avatar de votre tournoi", as: :file %>
+        <%= f.submit "Creer", class:'pixel_art_btn'%>
+      <% end %>
+    </div>
   </div>
+</div>
+<div class="run">
+<%= image_tag "run.png", class:'run-img' %>
+<p>"La liberté c'est la sécurité, <br>
+la sécurité c'est la surveillance, <br>
+donc la liberté c'est la surveillance."<br>
+
+<span><br>Marine Le Pen</br></span></p>
+
 </div>
