@@ -119,7 +119,7 @@ team_gael_t2 = Team.create!(
 )
 
 team_pierre_t2 = Team.create!(
-  name: "Les LePenistes Décomplexes",
+  name: "Les LePenistes Decomplexes",
   user_id: pierre.id,
   tournament_id: tournament_2.id
 )
@@ -145,7 +145,7 @@ team_sebastien_t3 = Team.create!(
 )
 
 team_jb_t3 = Team.create!(
-  name: "Les Marcheurs épuises",
+  name: "Les Marcheurs epuises",
   user_id: jb.id,
   tournament_id: tournament_3.id
 )
