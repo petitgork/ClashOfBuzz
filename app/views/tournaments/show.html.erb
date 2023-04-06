@@ -1,22 +1,8 @@
 <div class="tournament-header">
-    <h1 class="tournament-header-name">Tableau de bord</h1>
+    <h1 class="tournament-header-name"><%= @tournament.name %></h1>
   </div>
 <div class="dashboard-container">
-  <h2><%= @tournament.name %></h2>
   <div class="dashboard-tournaments-container">
-    <div class='tournament_list'>
-      <h3>Mes tournois</h3>
-      <div class="dashboard-tournaments-buttons">
-        <% current_user.tournaments.each do |tournament| %>
-          <p>
-            <%= link_to tournament_path(tournament), class: tournament == @tournament ? "pixel_art_tournament" : "pixel_art_tournament" do %>
-              <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar") %>
-              <%= tournament.name %>
-            <% end %>
-          </p>
-        <% end %>
-      </div>
-    </div>
     <% if @tournament.status == "created" %>
       <div class="tournament">
         <p class="tournament-status">Statut : "ATTENTE DE LANCEMENT"</p>
@@ -41,7 +27,7 @@
         <% end %>
       </div>
     <% else %>
-      <div class="dashboard-tournaments-details-container">
+      <div class="tournaments-details-container">
         <div>
           <div class="dashboard-card">
             <p class="dashboard-title">MON EQUIPE</p>
@@ -138,27 +124,31 @@
               <% end %>
             <% end %>
           </div>
-          <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "check" %>
+          <%= link_to "VOIR TOUTE L'EQUIPE", tournament_team_path(@tournament, @team), class: "pixel_art_btn" %>
 
         </div>
         <div>
           <div class="dashboard-card" data-controller="countdown" data-countdown-date-value="<%= @next_date %>">
             <p class="dashboard-title">CALENDRIER</p>
             <div class="dashboard-subcard">
-              <h4>DEBUT</h4>
-              <h2><%= @begin.strftime("%d/%m/%Y") if @begin %></h2>
-              <h4>FIN</h4>
-              <h2><%= @end.strftime("%d/%m/%Y") if @end %></h2>
+              <div class="dates">
+                <h4>DEBUT DU TOURNOI</h4>
+                <h2 class="center"><%= @begin.strftime("%d/%m/%Y") if @begin %></h2>
+              </div>
+              <div class="dates">
+                <h4>FIN DU TOURNOI</h4>
+                <h2 class="center"><%= @end.strftime("%d/%m/%Y") if @end %></h2>
+              </div>
             </div>
             <div class="dashboard-subcard">
-              <h2>MATCH EN COURS</h2>
+              <h2 class="center">MATCH EN COURS</h2>
               <% if @current_match %>
                 <%= button_to "#{@current_match.teams.first.name} VS #{@current_match.teams.last.name}", match_path(@current_match), method: :get, class: "pixel_art_btn_tournament" %>
               <% else %>
                 <p>Aucun match en cours</p>
               <% end %>
             </div>
-            <h2>PROCHAIN MATCH</h2>
+            <h2 class="center">PROCHAIN MATCH</h2>
             <div data-countdown-target="next" class="d-none"><%= @next_date %></div>
             <% if @next_date %>
               <div class="countdown">
@@ -171,7 +161,7 @@
               <p>Plus de match à venir</p>
             <% end %>
           </div>
-          <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "check" %>
+          <%= link_to "VOIR TOUS MES MATCHS", matches_path(tournament_id: @tournament), class: "pixel_art_btn" %>
 
         </div>
         <div>
@@ -212,7 +202,7 @@
               <% end %>
             </div>
           </div>
-          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "check" %>
+          <%= link_to "VOIR LE DETAIL", ranking_details_tournament_path(@tournament), class: "pixel_art_btn" %>
         </div>
       </div>
     <% end %>

@@ -24,6 +24,15 @@
   text-align: center;
 }
 
+.tournaments-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  height: 850px;
+}
+
 .team-list-title {
   margin-top: 20px;
   font-size: 18px;
@@ -170,16 +179,6 @@
   width: 12rem;
 }
 
-.menu_tournois{
-  color: $grey;
-  padding: 20px;
-  justify-content: space-between;
-  align-items: baseline;
-  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
-  padding: 1rem;
-  margin:16px;
-  background-color: rgb(255, 255, 255);
-}
 .check{
   margin-top: 2rem;
   display: flex;
@@ -204,4 +203,12 @@
   flex-direction: column;
   justify-content: flex-start;
 
+}
+
+.center {
+  text-align: center;
+}
+
+.dates {
+  margin-bottom: 30px;
 }

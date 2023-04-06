@@ -35,6 +35,7 @@
       <div class="user_card_owner">
         <% match.team_matches.each do |team_match| %>
           <p class='user_card_title'><%= team_match.team.name if team_match.team.user == current_user %></p>
+          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
         <% end %>
       </div>
       <p class='vs'>VS</p>
@@ -43,6 +44,7 @@
           <div class="partner_name">
           <p><%= team_match.team.name if team_match.team.user != current_user %></p>
           </div>
+          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
         <% end %>
       </div>
       <%= button_to "Composez votre equipe", match_path(match), method: :get, class: "pixel_art_btn_tournament" %>
@@ -55,11 +57,13 @@
       <div class="user_card">
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user == current_user %></p>
         <% end %>
       </div>
       <div class="user_card">
         <% match.team_matches.each do |team_match| %>
           <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+          <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
         <% end %>
       </div>
     </div>

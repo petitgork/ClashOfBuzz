@@ -1,13 +1,10 @@
 .footer {
   width: 100%;
-  height: 250px;
+  height: 100px;
   background-color: rgb(49, 49, 49);
   padding: 20px 0;
   text-align: center;
   color:white;
-  padding-top: 32px;
-
-
 }
 
 .footer-links {
@@ -34,17 +31,4 @@
 .footer-copyright {
   font-size: 16px;
 
-}
-.menu_links{
-  padding-top: 16px;
-}
-
-.footer-menu {
-  text-decoration: none;
-  color: white;
-  transition: .2s;
-}
-
-.footer-menu:hover {
-  color: $yellow;
 }
