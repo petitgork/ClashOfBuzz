@@ -9,16 +9,19 @@
     <%= button_to image_tag("fleche_haut.png", class: "fleche-haut d-none", id: "arrow-up-match"), match_path(@match, anchor: "container-match") %>
   </div>
   <% if @match.statut == "In progress" %>
-    <%= button_to "Mettre a jour les resultats", update_results_match_path(@match, match: @match), method: :patch, class: "pixel_art_btn_match_adversary" %>
+    <%= button_to "Mettre a jour les resultats", update_results_match_path(@match, match: @match), method: :patch, class: "pixel_art_btn_match_adversary refresh_button" %>
   <% end %>
   <div class="container-match-teams">
-    <div class="container-match-vs">
-      <% @match.teams.each do |team| %>
-        <% if team.user == current_user %>
-          <h2><%= team.name %></h2>
+  <div class="container-match-vs">
+    <% @match.teams.each_with_index do |team, index| %>
+      <% if team.user == current_user %>
+        <h2><%= team.name %></h2>
+        <% if @match.statut == "Closed" %>
+          <p class="team-score">Score: <%= @match.team_matches[index].match_score %></p>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
     <span><%= image_tag("https://res.cloudinary.com/dvzsvgucq/image/upload/v1680687767/development/ie68ekzrn501l6utf8fnq20lsn0j.png", class: "vs") %></span>
     <div class="container-match-vs">
       <% @match.teams.each do |team| %>
@@ -93,14 +96,13 @@
     <% if @match.statut == "Closed" %>
     <div class="result-container">
       <div class="match-final-result">
-        <h3>Match terminé</h3>
-        <h4>WINNER: <%= @match.winner %></h4>
-        <h2><%= @match.team_matches[0].match_score %> - <%= @match.team_matches[1].match_score %></h2>
+        <h3 class="title-score">Match terminé</h3>
+        <h4 class="winner-result">WINNER: <%= @match.winner %></h4>
       </div>
     </div>
     <div class="container-match-composition-progress">
-      <div class="cut-container <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[0].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[0].team.name %>">
-        <h3 class="title-team-matches">Ta sélection pour le match</h3>
+      <div class="cut-container">
+        <h3 class="title-team-matches">Les résultats de ton équipe</h3>
         <% @match.teams.each do |team| %>
           <% if team.user == current_user %>
             <% @match.line_ups.each do |line_up| %>
@@ -124,7 +126,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="cut-container <%= 'team-winner winner-animation' if @match.winner == @match.team_matches[1].team.name %> <%= 'team-loser' if @match.winner != @match.team_matches[1].team.name %>">
+      <div class="cut-container">
         <h3 class="title-team-matches">Équipe adverse</h3>
         <% @match.teams.each do |team| %>
           <% if team.user != current_user %>
