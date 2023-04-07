@@ -1,5 +1,13 @@
 <div>
-  <h2 class="title-team-matches">Ta sélection</h2>
+  <% selection = [] %>
+  <% @match.teams.each do |team| %>
+    <% if team.user == current_user %>
+      <% @match.line_ups.each do |line_up| %>
+        <% selection << line_up %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <h2 class="title-team-matches">Ta sélection (<%= selection.count %>/5)</h2>
   <% @match.teams.each do |team| %>
     <% if team.user == current_user %>
       <% @match.line_ups.each do |line_up| %>
