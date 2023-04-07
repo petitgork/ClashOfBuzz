@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require 'open-uri'
 
 UserTournament.destroy_all
 LineUp.destroy_all
@@ -40,54 +41,48 @@ tournament_1 = Tournament.create!(
   name: "Ligue des Senateurs",
   status: "created"
 )
-tournament_1.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/tournoi_1.png')),
-filename: 'tournoi_1.png')
-# tournament_1.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/PalpatineFree.jpg/220px-PalpatineFree.jpg")
+tournament_1.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_1.save
 
 tournament_2 = Tournament.create!(
   name: "La Guerre des Clans",
   status: "created"
 )
-tournament_2.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/guerre_clans_tournoi.jpg')),
-filename: 'guerre_clans_tournoi.jpg')
-# tournament_2.photo.attach(io: file, filename: "guerre_clans_tournoi.jpg", content_type: "image/jpg")
+file = URI.open("https://m.media-amazon.com/images/M/MV5BYmFiMjM3ZjgtZjM1OS00NGY5LTllZTEtN2QyYjE0YmVkNzZmXkEyXkFqcGdeQXVyNTA1NDY3NzY@._V1_.jpg")
+tournament_2.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_2.save
 
 tournament_3 = Tournament.create!(
   name: "Battle Royale",
   status: "created"
 )
-tournament_3.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/battle_royale.jpg')),
-filename: 'battle_royale.jpg')
-# tournament_3.photo.attach(io: file, filename: "battle_royale.jpg", content_type: "image/jpg")
+file = URI.open("https://cdn.shopify.com/s/files/1/0060/6253/8819/products/medaille_couronne-recto1_800x.jpg?v=1649839762")
+tournament_3.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_3.save
 
 tournament_4 = Tournament.create!(
   name: "Highlanders",
   status: "created"
 )
-tournament_4.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/highlanders.png')),
-filename: 'highlanders.png')
-# tournament_4.photo.attach(io: file, filename: "highlanders.png", content_type: "image/png")
+file = URI.open("https://fr.web.img6.acsta.net/newsv7/19/03/15/16/42/0852828.jpg")
+tournament_4.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_4.save
 
 tournament_5 = Tournament.create!(
   name: "Octogone League",
   status: "created"
 )
-tournament_5.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/octogone.jpg')),
-filename: 'octogone.jpg')
-# tournament_5.photo.attach(io: file, filename: "octogone.jpg", content_type: "image/jpg")
+file = URI.open("https://cdn-tam.ouest-france.fr/media/cache/thumb_400/assets/featured/901a5249632c73112a67c7447d0001bd45a7495d.jpeg")
+tournament_5.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_5.save
 
 tournament_6 = Tournament.create!(
   name: "League All In",
   status: "created"
 )
-tournament_6.photo.attach(io:  File.open(File.join(Rails.root,'app/assets/images/league_all_in.jpg')),
-filename: 'league_all_in.jpg')
-# tournament_6.photo.attach(io: file, filename: "league_all_in.jpg", content_type: "image/jpg")
+file = URI.open("https://megadico.com/ressources/IMAGES/All-in.jpeg")
+tournament_6.photo.attach(io: file, filename: "tournoi_1.png", content_type: "image/png")
 tournament_6.save
 
 # TEAMS SEEDS
