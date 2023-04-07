@@ -8,7 +8,7 @@ class LineUpsController < ApplicationController
       line_up.team = line_up.match.my_team_match(current_user).team
       if line_up.save
         flash[:notice] = "Votre équipe est prête." if count_line_ups == 5
-        redirect_to match_path(line_up.match)
+        redirect_to match_path(line_up.match, anchor: "ta-selection")
       else
         render :new, status: :unprocessable_entity
       end

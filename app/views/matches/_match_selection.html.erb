@@ -1,5 +1,5 @@
 <div>
-  <h2 class="title-team-matches">Ta sélection</h2>
+  <h2 class="title-team-matches" id= "ta-selection">Ta sélection</h2>
   <% @match.teams.each do |team| %>
     <% if team.user == current_user %>
       <% @match.line_ups.each do |line_up| %>
