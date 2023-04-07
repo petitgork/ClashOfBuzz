@@ -98,6 +98,7 @@
   height: 60px;
   width: 80px;
   margin-top:50%;
+ margin:64px;
 }
 .button_pix{
   display: flex;
@@ -167,6 +168,7 @@
   color: $grey;
   font-size: 32px;
   font-family: 'press start 2p';
+
 }
 .general_card_off{
   margin-bottom: 60px;
@@ -185,8 +187,6 @@
   width: 300px;
   height: 130px;
   text-transform: uppercase;
-
-;
 }
 .partner_name_black{
   color: $grey;
@@ -194,4 +194,12 @@
   margin: 0;
   font-family: 'press start 2p';
   align-items: center;
+}
+.score_game_invisible{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#f0f0f0;
+  align-items: center;
+
 }

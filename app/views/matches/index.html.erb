@@ -54,7 +54,15 @@
               <p class='user_card_title'><%= team_match.team.name if team_match.team.user == current_user %></p>
             <% end %>
           </div>
-          <p><%=image_tag'sword2.png', class:'sword' %></p>
+          <div class="score_game_invisible">
+              <% match.team_matches.each do |team_match| %>
+                    <p><%= team_match.match_score if team_match.team.user == current_user %></p>
+                  <% end %>
+              <p><%=image_tag'sword2.png', class:'sword' %></p>
+              <% match.team_matches.each do |team_match| %>
+              <p><%= team_match.match_score if team_match.team.user != current_user %></p>
+              <% end %>
+            </div>
           <div class="user_card">
             <% match.team_matches.each do |team_match| %>
               <div class="partner_name">
@@ -89,6 +97,7 @@
                 <div class="partner_name_black">
                   <p><%= team_match.match_score if team_match.team.user == current_user %></p>
                 </div>
+
                   <% end %>
               <p><%=image_tag'sword2.png', class:'sword_reverse' %></p>
               <% match.team_matches.each do |team_match| %>
