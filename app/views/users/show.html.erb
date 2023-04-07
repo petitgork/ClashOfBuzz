@@ -14,7 +14,7 @@
         <% @user.tournaments.each do |tournament| %>
           <p>
             <%= link_to tournament_path(tournament), class: "pixel_art_tournament" do %>
-              <%= image_tag(tournament.photo.attached? ? url_for(tournament.photo) : "chien.png", class: "avatar avatar-user") %>
+              <%= cl_image_tag tournament.photo.key, class: "avatar avatar-user" %>
               <%= tournament.name %>
             <% end %>
           </p>
