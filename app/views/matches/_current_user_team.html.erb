@@ -14,7 +14,7 @@
                 </div>
               </div>
               <% if team.user == current_user && !@match.line_ups.exists?(politic_id: politic.id) %>
-                <%= button_to "+", match_line_ups_path(@match, politic_id: politic.id), method: :post, class: "pixel_art_btn_match" %>
+                <%= button_to "+", match_line_ups_path(@match, politic_id: politic.id), method: :post, class: "pixel_art_btn_match", id: "ton-club" %>
               <% end %>
             </li>
           </ul>

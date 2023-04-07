@@ -623,12 +623,12 @@ morano = Politic.create(
   # avatar: Faker::Avatar.image
 )
 
-aubry = Politic.create(
-  first_name: "Martine",
-  last_name: "Aubry",
-  politic_board: "Parti Socialiste",
-  # avatar: Faker::Avatar.image
-)
+# aubry = Politic.create(
+#   first_name: "Martine",
+#   last_name: "Aubry",
+#   politic_board: "Parti Socialiste",
+#   # avatar: Faker::Avatar.image
+# )
 
 taubira = Politic.create(
   first_name: "Christiane",

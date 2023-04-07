@@ -65,6 +65,7 @@ class MatchesController < ApplicationController
       line_up.result = result
       line_up.save
     end
+    match_score_count(match)
     redirect_to request.referrer if redirection_at_end
   end
 
