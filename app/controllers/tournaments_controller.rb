@@ -6,10 +6,10 @@ class TournamentsController < ApplicationController
   def join
     @tournament = Tournament.find(params[:id])
     if current_user.tournaments.include?(@tournament)
-      flash[:alert] = "Vous êtes déjà inscrit à ce tournoi"
+      flash[:alert] = "Vous etes dejà inscrit a ce tournoi"
     else
       UserTournament.create(tournament: @tournament, user: current_user)
-      flash[:notice] = "Vous êtes bien inscrit à ce tournoi"
+      flash[:notice] = "Vous etes bien inscrit à ce tournoi"
     end
     redirect_to new_tournament_team_path(@tournament)
   end
@@ -101,7 +101,7 @@ class TournamentsController < ApplicationController
     calendar(@tournament)
 
     # On part sur la page show du tournoi
-    flash[:notice] = "Le tournoi est lancé, découvrez vos équipes"
+    flash[:notice] = "Le tournoi est lance, découvrez vos equipes"
     redirect_to tournament_path(@tournament)
   end
 
