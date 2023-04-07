@@ -101,7 +101,7 @@ class TournamentsController < ApplicationController
     calendar(@tournament)
 
     # On part sur la page show du tournoi
-    flash[:notice] = "Le tournoi est lance, découvrez vos equipes"
+    flash[:notice] = "Le tournoi est lance, decouvrez vos equipes"
     redirect_to tournament_path(@tournament)
   end
 
