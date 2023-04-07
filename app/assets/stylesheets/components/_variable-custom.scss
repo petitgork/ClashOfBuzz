@@ -2,9 +2,19 @@
   overflow: hidden;
 }
 .alert {
-  background-color: $yellow;
+
+  border: 5px solid #fff;
+  background-color: #fe8e1b;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #fff, 6px 6px 0 #fff;
+  transition: 0.1s;
+  text-decoration: none;
+  width: 16vw;
 }
 
 .alert-info {
-  color: $dark-grey;
+  color: white;
+  font-family: 'press start 2p';
 }

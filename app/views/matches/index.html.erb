@@ -15,12 +15,16 @@
         <div class="general_card">
             <div class="user_card_owner">
               <% match.team_matches.each do |team_match| %>
-                <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
+                <div class="partner_name">
+                  <p><%= team_match.team.name if team_match.team.user == current_user %></p>
+                </div>
               <% end %>
             </div>
             <div class="score_game_before">
               <% match.team_matches.each do |team_match| %>
+                  <div class="partner_name">
                     <p><%= team_match.match_score if team_match.team.user == current_user %></p>
+                  </div>
                   <% end %>
               <p><%=image_tag'sword2.png', class:'sword_online' %></p>
               <% match.team_matches.each do |team_match| %>
@@ -30,7 +34,7 @@
             <div class="user_card">
               <% match.team_matches.each do |team_match| %>
                 <div class="partner_name">
-                  <h2><%= team_match.team.name if team_match.team.user != current_user %></h2>
+                  <p><%= team_match.team.name if team_match.team.user != current_user %></p>
                 </div>
                 <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
               <% end %>
@@ -71,16 +75,20 @@
         <p class='statut'>Match termine</p>
         <p class='date_match'><%= match.date.strftime("%d/%m/%Y") %></p>
       </div>
+
           <div class="general_card_off">
             <div class="user_card_owner_off">
               <% match.team_matches.each do |team_match| %>
-                <h2><%= team_match.team.name if team_match.team.user == current_user %></h2>
-
+              <div class="partner_name_black">
+                <p><%= team_match.team.name if team_match.team.user == current_user %></p>
+              </div>
               <% end %>
             </div>
             <div class="score_game">
               <% match.team_matches.each do |team_match| %>
-                    <p><%= team_match.match_score if team_match.team.user == current_user %></p>
+                <div class="partner_name_black">
+                  <p><%= team_match.match_score if team_match.team.user == current_user %></p>
+                </div>
                   <% end %>
               <p><%=image_tag'sword2.png', class:'sword_reverse' %></p>
               <% match.team_matches.each do |team_match| %>
@@ -88,14 +96,14 @@
               <% end %>
             </div>
             <div class="user_card_owner_off">
-              <div class="partner_name">
+              <div class="partner_name_black">
                 <% match.team_matches.each do |team_match| %>
-                  <p><%= team_match.team.name if team_match.team.user != current_user %></p>
-                  <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
+                      <p><%= team_match.team.name if team_match.team.user != current_user %></p>
+                      <p><%= team_match.team.user.nickname if team_match.team.user != current_user %></p>
                 <% end %>
               </div>
             </div>
-              <%= button_to "Voir le détail des résultats", match_path(match), method: :get, class: "pixel_art_btn_tournament" %>
+              <%= button_to "Voir le detail des resultats", match_path(match), method: :get, class: "pixel_art_btn_tournament" %>
 
               </div>
 
