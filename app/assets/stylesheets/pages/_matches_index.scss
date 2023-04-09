@@ -98,7 +98,6 @@
   height: 60px;
   width: 80px;
   margin-top:50%;
- margin:64px;
 }
 .button_pix{
   display: flex;
@@ -160,7 +159,7 @@
   justify-content: center;
   align-items: center;
   color: white;
-  align-items: center;
+  margin: 46px;
 
 
 }
@@ -168,7 +167,6 @@
   color: $grey;
   font-size: 32px;
   font-family: 'press start 2p';
-
 }
 .general_card_off{
   margin-bottom: 60px;
@@ -187,6 +185,8 @@
   width: 300px;
   height: 130px;
   text-transform: uppercase;
+
+;
 }
 .partner_name_black{
   color: $grey;
@@ -199,7 +199,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color:#f0f0f0;
-  align-items: center;
+  color: #f0f0f0;
+  margin: 46px;
+
 
 }
