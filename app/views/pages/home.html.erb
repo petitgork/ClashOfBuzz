@@ -5,7 +5,17 @@
         <%= image_tag"logocob.jpg" %>
       </div>
       <div class="buttons">
-        <%= link_to "play start", current_user ? user_path(current_user) : new_user_session_path,class: "pixel_art_btn_home_page" %>
+        <%# Le bouton play start envoie sur le tournoi en cours si un seul tournoi %>
+        <% if current_user && current_user.tournaments.length == 1 %>
+          <% link = tournament_path(current_user.tournaments.first) %>
+        <%# ou sur la liste des tournois si plusieurs %>
+        <% elsif current_user %>
+          <% link = user_path(current_user) %>
+        <%# ou sur la pade de connexion si pas connecté %>
+        <% else %>
+          <% link = new_user_session_path %>
+        <% end %>
+        <%= link_to "play start", link,class: "pixel_art_btn_home_page" %>
       </div>
     </div>
   <div class="fireball"></div>
