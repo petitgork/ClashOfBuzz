@@ -18,7 +18,12 @@ class TeamsController < ApplicationController
     team.tournament = tournament
     if team.save
       UserTournament.create(tournament: @tournament, user: current_user)
-      flash[:notice] = "Ton tournoi a bien ete cree"
+      # si c'est la 1ère équipe
+      if tournament.teams.count == 1
+        flash[:notice] = "Ton tournoi a bien ete cree"
+      else
+        flash[:notice] = "Tu as bien rejoint le tournoi"
+      end
       redirect_to tournament_path(tournament)
     else
       render ender :new, status: :unprocessable_entity
