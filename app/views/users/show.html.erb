@@ -13,7 +13,7 @@
       <div class="dashboard-tournaments-buttons">
         <%# si aucun tournoi, message "aucun tournoi" %>
         <% if @user.tournaments.length == 0 %>
-          <p class="no-tournament">Tu n'es inscrit à aucun tournoi pour le moment.</p>
+          <p>Tu n'es inscrit à aucun tournoi pour le moment.</p>
         <% else %>
           <% @user.tournaments.each do |tournament| %>
             <p>
