@@ -38,10 +38,11 @@
         <div class="dashboard-complete-card">
           <div class="dashboard-card small">
             <p class="dashboard-title text-white">INVITE TES AMIS</p>
-            <% unless current_user.teams.exists?(tournament_id: @tournament.id) %>
+            <% if current_user.teams.exists?(tournament_id: @tournament.id) %>
+              <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "pixel_art_btn_home_page mt-5" %>
+            <% else %>
               <%= button_to "Rejoindre le tournoi", join_tournament_path(@tournament), method: :post, class: "pixel_art_btn_home_page mt-5" %>
             <% end %>
-            <%= button_to 'Lancer le tournoi', launch_tournament_path(@tournament), method: :patch, class: "pixel_art_btn_home_page mt-5" %>
           </div>
         </div>
       </div>

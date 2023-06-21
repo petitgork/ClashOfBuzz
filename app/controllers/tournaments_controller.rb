@@ -6,12 +6,10 @@ class TournamentsController < ApplicationController
   def join
     @tournament = Tournament.find(params[:id])
     if current_user.tournaments.include?(@tournament)
-      flash[:alert] = "Vous etes dejà inscrit a ce tournoi"
+      flash[:alert] = "Tu es deja inscrit a ce tournoi"
     else
-      UserTournament.create(tournament: @tournament, user: current_user)
-      flash[:notice] = "Vous etes bien inscrit à ce tournoi"
+      redirect_to new_tournament_team_path(@tournament)
     end
-    redirect_to new_tournament_team_path(@tournament)
   end
 
   def index
@@ -26,7 +24,6 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.status = "created"
     if @tournament.save
-      UserTournament.create(tournament: @tournament, user: current_user)
       redirect_to new_tournament_team_path(@tournament)
     else
       render :new, status: :unprocessable_entity
@@ -79,12 +76,19 @@ class TournamentsController < ApplicationController
     # quand on lance le tournoi toutes les équipes ont déjà été créées, mais aucun effectif
     # ne leur a encore été attribué
 
+    # on vérifie que le nombre d'équipes est pair
+    if @tournament.teams.count.odd?
+      flash[:alert] = "Le nombre d'équipes doit être pair"
+      redirect_to tournament_path(@tournament)
+      return
+    end
+
     # statut de l'équipe passe à "launched"
     @tournament.status = "launched"
     @tournament.save!
 
     # on définit la taille des effectifs de chaque équipe
-    team_size = (Politic.count / @tournament.users.count)
+    team_size = (Politic.count / @tournament.teams.count)
 
     # on mélange tous les politics de la BDD dans un array aléatoire
     politics = Politic.all.shuffle
