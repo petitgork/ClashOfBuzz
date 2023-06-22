@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_05_093118) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_093548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_093118) do
     t.bigint "politic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bid_amount", default: 0
+    t.boolean "acquired", default: false
     t.index ["politic_id"], name: "index_team_politics_on_politic_id"
     t.index ["team_id"], name: "index_team_politics_on_team_id"
   end
@@ -102,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_093118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "score", default: 0
+    t.integer "wallet", default: 500
+    t.boolean "bids_closed", default: false
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end

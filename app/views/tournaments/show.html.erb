@@ -6,10 +6,14 @@
 <div class="d-flex justify-content-center">
   <% if @tournament.status == "created" %>
     <h2>En attente de lancement</h2>
+  <% elsif @tournament.status == "mercato" %>
+    <h2>Mercato !</h2>
   <% end %>
 </div>
 <div class="dashboard-container">
   <div class="dashboard-tournaments-container">
+
+  <%# TOURNOI CREE, PAS ENCORE LANCE %>
     <% if @tournament.status == "created" %>
       <div class="tournaments-details-container">
         <div class="dashboard-complete-card">
@@ -47,6 +51,16 @@
         </div>
       </div>
 
+  <%# MERCATO EN COURS %>
+    <% elsif @tournament.status == "mercato" %>
+      <% if @team.bids_closed %>
+        <p>On attent les enchères des autres pour continuer, harcèle les, gros</p>
+      <% else %>
+        <p>Fais tes enchères gros</p>
+        <p>ton portefeuille : <%= @team.wallet %> M€</p>
+      <% end %>
+
+  <%# MERCATO TERMINE, TOURNOI EN COURS %>
     <% else %>
 
       <div class="tournaments-details-container">

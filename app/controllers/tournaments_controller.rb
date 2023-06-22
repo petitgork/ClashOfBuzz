@@ -83,22 +83,23 @@ class TournamentsController < ApplicationController
       return
     end
 
-    # statut de l'équipe passe à "launched"
-    @tournament.status = "launched"
+    # statut de l'équipe passe à "mercatos"
+    @tournament.status = "mercato"
     @tournament.save!
 
-    # on définit la taille des effectifs de chaque équipe
-    team_size = (Politic.count / @tournament.teams.count)
+    # tout ce qui suit : correspond à la version sans mercato, avec tirage au sort des effectifs
+    # # on définit la taille des effectifs de chaque équipe
+    # team_size = (Politic.count / @tournament.teams.count)
 
-    # on mélange tous les politics de la BDD dans un array aléatoire
-    politics = Politic.all.shuffle
+    # # on mélange tous les politics de la BDD dans un array aléatoire
+    # politics = Politic.all.shuffle
 
-    # Tirage au sort des effectif de chaque équipe
-    @tournament.teams.each do |team|
-      team_size.times do
-        politic = politics.pop
-        TeamPolitic.create!(team: team, politic: politic)
-      end
+    # # Tirage au sort des effectif de chaque équipe
+    # @tournament.teams.each do |team|
+    #   team_size.times do
+    #     politic = politics.pop
+    #     TeamPolitic.create!(team: team, politic: politic)
+    #   end
     end
 
     # On génère le "calendrier" et les dates de des rencontres
