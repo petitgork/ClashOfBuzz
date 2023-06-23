@@ -1,7 +1,7 @@
 require "date"
 
 class TournamentsController < ApplicationController
-  before_action :set_params, only: %i[join show edit update launch]
+  before_action :set_params, only: %i[join show edit update launch bids_validate]
 
   def join
     @tournament = Tournament.find(params[:id])
@@ -31,15 +31,33 @@ class TournamentsController < ApplicationController
   end
 
   def show
+    @tournament = Tournament.find(params[:id])
     @team = Team.where(user: current_user, tournament: @tournament).first
+
+
+    # on définit les politiques disponibles comme ceux pour lesquels il n'existe pas de team_politics liés à une équipe de ce tournoi et ayant le champ acquired true
+    @available_politics = Politic.where.not(
+      id: TeamPolitic
+            .joins(:team)
+            .where(teams: { tournament_id: @tournament.id }, acquired: true)
+            .select(:politic_id)
+    )
+    if @team
+      @acquired_politics = @team.team_politics.select do |team_politic|
+        team_politic.acquired
+      end
+    end
+    @team_politic = TeamPolitic.new
+
     @matches = @tournament.matches
+
     if @team && @team.politics.count.positive?
       @politics_slice_a = @team.politics.slice(0, 4)
       @politics_slice_b = @team.politics.slice(4, 4)
       @politics_slice_c = @team.politics.slice(8, 4)
       @politics_slice_d = @team.politics.slice(12, 4)
     end
-    @tournament = Tournament.find(params[:id])
+
     tournament_results(@tournament)
 
     # affichage du calendrier
@@ -100,13 +118,23 @@ class TournamentsController < ApplicationController
     #     politic = politics.pop
     #     TeamPolitic.create!(team: team, politic: politic)
     #   end
-    end
+    # end
 
     # On génère le "calendrier" et les dates de des rencontres
     calendar(@tournament)
 
     # On part sur la page show du tournoi
-    flash[:notice] = "Le tournoi est lance, decouvrez vos equipes"
+    flash[:notice] = "Le tournoi est lance, preparez vos equipes"
+    redirect_to tournament_path(@tournament)
+  end
+
+  def bids_validate
+    @team = Team.where(user: current_user, tournament: @tournament).first
+    @team.bids_closed = true
+    @team.save
+    if everybody_validated(@tournament)
+      end_of_round(@tournament)
+    end
     redirect_to tournament_path(@tournament)
   end
 
@@ -119,6 +147,51 @@ class TournamentsController < ApplicationController
 
 
   private
+
+  def everybody_validated(tournament)
+    # si l'ensemble des équipes du tournois ont validé leurs enchères, on return true
+    tournament.teams.each do |team|
+      return false unless team.bids_closed
+    end
+    return true
+  end
+
+  def end_of_round(tournament)
+    # on fait un array avec tous les team_politics de toutes les équipes du tournoi
+    team_politics = []
+    tournament.teams.each do |team|
+      team_politics << team.team_politics
+    end
+    # on regroupe les team_politics par politique
+    team_politics_by_politic = team_politics.flatten.group_by(&:politic_id)
+    # on trie les team_politics de chaque politique par enchère décroissante
+    team_politics_by_politic.each do |politic_id, team_politics|
+      team_politics.sort_by!(&:bid_amount).reverse!
+    end
+    # pour chaque politique on garde la meilleure enchère et on supprime les autres
+    team_politics_by_politic.each do |politic_id, team_politics|
+      team_politics.each_with_index do |team_politic, index|
+        if index.positive?
+          team_politic.destroy
+        else
+          team_politic.acquired = true
+          team_politic.save
+        end
+      end
+    end
+    # on passe toutes les team du tournoi en bids_closed = false
+    tournament.teams.each do |team|
+      team.bids_closed = false
+      team.save
+    end
+
+    # si toutes les team du tournoi ont chacune au moins 10 team_politics, on passe le statut du tournoi à "in progress"
+    tournament.status = "in progress"
+    tournament.teams.each do |team|
+      tournament.status = "mercato" if team.team_politics.count < 10
+    end
+    tournament.save
+  end
 
   def tournament_results(tournament)
     tournament = Tournament.find(params[:id])

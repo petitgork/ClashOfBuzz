@@ -56,9 +56,55 @@
       <% if @team.bids_closed %>
         <p>On attent les enchères des autres pour continuer, harcèle les, gros</p>
       <% else %>
-        <p>Fais tes enchères gros</p>
-        <p>ton portefeuille : <%= @team.wallet %> M€</p>
+
+        <div class="flex flex-wrap">
+          <h2 class="title-team-matches">Mon équipe actuelle</h2>
+          <ul>
+            <% @acquired_politics.each do |politic| %>
+              <li><%= politic.politic.last_name %></li>
+            <% end %>
+          </ul>
+          <p>Fais tes enchères gros</p>
+          <p>ton portefeuille : <%= @team.wallet %> M€</p>
+          <%= button_to "Valider mes enchères", bids_validate_tournament_path(tournament_id: @tournament), method: :patch, class: "pixel_art_btn" %>
+          <h3 class="title-team-matches">Les politiques dispo</h3>
+          <% @available_politics.each do |politic| %>
+            <ul>
+              <li class="team-list-politic-selection">
+                <div class="politic-item-matches">
+                  <%= image_tag("avatars/#{politic.last_name.downcase.gsub("é", "e").gsub("è", "e").gsub("à", "a")}.png", class: "politic-avatar") %>
+                  <div class="politic-info">
+                    <h2 class="politic-name"><%= politic.first_name %> <%= politic.last_name %></h2>
+
+                    <%# Vérifier si un team_politic existe pour ce politic et cette équipe %>
+                    <% team_politic = TeamPolitic.find_by(team: @team, politic: politic) %>
+
+                    <% if team_politic %>
+                      <%# Formulaire de modification %>
+                      <%= simple_form_for [@tournament, team_politic], url: tournament_team_politic_path(@tournament, team_politic), method: :patch do |f| %>
+                        <%= f.hidden_field :politic_id, value: politic.id %>
+                        <%= f.hidden_field :team_id, value: @team.id %>
+                        <%= f.input :bid_amount, label: "Enchère", class: 'mini_title', input_html: { value: team_politic.bid_amount } %>
+                        <%= f.submit "Modifier", class: 'pixel_art_btn' %>
+                      <% end %>
+                    <% else %>
+                      <%# Formulaire de création %>
+                      <%= simple_form_for [@tournament, TeamPolitic.new] do |f| %>
+                        <%= f.hidden_field :politic_id, value: politic.id %>
+                        <%= f.hidden_field :team_id, value: @team.id %>
+                        <%= f.input :bid_amount, label: "Enchère", class: 'mini_title' %>
+                        <%= f.submit "Enchérir", class: 'pixel_art_btn' %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          <% end %>
+
+        </div>
       <% end %>
+
 
   <%# MERCATO TERMINE, TOURNOI EN COURS %>
     <% else %>
