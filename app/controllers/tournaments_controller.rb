@@ -187,26 +187,28 @@ class TournamentsController < ApplicationController
         end
       end
     end
-    # on passe toutes les team du tournoi en bids_closed = false
+    # on vérifie quelles team du tournoi sont encore en mercato
     tournament.teams.each do |team|
-      team.bids_closed = false
+      if team.wallet.zero? || team.team_politics.count >= 10
+        team.mercato_running = false
+      else
+        team.bids_closed = false
+      end
       team.save
     end
 
     # si toutes les team du tournoi ont chacune au moins 10 team_politics, on passe le statut du tournoi à "in progress"
     tournament.status = "in progress"
     tournament.teams.each do |team|
-      tournament.status = "mercato" if team.team_politics.count < 10 && team.wallet.positive?
+      tournament.status = "mercato" if team.mercato_running
     end
     tournament.mercato_round += 1 if tournament.status == "mercato"
     tournament.save
   end
 
   def tournament_results(tournament)
-    tournament = Tournament.find(params[:id])
     team_matches = tournament.team_matches
     teams = tournament.teams
-    matches = tournament.matches
 
     teams.each do |team|
       all_matches = team.team_matches

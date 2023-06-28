@@ -52,8 +52,9 @@
       </div>
 
   <%# MERCATO EN COURS %>
+    <%# le joueur a fait ses enchères et attend que les autres fassent leurs enchères %>
     <% elsif @tournament.status == "mercato" %>
-      <% if @team.bids_closed %>
+      <% if @team.bids_closed && @team.mercato_running %>
         <div class="flex-column">
           <p>On attent les enchères des autres pour continuer, harcèle les, gros</p>
           <p>Tes enchères :</p>
@@ -63,8 +64,21 @@
             <% end %>
           </ul>
         </div>
-      <% else %>
 
+      <%# le joueur a complètement fini ses enchères et attend que les autres les finissent %>
+      <% elsif @team.bids_closed %>
+        <div class="flex-column">
+          <p>Tu as terminé des enchères, on attend que tout le monde ait fini les siennes pour démarrer le tournoi</p>
+          <p>Ta team :</p>
+          <ul>
+            <% @team.team_politics.each do |team_politic| %>
+              <li><%= team_politic.politic.last_name %> (<%= team_politic.bid_amount %> M€)</li>
+            <% end %>
+          </ul>
+        </div>
+
+      <%# le joueur a des enchères en cours %>
+      <% else %>
         <div class="flex flex-wrap">
           <h2 class="title-team-matches">Mon équipe actuelle</h2>
           <ul>
@@ -116,7 +130,6 @@
 
   <%# MERCATO TERMINE, TOURNOI EN COURS %>
     <% else %>
-
       <div class="tournaments-details-container">
         <div class="dashboard-complete-card">
           <div class="dashboard-card">

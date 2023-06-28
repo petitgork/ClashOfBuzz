@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_091651) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_124536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_091651) do
     t.integer "score", default: 0
     t.integer "wallet", default: 500
     t.boolean "bids_closed", default: false
+    t.boolean "mercato_running", default: true
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
