@@ -34,7 +34,6 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @team = Team.where(user: current_user, tournament: @tournament).first
 
-
     # on définit les politiques disponibles comme ceux pour lesquels il n'existe pas de team_politics liés à une équipe de ce tournoi et ayant le champ acquired true
     @available_politics = Politic.where.not(
       id: TeamPolitic
