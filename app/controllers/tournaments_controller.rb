@@ -129,12 +129,20 @@ class TournamentsController < ApplicationController
 
   def bids_validate
     @team = Team.where(user: current_user, tournament: @tournament).first
-    @team.bids_closed = true
-    @team.save
-    if everybody_validated(@tournament)
-      end_of_round(@tournament)
+    puts("validation")
+    if @team.wallet.negative?
+      puts("wallet negative")
+      flash[:alert] = "Tu n'as pas assez d'argent pour valider tes encheres"
+      redirect_to tournament_path(@tournament)
+    else
+      @team.bids_closed = true
+      @team.save
+      if everybody_validated(@tournament)
+        end_of_round(@tournament)
+      end
+      redirect_to tournament_path(@tournament)
     end
-    redirect_to tournament_path(@tournament)
+    puts("mercato status: " + @team.bids_closed.to_s)
   end
 
   def ranking_details
@@ -171,6 +179,7 @@ class TournamentsController < ApplicationController
     team_politics_by_politic.each do |politic_id, team_politics|
       team_politics.each_with_index do |team_politic, index|
         if index.positive?
+          team_politic.team.wallet += team_politic.bid_amount
           team_politic.destroy
         else
           team_politic.acquired = true
@@ -187,8 +196,9 @@ class TournamentsController < ApplicationController
     # si toutes les team du tournoi ont chacune au moins 10 team_politics, on passe le statut du tournoi à "in progress"
     tournament.status = "in progress"
     tournament.teams.each do |team|
-      tournament.status = "mercato" if team.team_politics.count < 10
+      tournament.status = "mercato" if team.team_politics.count < 10 && team.wallet.positive?
     end
+    tournament.mercato_round += 1 if tournament.status == "mercato"
     tournament.save
   end
 

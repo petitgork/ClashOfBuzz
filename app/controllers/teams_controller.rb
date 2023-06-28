@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
     team.tournament = tournament
     if team.save
       UserTournament.create(tournament: tournament, user: current_user)
-      # si c'est la 1ère équipe
+      # message différent si c'est la 1ère équipe
       if tournament.teams.count == 1
         flash[:notice] = "Ton tournoi a bien ete cree"
       else
